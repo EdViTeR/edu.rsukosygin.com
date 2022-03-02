@@ -37,6 +37,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="check_teacher.php">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="all_teacher.php">Все преподаватели</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $teach_name;?></li>
                   </ol>
                 </nav>

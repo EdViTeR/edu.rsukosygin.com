@@ -50,6 +50,7 @@ foreach ($kurs as $key => $value) {
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="check_teacher.php">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="all_kurses.php">Все курсы</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $short_name;?></li>
                   </ol>
                 </nav>
