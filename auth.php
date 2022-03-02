@@ -25,7 +25,7 @@
             header("Location: admin/check_teacher.php"); //админ
             break;
         case '3':
-            header("Location: producer/check_teacher.php"); //продюссер
+            header("Location: producer/check_teacher.php?user_id=$id"); //продюссер
             break;
     }
 ?>

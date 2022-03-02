@@ -2,9 +2,14 @@
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
 $user_id = $_GET['user_id'];
+$prod_id = $_GET['prod_id'];
 $kurs = kurs($link, $kurs_id);
 $authors = authors($link, $kurs_id);
 $themes = themes($link, $kurs_id);
+$user = user($link, $prod_id);
+foreach ($user as $key => $value) {
+    $prod_name = $value[3] . ' ' . $value[2] . ' ' . $value[4]; 
+}
 foreach ($kurs as $key => $value) {
     $kurs_name = $value[1];
     $short_name = $value[2];
@@ -48,113 +53,54 @@ foreach ($kurs as $key => $value) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <!-- Преподаватели -->
-                    <div class="mb-4 p-3 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Курс</h6>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <h6>Полное название онлайн-курса</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <p><?php echo $kurs_name;?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <h6>Короткое название онлайн-курса</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <p><?php echo $short_name;?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <h6>Руководитель онлайн курса</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <p><?php echo $head_name;?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <h6>Регалии руководителя</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <p><?php echo $head_reg;?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <h6>Авторы онлайн курса</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex text-muted pt-3">
-                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <p>
-                                        <?
-                                            $n = 0;
-                                            foreach ($authors as $key => $value) {
-                                                $n++;
-                                                $authors_name = $value[2];
-                                                $authors_reg = $value[3];
-                                                echo $n . '. ' . $authors_name . '</br></br>' . $authors_reg . '</br></br>
-                                                ';
+                    <!-- Информация о курсе -->
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p class="h3 mb-3">Короткое название онлайн-курса</p>
+                        <hr class="text-secondary">
+                        
+                        <p><strong>Полное название онлайн-курса:</strong><br>
+                        <?php echo $kurs_name;?></p>
 
-                                        }
-                                        ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <small class="d-block text-end mt-3">
-                            <a href="check_teacher.php">Назад</a>
-                        </small>
+                        <p><strong>Руководитель онлайн курса:</strong><br>
+                        <?php echo $head_name;?></p>
+
+                        <p><strong>Регалии руководителя:</strong><br>
+                        <?php echo $head_reg;?></p>
+
+                        <p><strong>Авторы онлайн курса:</strong><br>
+                            <ol>
+                                <?
+                                    foreach ($authors as $key => $value) {
+                                        $authors_name = $value[2];
+                                        $authors_reg = $value[3];
+                                        echo '<li>' . $authors_name . '<br><small class="text-secondary">' . $authors_reg . '</small></li>';
+                                }
+                                ?>
+                            </ol>
+                        </p>
                     </div>
-
-                    <div class="mb-4 p-3 bg-body rounded shadow-sm">
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Лекции курса</h6>
-                            <?  
-                            $k = 0;
-                            foreach ($themes as $key => $value) {
-                                $k++;
-                                $themes_id = $value[0];
-                                $themes_name = $value[3];
-                                    echo '<div class="d-flex text-muted pt-3">
-                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
-                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <strong class="text-gray-dark">' . $themes_name . '</strong>
-                                            <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Посмотреть лекцию</a>
-                                        </div>
-                                        </div>
-                                    </div>';
-                            }?>
+                        <?  
+                        $k = 0;
+                        if (!$themes) {
+                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
+                        }
+                        foreach ($themes as $key => $value) {
+                            $k++;
+                            $themes_id = $value[0];
+                            $themes_name = $value[3];
+                                echo '<div class="d-flex text-muted pt-3">
+                                                    <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                    <div class="d-flex justify-content-between">
+                                                        <strong class="text-gray-dark">Лекция ' . $k . '</strong>
+                                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Посмотреть лекцию</a>
+                                                    </div>
+                                                    <span class="d-block d-block-themes">' . $themes_name . '</span>
+                                                    </div>
+                                                </div>';
+                        }?>
                         <small class="d-block text-end mt-3">
                             <a href="check_teacher.php?user_id=<? echo $user_id; ?>">Назад</a>
                         </small>
@@ -162,11 +108,16 @@ foreach ($kurs as $key => $value) {
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="p-5 bg-light border rounded-3">
-                        <h2>Личный кабинет</h2>
-                        <p>Вы авторизировались как <strong>«Продюсер»</strong>.</p> <!-- <p>Вам доступны следующие дествия:</p>
-                        <a href="edit_kurs_info.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a> -->
-                        <!-- <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a> -->
+                    <div class="p-5 bg-white border rounded-3">
+                        <!-- <img src="/images/я.jpg" alt="Письма мастера дзен" width="160" height="160"> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <p class="h5 mt-4 mb-4"><?php echo $prod_name?></p>
+
+                        <p>Вы авторизировались как </p><p><strong>«Продюсер»</strong>.</p> 
+                        <p>Вам доступен просмотр контента.</p>
                     </div>
                 </div>
             </div>

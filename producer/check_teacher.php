@@ -1,7 +1,12 @@
 <?php
     include ("../database/databaseInfo.php");
+    $prod_id = $_GET['user_id'];
     $data = kurses($link);
     $users = users($link);
+    $user = user($link, $prod_id);
+    foreach ($user as $key => $value) {
+        $prod_name = $value[3] . ' ' . $value[2] . ' ' . $value[4]; 
+    }
 ?>
 <!doctype html>
 <html lang="ru">
@@ -41,11 +46,11 @@
                                 $username = $value[4];
                                 $kurs_name = $value[2];
                                     echo '<div class="d-flex text-muted pt-3">
-                                        <a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
+                                        <a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '&prod_id=' . $prod_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
                                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                         <div class="d-flex justify-content-between">
                                             <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                            <a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '">Посмотреть курс</a>
+                                            <a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '&prod_id=' . $prod_id . '">Посмотреть курс</a>
                                         </div>
                                             <span class="d-block">' . $username . '</span>
                                         </div>
@@ -54,11 +59,16 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="p-5 bg-light border rounded-3">
-                        <h2>Личный кабинет</h2>
-                        <p>Вы авторизировались как <strong>«Продюсер»</strong>.</p> <!-- <p>Вам доступны следующие дествия:</p> -->
-                        <!-- <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить преподавателя</a> -->
-                        <!-- <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a> -->
+                    <div class="p-5 bg-white border rounded-3">
+                        <!-- <img src="/images/я.jpg" alt="Письма мастера дзен" width="160" height="160"> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <p class="h5 mt-4 mb-4"><?php echo $prod_name?></p>
+
+                        <p>Вы авторизировались как </p><p><strong>«Продюсер»</strong>.</p> 
+                        <p>Вам доступен просмотр контента.</p>
                     </div>
                 </div>
             </div>
