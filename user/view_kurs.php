@@ -75,7 +75,8 @@ foreach ($kurs as $key => $value) {
                         </p>
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Лекции курса</h6>
+                        <p class="h3 mb-3">Лекции курса</p>
+                        <hr class="text-secondary">
                         <?  
                         $k = 0;
                         if (!$themes) {

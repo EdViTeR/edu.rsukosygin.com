@@ -1,6 +1,6 @@
 <?php
     include ("../database/databaseInfo.php");
-    $prod_id = $_GET['user_id'];
+    $prod_id = $_GET['prod_id'];
     $data = kurses($link);
     $users = users($link);
     $user = user($link, $prod_id);

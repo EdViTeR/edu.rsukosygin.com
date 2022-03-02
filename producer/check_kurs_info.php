@@ -80,29 +80,30 @@ foreach ($kurs as $key => $value) {
                         </p>
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Лекции курса</h6>
+                        <p class="h3 mb-3">Лекции курса</p>
+                        <hr class="text-secondary">
                         <?  
                         $k = 0;
                         if (!$themes) {
-                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
+                            echo "</br>Добавленных лекций нет.</br>";
                         }
                         foreach ($themes as $key => $value) {
                             $k++;
                             $themes_id = $value[0];
                             $themes_name = $value[3];
                                 echo '<div class="d-flex text-muted pt-3">
-                                                    <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                    <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '&prod_id=' . $prod_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                                     <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                     <div class="d-flex justify-content-between">
                                                         <strong class="text-gray-dark">Лекция ' . $k . '</strong>
-                                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Посмотреть лекцию</a>
+                                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '&prod_id=' . $prod_id . '">Посмотреть лекцию</a>
                                                     </div>
                                                     <span class="d-block d-block-themes">' . $themes_name . '</span>
                                                     </div>
                                                 </div>';
                         }?>
                         <small class="d-block text-end mt-3">
-                            <a href="check_teacher.php?user_id=<? echo $user_id; ?>">Назад</a>
+                            <a href="check_teacher.php?user_id=<? echo $user_id . '&prod_id=' . $prod_id; ?>">Назад</a>
                         </small>
                     </div>
                 </div>

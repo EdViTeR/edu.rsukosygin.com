@@ -50,7 +50,7 @@ foreach ($kurs as $key => $value) {
                     <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Короткое название онлайн-курса</p>
+                        <p class="h3 mb-3"><?php echo $short_name;?></p>
                         <hr class="text-secondary">
                         
                         <p><strong>Полное название онлайн-курса:</strong><br>

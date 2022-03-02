@@ -3,6 +3,7 @@ include ("../database/databaseInfo.php");
 $kurs_id    = $_GET['kurs_id'];
 $theme_id   = $_GET['theme_id'];
 $user_id   = $_GET['user_id'];
+$prod_id = $_GET['prod_id'];
 $kurs = kurs($link, $kurs_id);
 $authors = authors($link, $kurs_id);
 $theme = theme($link, $kurs_id, $theme_id);
@@ -109,7 +110,7 @@ $true54     = '';
                     </div>
                 </div>
                 <div align="center">
-                    <?php echo '<a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
+                    <?php echo '<a href="check_kurs_info.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '&prod_id=' . $prod_id . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
                 </div>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
