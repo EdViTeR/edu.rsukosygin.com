@@ -67,7 +67,7 @@ foreach ($kurs as $key => $value) {
                         <p><strong>Регалии руководителя:</strong><br>
                         <?php echo $head_reg;?></p>
 
-                        <p><strong>Авторы онлайн курса:</strong><br>
+                        <p><strong>Соавторы онлайн курса:</strong><br>
                             <ol>
                                 <?
                                     foreach ($authors as $key => $value) {

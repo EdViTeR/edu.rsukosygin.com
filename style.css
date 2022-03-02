@@ -93,3 +93,8 @@ body {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
+li {
+    margin-bottom: 1em; /* Расстояние снизу */
+    line-height: 1;
+}
