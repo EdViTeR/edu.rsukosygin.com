@@ -30,8 +30,9 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Преподаватели -->
-                    <div class="mb-4 p-3 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Преподаватели</h6>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p class="h3 mb-3">Преподаватели</p>
+                        <hr class="text-secondary">
                             <?  
                             $k = 0;
                             foreach ($users as $key => $value) {
@@ -65,8 +66,9 @@
                     </div>
 
                     <!-- Онлайн-курсы -->
-                    <div class="mb-4 p-3 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Онлайн-курсы</h6>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p class="h3 mb-3">Онлайн-курсы</p>
+                        <hr class="text-secondary">
                             <?  
                             $k = 0;
                             foreach ($data as $key => $value) {
