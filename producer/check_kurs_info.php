@@ -52,10 +52,16 @@ foreach ($kurs as $key => $value) {
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="check_teacher.php?prod_id=<?php echo $prod_id;?>">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $short_name;?></li>
+                  </ol>
+                </nav>
                 <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Короткое название онлайн-курса</p>
+                        <p class="h3 mb-3"><?php echo $short_name;?></p>
                         <hr class="text-secondary">
                         
                         <p><strong>Полное название онлайн-курса:</strong><br>

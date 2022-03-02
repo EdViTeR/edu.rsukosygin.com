@@ -5,8 +5,14 @@ $theme_id   = $_GET['theme_id'];
 $user_id   = $_GET['user_id'];
 $prod_id = $_GET['prod_id'];
 $kurs = kurs($link, $kurs_id);
+foreach ($kurs as $key => $value) {
+    $kurs_name = $value[2];
+}
 $authors = authors($link, $kurs_id);
 $theme = theme($link, $kurs_id, $theme_id);
+foreach ($theme as $key => $value) {
+    $theme_name = $value[3];
+}
 $quest1     = '';
 $quest2     = '';
 $quest3     = '';
@@ -77,6 +83,13 @@ $true54     = '';
         </div>
         <div class="container-fluid page">
             <div class="container">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="check_teacher.php?prod_id=<?php echo $prod_id;?>">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="check_kurs_info.php?prod_id=<?php echo $prod_id;?>&kurs_id=<?php echo $kurs_id?>&user_id=<?php echo $user_id?>"><?php echo $kurs_name;?></a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $theme_name;?></li>
+                  </ol>
+                </nav>
                 <div class="container py-3">
                     <h1 align="center">Информация о теме</h1>
                     </br></br>

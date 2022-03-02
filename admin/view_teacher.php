@@ -3,6 +3,10 @@
     $user_id = $_GET['user_id'];
     $data = kurses($link);
     $teach_kurs = teach_kurs($link, $user_id);
+    $user = user($link, $user_id);
+    foreach ($user as $key => $value) {
+        $teach_name = $value[3] . ' ' . $value[2] . ' ' . $value[4]; 
+    }
 ?>
 <!doctype html>
 <html lang="ru">
@@ -30,6 +34,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="check_teacher.php">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $teach_name;?></li>
+                  </ol>
+                </nav>
                     <!-- Онлайн-курсы -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <p class="h3 mb-3">Онлайн-курсы</p>

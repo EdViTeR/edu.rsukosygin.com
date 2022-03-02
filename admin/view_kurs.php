@@ -47,6 +47,12 @@ foreach ($kurs as $key => $value) {
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="check_teacher.php">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $short_name;?></li>
+                  </ol>
+                </nav>
                     <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
@@ -97,7 +103,7 @@ foreach ($kurs as $key => $value) {
                                                 </div>';
                         }?>
                         <small class="d-block text-end mt-3">
-                            <a href="check_teacher.php?user_id=<? echo $user_id; ?>">Назад</a>
+                            <a href="all_kurses.php">Назад</a>
                         </small>
                     </div>
                 </div>

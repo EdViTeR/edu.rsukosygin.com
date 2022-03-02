@@ -47,10 +47,16 @@ foreach ($kurs as $key => $value) {
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="user.php?user_id=<?php echo $user_id;?>">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $short_name;?></li>
+                  </ol>
+                </nav>
                 <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Короткое название онлайн-курса</p>
+                        <p class="h3 mb-3"><?php echo $short_name;?></p></p>
                         <hr class="text-secondary">
                         
                         <p><strong>Полное название онлайн-курса:</strong><br>

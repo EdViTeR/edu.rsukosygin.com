@@ -4,8 +4,14 @@ $user_id    = $_GET['user_id'];
 $kurs_id    = $_GET['kurs_id'];
 $theme_id   = $_GET['theme_id'];
 $kurs = kurs($link, $kurs_id);
+foreach ($kurs as $key => $value) {
+    $short_name = $value[2];
+}
 $authors = authors($link, $kurs_id);
 $theme = theme($link, $kurs_id, $theme_id);
+foreach ($theme as $key => $value) {
+    $theme_name = $value[3];
+}
 $present = takePresent($link, $theme_id);
 $name = explode("/", $present[0][0]);
 $presentName = $name[3];
@@ -79,6 +85,13 @@ $true54     = '';
         </div>
         <div class="container-fluid page">
             <div class="container">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="user.php?user_id=<?php echo $user_id;?>">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="view_kurs.php?user_id=<?php echo $user_id;?>&kurs_id=<?php echo $kurs_id;?>"><?php echo $short_name;?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo $theme_name;?></li>
+                    </ol>
+                </nav>
                 <div class="container py-3">
                     <h1 align="center">Информация о теме</h1>
                     </br></br>
