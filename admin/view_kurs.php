@@ -69,6 +69,9 @@ foreach ($kurs as $key => $value) {
                         <p><strong>Регалии руководителя:</strong><br>
                         <?php echo $head_reg;?></p>
 
+                        <p><strong>Краткая информация о курсе:</strong><br>
+                        <?php echo $kurs_short_info;?></p>
+
                         <p><strong>Соавторы онлайн курса:</strong><br>
                             <ol>
                                 <?
