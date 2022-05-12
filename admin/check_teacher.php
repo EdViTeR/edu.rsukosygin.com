@@ -101,6 +101,7 @@
                         <p>Вы авторизировались как <strong>«Администратор»</strong>.</p> <p>Вам доступны следующие дествия:</p>
                         <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить преподавателя</a>
                         <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a>
+                        <a href="orders.php"  class="btn btn-outline-secondary mb-3" type="button">Заявки</a>
                     </div>
                 </div>
             </div>
