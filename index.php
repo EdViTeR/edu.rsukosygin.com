@@ -1,3 +1,25 @@
+<?php 
+session_start();
+if (isset($_SESSION['user'])) {
+    switch ($_SESSION['user']['role']) {
+        case '1':
+            header("Location: user/user.php?user_id=$id"); //преподаватель
+            break;
+        case '2':
+            header("Location: admin/check_teacher.php"); //админ
+            break;
+        case '3':
+            header("Location: producer/check_teacher.php?prod_id=$id"); //продюссер
+            break;
+        case '4':
+            header("Location: producer/check_teacher.php?prod_id=$id"); //пользователь
+            break;
+        case '5':
+            header("Location: producer/check_teacher.php?prod_id=$id"); //эксперт
+            break;
+    } 
+}
+?>
 <!doctype html>
 <html lang="ru">
   <head>
@@ -23,6 +45,15 @@
           </div>
           <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
           <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a>
+          <?php 
+              if (isset($_SESSION['access'])) {
+                  echo '<p class="access">' . $_SESSION['access'] . '</p>';
+              } elseif (isset($_SESSION['message'])) {
+                  echo '<p class="message">' . $_SESSION['message'] . '</p>';
+              }
+              unset($_SESSION['access']);
+              unset($_SESSION['message']);
+          ?>
           <p class="mt-5 mb-3 text-muted">&copy; 2022 РГУ им. А.Н. Косыгина</p>
         </form>
       </main>

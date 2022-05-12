@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: /");
+    }
     include ("../database/databaseInfo.php");
     $data = kurses($link);
     $users = users($link);
@@ -21,7 +25,7 @@
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
-                    <a href="../index.php" class="btn btn-outline-primary me-2">Выйти</a>
+                    <a href="../logout.php" class="btn btn-outline-primary me-2">Выйти</a>
                 </div>
             </header>
         </div>

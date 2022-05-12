@@ -1,3 +1,26 @@
+<?php 
+    
+    session_start();
+    if (isset($_SESSION['user'])) {
+        switch ($_SESSION['user']['role']) {
+            case '1':
+                header("Location: user/user.php?user_id=$id"); //преподаватель
+                break;
+            case '2':
+                header("Location: admin/check_teacher.php"); //админ
+                break;
+            case '3':
+                header("Location: producer/check_teacher.php?prod_id=$id"); //продюссер
+                break;
+            case '4':
+                header("Location: producer/check_teacher.php?prod_id=$id"); //пользователь
+                break;
+            case '5':
+                header("Location: producer/check_teacher.php?prod_id=$id"); //эксперт
+                break;
+        } 
+    }
+?>
 <!doctype html>
 <html lang="ru">
     <head>
@@ -12,17 +35,15 @@
         <!-- Шапка -->
         <div class="container pt-4">
             <header class="pb-3 mb-4 border-bottom">
-                <a href="check_teacher.php" class="d-flex align-items-center text-dark text-decoration-none">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
             </header>
         </div>
-
         <!-- Контент -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <!-- Преподаватели -->
                     <h4 class="mb-3 ">Регистрация разработчика онлайн-курсов</h4>
                     <hr><br>
                     <form method="POST" action="save_user.php" enctype="multipart/form-data">
@@ -30,48 +51,33 @@
                             <div class="col-sm-4">
                                 <label for="firstName" class="form-label">Фамилия</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите фамилию" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <label for="lastName" class="form-label">Имя</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <label for="lastName" class="form-label">Отчество</label>
                                 <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите отчество" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted"></span></label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">Пароль <span class="text-muted"></span></label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
                             </div>
                             <div class="col-sm-12">
                                 <label for="password" class="form-label">Повторите пароль <span class="text-muted"></span></label>
                                 <input type="password" class="form-control" id="password" name="repeat_password" placeholder="Повторите пароль" required>
-                                <div class="invalid-feedback">
+                                <!-- <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <br>
@@ -79,8 +85,8 @@
                             <label for="role" class="form-label">Роль</label>
                             <select class="form-select" id="role" name="role" required>
                                 <!-- <option value="0">Выберите роль...</option> -->
-                                <option value="1">Преподаватель</option>
-                                <option value="4">Эксперт</option>
+                                <option value="4">Пользователь</option>
+                                <option value="5">Эксперт</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid role.
@@ -89,6 +95,12 @@
                         <!-- <p class="mt-4">Последние изменение: 21.01.2022 в 23:23</p> -->
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
                         <a class="btn btn-outline-secondary btn-lg mt-4" href="index.php">Вход</a>
+                        <?php 
+                            if (isset($_SESSION['message'])) {
+                                echo '<p class="message">' . $_SESSION['message'] . '</p>';
+                            }
+                            unset($_SESSION['message']);
+                        ?>
                     </form>
                 </div>
                 <div class="col-lg-4">

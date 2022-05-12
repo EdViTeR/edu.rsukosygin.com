@@ -1,4 +1,9 @@
 <?php
+
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: /");
+    }
     include ("../database/databaseInfo.php");
     $prod_id = $_GET['prod_id'];
     $data = kurses($link);

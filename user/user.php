@@ -1,4 +1,9 @@
 <?php
+
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: /");
+    }
     include ("../database/databaseInfo.php");
     $user_id = $_GET['user_id'];
     $user = user($link, $user_id);
