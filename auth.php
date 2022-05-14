@@ -3,7 +3,7 @@
     session_start();
     require_once 'database/connect_db.php';
     
-    $email = $_POST['mail'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $user = "SELECT * FROM teacher WHERE email='$email'";
     $mysql = mysqli_query($link, $user);

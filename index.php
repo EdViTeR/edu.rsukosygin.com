@@ -1,5 +1,6 @@
-<?php 
+<?php
 session_start();
+require_once 'vendor/autoload.php';
 if (isset($_SESSION['user'])) {
     switch ($_SESSION['user']['role']) {
         case '1':
@@ -36,7 +37,7 @@ if (isset($_SESSION['user'])) {
           <h1 class="h3 mb-3 fw-normal">Личный кабинет</h1>
       
           <div class="form-floating">
-            <input type="email" name="mail" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
             <label for="floatingInput">Email</label>
           </div>
           <div class="form-floating">

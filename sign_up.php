@@ -1,6 +1,6 @@
 <?php 
-    
     session_start();
+    require_once 'vendor/autoload.php';
     if (isset($_SESSION['user'])) {
         switch ($_SESSION['user']['role']) {
             case '1':
@@ -60,12 +60,12 @@
 
                             <div class="col-sm-4">
                                 <label for="lastName" class="form-label">Отчество</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите отчество" value="" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите отчество" value="">
                             </div>
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>
                             </div>
 
                             <div class="col-12">
@@ -95,11 +95,15 @@
                         <!-- <p class="mt-4">Последние изменение: 21.01.2022 в 23:23</p> -->
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
                         <a class="btn btn-outline-secondary btn-lg mt-4" href="index.php">Вход</a>
-                        <?php 
-                            if (isset($_SESSION['message'])) {
-                                echo '<p class="message">' . $_SESSION['message'] . '</p>';
+                        <?php
+                            if (isset($_SESSION['errors'])) {
+                                echo '<p class="message">' . $_SESSION['errors'] . '</p>';
                             }
-                            unset($_SESSION['message']);
+                            if (isset($_SESSION['repeat_email'])) {
+                                echo '<p class="message">' . $_SESSION['repeat_email'] . '</p>';
+                            }
+                            unset($_SESSION['errors']);
+                            unset($_SESSION['repeat_email']);
                         ?>
                     </form>
                 </div>
