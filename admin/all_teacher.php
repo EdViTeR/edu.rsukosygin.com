@@ -1,7 +1,8 @@
 <?php
+    session_start();
     include ("../database/databaseInfo.php");
-    $data = kurses($link);
-    $users = users($link);
+    $data = kurses($dbo);
+    $users = users($dbo);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -43,10 +44,10 @@
                             $k = 0;
                             foreach ($users as $key => $value) {
                                 $k++;
-                                $name = $value[3] . ' ' .$value[2] . ' ' .$value[4];
-                                $email = $value[1];
-                                $user_id = $value[0];
-                                $role = $value[5];
+                                $name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
+                                $email = $value['email'];
+                                $user_id = $value['id'];
+                                $role = $value['role'];
                                 if ($role == 1) {
                                     $status = 'Преподаватель';
                                 } else {

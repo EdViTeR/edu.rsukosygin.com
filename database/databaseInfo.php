@@ -1,69 +1,114 @@
 <?php
 require_once 'connect_db.php';
 
-
 //Вытаскиваем все курсы
-function kurses($link) {
-	$sql = "SELECT * FROM teach_kurs";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
+function kurses($dbo) {
+	$data = $dbo->query('SELECT * FROM teach_kurs')->fetchAll(PDO::FETCH_ASSOC);
 	return $data;
 }
 
-//Вытаскиваем курс по id
-function kurs($link, $id) {
-	$sql = "SELECT * FROM teach_kurs WHERE id = '$id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
-	return $data;
+//Вытаскиваем препода по email для регистрации и авторизации
+function user($dbo, $email) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `email` = ?");
+	$stmt->execute([$email]);
+	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
+	return $user_data;
 }
 
-//Вытаскиваем препода по id
-function user($link, $id) {
-	$sql = "SELECT * FROM teacher WHERE id = '$id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
-	return $data;
+//Вытаскиваем препода по id для админки
+function user_data($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//Вытаскиваем курс по id для админки
+function kurs($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM teach_kurs WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
 }
 
 //Вытаскиваем всех преподов для админки
-function users($link) {
-	$sql = "SELECT * FROM teacher";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
+function users($dbo) {
+	$data = $dbo->query('SELECT * FROM teacher')->fetchAll(PDO::FETCH_ASSOC);
 	return $data;
 }
 
 //Вытаскиваем все курсы преподавателя по его id
-function teach_kurs($link, $user_id) {
-	$sql = "SELECT * FROM teach_kurs WHERE head_id = '$user_id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
+function teach_kurs($dbo, $head_id) {
+	$stmt = $dbo->prepare('SELECT * FROM teach_kurs WHERE `head_id` IN(?)');
+	    if($stmt->execute([$head_id])) {
+	        if($stmt->rowCount() > 0) {
+	            while($result = $stmt->fetchObject()) {
+	               $data[] = $result;
+	            }
+	        } else {
+	            echo 'there are no result';
+	        }
+	    } else {
+	        echo 'there error in the query';
+	}
 	return $data;
 }
 
 //Вытаскиваем всех авторов курса по id курса
-function authors($link, $kurs_id) {
-	$sql = "SELECT * FROM author WHERE kurs_id = '$kurs_id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
-	return $data;
+function authors($dbo, $kurs_id) {
+	$stmt = $dbo->prepare('SELECT * FROM author WHERE `kurs_id` IN(?)');
+	    if($stmt->execute([$kurs_id])) {
+	        if($stmt->rowCount() > 0) {
+	            while($result = $stmt->fetchObject()) {
+	               $data[] = $result;
+	            }
+	        } else {
+	            $a = 'нет данных';
+	        }
+	    } else {
+	        echo 'there error in the query';
+	}
+	if (!empty($data) || !isset($a)) {
+		return $data;
+	}
 }
 
 //Вытаскиваем все темы курса по id курса
-function themes($link, $kurs_id) {
-	$sql = "SELECT * FROM themes WHERE kurs_id = '$kurs_id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
-	return $data;
+function themes($dbo, $kurs_id) {
+	$stmt = $dbo->prepare('SELECT * FROM themes WHERE `kurs_id` IN(?)');
+	    if($stmt->execute([$kurs_id])) {
+	        if($stmt->rowCount() > 0) {
+	            while($result = $stmt->fetchObject()) {
+	               $data[] = $result;
+	            }
+	        } else {
+	            $a = 'нет данных';
+	        }
+	    } else {
+	        echo 'there error in the query';
+	}
+	if (!empty($data) || !isset($a)) {
+		return $data;
+	}
 }
 
 //Вытаскиваем 1 тему курса по id темы и id курса
-function theme($link, $kurs_id, $theme_id) {
-	$sql = "SELECT * FROM themes WHERE kurs_id = '$kurs_id' AND id = '$theme_id'";
-	$result = mysqli_query($link, $sql);
-	$data = mysqli_fetch_all($result);
-	return $data;
+function theme($dbo, $theme_id) {
+	$stmt = $dbo->prepare('SELECT * FROM themes WHERE `id` IN(?)');
+	    if($stmt->execute([$theme_id])) {
+	        if($stmt->rowCount() > 0) {
+	            while($result = $stmt->fetchObject()) {
+	               $data[] = $result;
+	            }
+	        } else {
+	            $a = 'нет данных';
+	        }
+	    } else {
+	        echo 'there error in the query';
+	}
+	if (!empty($data) || !isset($a)) {
+		return $data;
+	}
 }
 
 //Вытаскиваем всю удаленную информацию

@@ -2,25 +2,9 @@
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
 $user_id = $_GET['user_id'];
-$kurs = kurs($link, $kurs_id);
-$authors = authors($link, $kurs_id);
-$themes = themes($link, $kurs_id);
-foreach ($kurs as $key => $value) {
-    $kurs_name = $value[1];
-    $short_name = $value[2];
-    $head_name = $value[4];
-    $head_reg = $value[5];
-    $kurs_short_info = $value[6];
-    $speaker_name = $value[7];
-    $short_video_text_speaker = $value[8];
-    $short_video_text_kurs = $value[9];
-    $status = $value[11];
-    if ($status == 0) {
-        $need_status = 'В обработке';
-    } else {
-        $need_status = 'Обработан';
-    }
-}
+$kurs = kurs($dbo, $kurs_id);
+$authors = authors($dbo, $kurs_id);
+$themes = themes($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -51,34 +35,38 @@ foreach ($kurs as $key => $value) {
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="check_teacher.php">Главная</a></li>
                     <li class="breadcrumb-item"><a href="all_kurses.php">Все курсы</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?php echo $short_name;?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $kurs['short_name'];?></li>
                   </ol>
                 </nav>
                     <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3"><?php echo $short_name;?></p>
+                        <p class="h3 mb-3"><?php echo $kurs['short_name'];?></p>
                         <hr class="text-secondary">
                         
                         <p><strong>Полное название онлайн-курса:</strong><br>
-                        <?php echo $kurs_name;?></p>
+                        <?php echo $kurs['kurs_name'];?></p>
 
                         <p><strong>Руководитель онлайн курса:</strong><br>
-                        <?php echo $head_name;?></p>
+                        <?php echo $kurs['head_name'];?></p>
 
                         <p><strong>Регалии руководителя:</strong><br>
-                        <?php echo $head_reg;?></p>
+                        <?php echo $kurs['head_reg'];?></p>
 
                         <p><strong>Краткая информация о курсе:</strong><br>
-                        <?php echo $kurs_short_info;?></p>
+                        <?php echo $kurs['kurs_short_info'];?></p>
 
                         <p><strong>Соавторы онлайн курса:</strong><br>
                             <ol>
                                 <?
+                                if (!$authors) {
+                                    echo "Нет добавленных авторов";
+                                } else {
                                     foreach ($authors as $key => $value) {
-                                        $authors_name = $value[2];
-                                        $authors_reg = $value[3];
+                                        $authors_name = $value->author_name;
+                                        $authors_reg = $value->author_reg;
                                         echo '<li>' . $authors_name . '<br><small class="text-secondary">' . $authors_reg . '</small></li>';
+                                    }
                                 }
                                 ?>
                             </ol>
@@ -90,21 +78,22 @@ foreach ($kurs as $key => $value) {
                         $k = 0;
                         if (!$themes) {
                             echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
-                        }
-                        foreach ($themes as $key => $value) {
-                            $k++;
-                            $themes_id = $value[0];
-                            $themes_name = $value[3];
-                                echo '<div class="d-flex text-muted pt-3">
-                                                    <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
-                                                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                                    <div class="d-flex justify-content-between">
-                                                        <strong class="text-gray-dark">Лекция ' . $k . '</strong>
-                                                        <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Редактировать</a>
-                                                    </div>
-                                                    <span class="d-block d-block-themes">' . $themes_name . '</span>
-                                                    </div>
-                                                </div>';
+                        } else {
+                            foreach ($themes as $key => $value) {
+                                $k++;
+                                $themes_id = $value->id;
+                                $themes_name = $value->theme_name;
+                                    echo '<div class="d-flex text-muted pt-3">
+                                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                        <div class="d-flex justify-content-between">
+                                                            <strong class="text-gray-dark">Лекция ' . $k . '</strong>
+                                                            <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Редактировать</a>
+                                                        </div>
+                                                        <span class="d-block d-block-themes">' . $themes_name . '</span>
+                                                        </div>
+                                                    </div>';
+                            }
                         }?>
                         <small class="d-block text-end mt-3">
                             <a href="all_kurses.php">Назад</a>

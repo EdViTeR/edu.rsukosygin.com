@@ -3,9 +3,9 @@ include ("../database/databaseInfo.php");
 $kurs_id    = $_GET['kurs_id'];
 $theme_id   = $_GET['theme_id'];
 $user_id   = $_GET['user_id'];
-$kurs = kurs($link, $kurs_id);
-$authors = authors($link, $kurs_id);
-$theme = theme($link, $kurs_id, $theme_id);
+$kurs = kurs($dbo, $kurs_id);
+$authors = authors($dbo, $kurs_id);
+$theme = theme($dbo, $kurs_id, $theme_id);
 $quest1     = '';
 $quest2     = '';
 $quest3     = '';
@@ -88,38 +88,7 @@ $true54     = '';
                                 <? 
                                 $n = 0;
                                 foreach ($theme as $key => $value) {
-                                    $theme_name = $value[3];
-                                    $quest1 = $value[6];
-                                    $answ11 = $value[7];
-                                    $answ12 = $value[8];
-                                    $answ13 = $value[9];
-                                    $answ14 = $value[10];
-                                    $true1  = $value[11];
-                                    $quest2 = $value[12];
-                                    $answ21 = $value[13];
-                                    $answ22 = $value[14];
-                                    $answ23 = $value[15];
-                                    $answ24 = $value[16];
-                                    $true2  = $value[17];
-                                    $quest3 = $value[18];
-                                    $answ31 = $value[19];
-                                    $answ32 = $value[20];
-                                    $answ33 = $value[21];
-                                    $answ34 = $value[22];
-                                    $true3  = $value[23];
-                                    $quest4 = $value[24];
-                                    $answ41 = $value[25];
-                                    $answ42 = $value[26];
-                                    $answ43 = $value[27];
-                                    $answ44 = $value[28];
-                                    $true4  = $value[29];
-                                    $quest5 = $value[30];
-                                    $answ51 = $value[31];
-                                    $answ52 = $value[32];
-                                    $answ53 = $value[33];
-                                    $answ54 = $value[34];
-                                    $true5  = $value[35];
-                                    switch ($true1) {
+                                    switch ($value->true1) {
                                         case '1':
                                             $true11 = 'Правильный';
                                             break;
@@ -133,7 +102,7 @@ $true54     = '';
                                             $true14 = 'Правильный';
                                             break;
                                     }
-                                    switch ($true2) {
+                                    switch ($value->true2) {
                                         case '1':
                                             $true21 = 'Правильный';
                                             break;
@@ -147,7 +116,7 @@ $true54     = '';
                                             $true24 = 'Правильный';
                                             break;
                                     }
-                                    switch ($true3) {
+                                    switch ($value->true3) {
                                         case '1':
                                             $true31 = 'Правильный';
                                             break;
@@ -161,7 +130,7 @@ $true54     = '';
                                             $true34 = 'Правильный';
                                             break;
                                     }
-                                    switch ($true4) {
+                                    switch ($value->true4) {
                                         case '1':
                                             $true41 = 'Правильный';
                                             break;
@@ -175,7 +144,7 @@ $true54     = '';
                                             $true44 = 'Правильный';
                                             break;
                                     }
-                                    switch ($true5) {
+                                    switch ($value->true5) {
                                         case '1':
                                             $true51 = 'Правильный';
                                             break;
@@ -193,123 +162,123 @@ $true54     = '';
                                     echo '<table class="table">
                                             <thead><tr>
                                             <td style="min-width: 634px;">Название лекции</td>
-                                            <td style="min-width: 634px;">' . $value[3] . '</td>
+                                            <td style="min-width: 634px;">' . $value->theme_name . '</td>
                                         </tr>
                                         <tr>
                                             <td>Краткая аннотация по теме лекции</td>
-                                            <td>' . $value[4] . '</td>
+                                            <td>' . $value->theme_info . '</td>
                                         </tr>
                                         <tr>
                                             <td>Текст лекции</td>
-                                            <td>' . $value[5] . '</td>
+                                            <td>' . $value->text_less . '</td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"><b>Тестирование</b></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">' . $quest1 . '</td>
+                                            <td colspan="2">' . $value->quest1 . '</td>
                                         </tr>
                                         <tr>
                                             <td>Вариант ответа</td>
                                             <td>Правильный ответ</td>
                                         </tr>
                                         <tr>
-                                            <td>' . $answ11 . '</td>
+                                            <td>' . $value->answ11 . '</td>
                                             <td>' . $true11 . '</td>
                                         </tr>
-                                            <td>' . $answ12 . '</td>
+                                            <td>' . $value->answ12 . '</td>
                                             <td>' . $true12 . '</td>
                                         </tr>
-                                            <td>' . $answ13 . '</td>
+                                            <td>' . $value->answ13 . '</td>
                                             <td>' . $true13 . '</td>
                                         </tr>
-                                            <td>' . $answ14 . '</td>
+                                            <td>' . $value->answ14 . '</td>
                                             <td>' . $true14 . '</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">' . $quest2 . '</td>
+                                            <td colspan="2">' . $value->quest2 . '</td>
                                         </tr>
                                         <tr>
                                             <td>Вариант ответа</td>
                                             <td>Правильный ответ</td>
                                         </tr>
                                         <tr>
-                                            <td>' . $answ21 . '</td>
+                                            <td>' . $value->answ21 . '</td>
                                             <td>' . $true21 . '</td>
                                         </tr>
-                                            <td>' . $answ22 . '</td>
+                                            <td>' . $value->answ22 . '</td>
                                             <td>' . $true22 . '</td>
                                         </tr>
-                                            <td>' . $answ23 . '</td>
+                                            <td>' . $value->answ23 . '</td>
                                             <td>' . $true23 . '</td>
                                         </tr>
-                                            <td>' . $answ24 . '</td>
+                                            <td>' . $value->answ24 . '</td>
                                             <td>' . $true24 . '</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">' . $quest3 . '</td>
+                                            <td colspan="2">' . $value->quest3 . '</td>
                                         </tr>
                                         <tr>
                                             <td>Вариант ответа</td>
                                             <td>Правильный ответ</td>
                                         </tr>
                                         <tr>
-                                            <td>' . $answ31 . '</td>
+                                            <td>' . $value->answ31 . '</td>
                                             <td>' . $true31 . '</td>
                                         </tr>
-                                            <td>' . $answ32 . '</td>
+                                            <td>' . $value->answ32 . '</td>
                                             <td>' . $true32 . '</td>
                                         </tr>
-                                            <td>' . $answ33 . '</td>
+                                            <td>' . $value->answ33 . '</td>
                                             <td>' . $true33 . '</td>
                                         </tr>
-                                            <td>' . $answ34 . '</td>
+                                            <td>' . $value->answ34 . '</td>
                                             <td>' . $true34 . '</td>
                                         </tr>
                                         ';
-                                        if ($quest4 != '') {
+                                        if ($value->quest4 != '') {
                                             echo '
                                                 <tr>
-                                                    <td colspan="2">' . $quest4 . '</td>
+                                                    <td colspan="2">' . $value->quest4 . '</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Вариант ответа</td>
                                                     <td>Правильный ответ</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>' . $answ41 . '</td>
+                                                    <td>' . $value->answ41 . '</td>
                                                     <td>' . $true41 . '</td>
                                                 </tr>
-                                                    <td>' . $answ42 . '</td>
+                                                    <td>' . $value->answ42 . '</td>
                                                     <td>' . $true42 . '</td>
                                                 </tr>
-                                                    <td>' . $answ43 . '</td>
+                                                    <td>' . $value->answ43 . '</td>
                                                     <td>' . $true43 . '</td>
                                                 </tr>
-                                                    <td>' . $answ44 . '</td>
+                                                    <td>' . $value->answ44 . '</td>
                                                     <td>' . $true44 . '</td>
                                                 </tr>';
                                         }
-                                        if ($quest5 != '') {
+                                        if ($value->quest5 != '') {
                                             echo '
                                                 <tr>
-                                                    <td colspan="2">' . $quest5 . '</td>
+                                                    <td colspan="2">' . $value->quest5 . '</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Вариант ответа</td>
                                                         <td>Правильный ответ</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>' . $answ51 . '</td>
+                                                        <td>' . $value->answ51 . '</td>
                                                         <td>' . $true51 . '</td>
                                                     </tr>
-                                                        <td>' . $answ52 . '</td>
+                                                        <td>' . $value->answ52 . '</td>
                                                         <td>' . $true52 . '</td>
                                                     </tr>
-                                                        <td>' . $answ53 . '</td>
+                                                        <td>' . $value->answ53 . '</td>
                                                         <td>' . $true53 . '</td>
                                                     </tr>
-                                                        <td>' . $answ54 . '</td>
+                                                        <td>' . $value->answ54 . '</td>
                                                         <td>' . $true54 . '</td>
                                                 </tr>
                                     ';

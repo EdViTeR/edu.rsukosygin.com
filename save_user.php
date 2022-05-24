@@ -2,10 +2,11 @@
 session_start();
 require_once 'vendor/autoload.php';
 require_once 'database/connect_db.php';
+require_once 'database/databaseInfo.php';
 
-$firstName 			= htmlspecialchars($_POST['firstName']);
+$first_name 		= htmlspecialchars($_POST['first_name']);
 $name 				= htmlspecialchars($_POST['name']);
-$lastName 			= htmlspecialchars($_POST['lastName']);
+$last_name 			= htmlspecialchars($_POST['last_name']);
 $email 				= htmlspecialchars($_POST['email']);
 $password 			= htmlspecialchars($_POST['password']);
 $repeat_password 	= htmlspecialchars($_POST['repeat_password']);
@@ -20,23 +21,23 @@ $labels = [
 	'email' => 'Email',
 	'password' => 'Пароль',
 	'name' => 'Имя',
-	'firstName' => 'Фамилия',
-	'lastName' => 'Отчество',
+	'first_name' => 'Фамилия',
+	'last_name' => 'Отчество',
 ];
 
 
 $rules = [
-	'required' => ['firstName', 'name', 'email', 'password', 'repeat_password'],
+	'required' => ['first_name', 'name', 'email', 'password', 'repeat_password'],
 	'email' => ['email'],
 	'lengthMin' => [
 		['password', 8],
 		['name', 2],
-		['firstName', 2],
+		['first_name', 2],
 	],
     'regex' => [
-        ['firstName', '/^[а-яА-ЯёЁ]{1,20}$/u'],
+        ['first_name', '/^[а-яА-ЯёЁ]{1,20}$/u'],
         ['name', '/^[а-яА-ЯёЁ]{1,20}$/u'],
-        ['lastName', '/^[а-яА-ЯёЁ]{1,20}$/u'],
+        ['last_name', '/^[а-яА-ЯёЁ]{1,20}$/u'],
     ],
     'equals' => [
         ['password', 'repeat_password'],
@@ -54,14 +55,23 @@ if (!empty($_POST)) {
 	$v->rules($rules);
 	if ($v->validate()) {
 		$password = password_hash($password, PASSWORD_DEFAULT);
-		$user = "SELECT * FROM teacher WHERE email='$email'";
-		if (!empty($user)) {
+		$user_data = user($dbo, $email);
+		if (!empty($user_data)) {
 			$_SESSION['repeat_email'] = 'Данный Email уже зарегистрирован';
 			header('Location: sign_up.php');
 			die;
 		}
-		$new_sql="INSERT INTO teacher (email, name, first_name, last_name, password, role) VALUES('$email', '$name', '$firstName', '$lastName', '$password', '$role')";
-		$result = mysqli_query($link, $new_sql);
+		$query = ("INSERT INTO `teacher` SET `email` = :email, `name` = :name, `first_name` = :first_name, `last_name` = :last_name, `password` = :password, `role` = :role");
+		$params = [
+		    'email' 		=> $email,
+		    'name' 			=> $name,
+		    'first_name' 	=> $first_name,
+		    'last_name' 	=> $last_name,
+		    'password' 		=> $password,
+		    'role' 			=> $role,
+		];
+		$stmt = $dbo->prepare($query);
+		$stmt->execute($params);
 		$_SESSION['access'] = 'Вы успешно зарегистрированы';
 		header('Location: index.php');
 		die;

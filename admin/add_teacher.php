@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>Добавление преподавателя</title>
+        <title>Добавление пользователя</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body class="body-home">
@@ -23,19 +23,19 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Преподаватели -->
-                    <h4 class="mb-3">Новый преподаватель</h4>
-                    <form method="POST" action="save_teacher.php" enctype="multipart/form-data">
+                    <h4 class="mb-3">Новый пользователь</h4>
+                    <form method="POST" action="../save_user.php" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4">
-                                <label for="firstName" class="form-label">Фамилия</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required>
+                                <label for="first_name" class="form-label">Фамилия</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="" value="" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
-                                <label for="lastName" class="form-label">Имя</label>
+                                <label for="name" class="form-label">Имя</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
@@ -43,8 +43,8 @@
                             </div>
 
                             <div class="col-sm-4">
-                                <label for="lastName" class="form-label">Отчество</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required>
+                                <label for="last_name" class="form-label">Отчество</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="" value="" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -64,6 +64,14 @@
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <label for="password" class="form-label">Повторите пароль <span class="text-muted"></span></label>
+                                <input type="password" class="form-control" id="password" name="repeat_password" placeholder="Повторите пароль" required>
+                                <!-- <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div> -->
                             </div>
 
 <!--                             <div class="col-12">
@@ -85,6 +93,9 @@
                                     <!-- <option value="0">Выберите роль...</option> -->
                                     <option value="1">Преподаватель</option>
                                     <option value="2">Администратор</option>
+                                    <option value="3">Продюссер</option>
+                                    <option value="4">Пользователь</option>
+                                    <option value="5">Эксперт</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select a valid role.
