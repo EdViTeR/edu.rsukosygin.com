@@ -29,7 +29,7 @@
                 header("Location: producer/check_teacher.php"); //продюссер
                 break;
             case '4':
-                header("Location: applicant/check_teacher.php"); //пользователь
+                header("Location: applicant/user.php"); //пользователь
                 break;
             case '5':
                 header("Location: expert/check_teacher.php"); //эксперт
