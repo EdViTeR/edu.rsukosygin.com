@@ -21,7 +21,7 @@
         <!-- Шапка -->
         <div class="container pt-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between pb-3 mb-4 border-bottom">
-                <a href="" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
@@ -67,7 +67,7 @@
                                 <input type="text" class="form-control" id="functional" name="functional" placeholder="Руководитель курса, автор, разработчик..." required>
                             </div>
                             <div class="col-12">
-                                <label for="partic_ok" class="form-label">Сведения об участии в выполнении подобных проектов<span class="text-muted"></span></label>
+                                <label for="partic_ok" class="form-label">Сведения об участии в выполнении подобных проектов</label>
                                 <textarea type="text" name="partic_ok" id="partic_ok" cols="100" class="form-control" rows="3" placeholder=" (Например, разработка ЭОР/ЭУК (ссылка на ресурс), запись видеолекций, включая вебинары, разработка модулей/тем для онлайн-курсов)" required></textarea>
                             </div>
                             <div class="col-12">

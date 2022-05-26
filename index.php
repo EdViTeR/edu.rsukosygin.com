@@ -4,19 +4,19 @@ require_once 'vendor/autoload.php';
 if (isset($_SESSION['user'])) {
     switch ($_SESSION['user']['role']) {
         case '1':
-            header("Location: user/user.php"); //преподаватель
+            header("Location: user/user.php?user_id=$id"); //преподаватель
             break;
         case '2':
             header("Location: admin/check_teacher.php"); //админ
             break;
         case '3':
-            header("Location: producer/check_teacher.php"); //продюссер
+            header("Location: producer/user.php"); //продюссер
             break;
         case '4':
-            header("Location: producer/check_teacher.php"); //пользователь
+            header("Location: applicant/user.php"); //пользователь
             break;
         case '5':
-            header("Location: producer/check_teacher.php"); //эксперт
+            header("Location: expert/user.php"); //эксперт
             break;
     } 
 }

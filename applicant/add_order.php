@@ -22,7 +22,7 @@
         <!-- Шапка -->
         <div class="container pt-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between pb-3 mb-4 border-bottom">
-                <a href="" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
@@ -102,7 +102,7 @@
                         <p>Для регистрации заявки необходимо заполнить данные.</p></br>
                         <a href="add_author.php" class="btn btn-primary mb-3 me-3" type="button">Добавить автора</a>
                         <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить сведения об онлайн-курсе</a>
-                        <a href="add_assay.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить онлайн-курса</a>
+                        <a href="add_assay.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить анализ</a>
                     </div>
                 </div>
             </div>
