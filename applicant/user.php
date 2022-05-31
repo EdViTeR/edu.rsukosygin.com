@@ -71,7 +71,7 @@
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
                         <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
                         <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br>
-                        <a href="add_order.php" class="btn btn-primary mb-3 me-3" type="button">Подать заявку</a><br>
+                        <a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>
                         <a href="example.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Пример заявки</a>
                     </div>
                 </div>

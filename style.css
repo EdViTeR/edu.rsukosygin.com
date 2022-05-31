@@ -4,6 +4,14 @@ body {
   align-items: center;
 }
 
+.select_background {
+    background-color: white;
+}
+
+.avatar {
+    border-radius: 4px;
+}
+
 .sign_up_button {
     background-color: #f5f5f5;
     color: #0074fc;

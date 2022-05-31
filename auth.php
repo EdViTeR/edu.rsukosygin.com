@@ -17,6 +17,7 @@
             "last_name" => $user_data['last_name'],
             "kurs_id" => $user_data['kurs_id'],
             "role" => $user_data['role'],
+            "photo" => $user_data['photo'],
         ];
         switch ($user_data['role']) {
             case '1':

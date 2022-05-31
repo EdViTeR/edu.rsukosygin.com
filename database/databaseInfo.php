@@ -1,5 +1,27 @@
 <?php
+
 require_once 'connect_db.php';
+
+//сохраняем аватар пользователя
+function save_user_images($dbo, $way, $id) {
+	$data = [
+	    'way' => $way,
+	    'id' => $id,
+	];
+	$sql = "UPDATE teacher SET photo=:way WHERE id=:id";
+	$stmt= $dbo->prepare($sql);
+	$stmt->execute($data);
+}
+
+function view_photo($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
+	$way = $user_data['photo'];
+	return $way;
+}
+
+
 
 //Вытаскиваем все курсы
 function kurses($dbo) {
