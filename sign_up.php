@@ -52,17 +52,14 @@
                                 <label for="first_name" class="form-label">Фамилия</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Введите фамилию" value="" required>
                             </div>
-
                             <div class="col-sm-4">
                                 <label for="last_name" class="form-label">Имя</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" value="" required>
                             </div>
-
                             <div class="col-sm-4">
                                 <label for="last_name" class="form-label">Отчество</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество" value="">
                             </div>
-
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted"></span></label>
                                 <input type="text" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>

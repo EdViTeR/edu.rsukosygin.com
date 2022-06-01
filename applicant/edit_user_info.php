@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	// var_dump($_SESSION); die;
+	// var_dump($_SESSION['user_info']); die;
     include ("../database/databaseInfo.php");
     if (!isset($_SESSION['user'])) {
         header("Location: /");
@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="../style.css">
     </head>
     <body class="body-home">
-
         <!-- Шапка -->
         <div class="container pt-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between pb-3 mb-4 border-bottom">
@@ -37,27 +36,41 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Заполнение профиля</li>
+                    <li class="breadcrumb-item active" aria-current="page">Редактирование профиля</li>
                   </ol>
                 </nav><hr>
                 <div class="col-lg-8">
-                    <h4 class="mb-3 ">Заполнение профиля</h5>
+                    <h4 class="mb-3 ">Редактирование профиля</h5>
                     <hr>
-                    <form method="POST" action="save_user_info.php" enctype="multipart/form-data">
+                    <form method="POST" action="save_edit_user_info.php" enctype="multipart/form-data">
                         <div class="row g-3">
+                            <div class="col-sm-4">
+                                <label for="first_name" class="form-label">Фамилия</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Введите фамилию" value="<?php echo $_SESSION['user']['first_name']; ?>" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="last_name" class="form-label">Имя</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" value="<?php echo $_SESSION['user']['name']; ?>" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="last_name" class="form-label">Отчество</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество" value="<?php echo $_SESSION['user']['last_name']; ?>">
+                            </div>
                             <div class="col-12">
                                 <label for="phone" class="form-label">Телефон<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="+79009997788" required>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="+79009997788" value="<?php echo $_SESSION['user_info']['phone']; ?>" required>
                             </div>
                             <div class="col-7">
                                 <label for="academic_degree_title" class="form-label">Ученая степень<span class="text-muted"></span></label>
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree_title">
-                                  <option value="б/с">Без степени</option>
-                                  <option value="к.">Кандидат</option>
-                                  <option value="д.">Доктор</option>
+                                	<option value="<?php echo $_SESSION['user_info']['academic_degree_title'];?>"><?php echo $_SESSION['user_info']['academic_degree_title'];?></option>
+                                  	<option value="б/с">Без степени</option>
+                                  	<option value="к.">Кандидат</option>
+                                  	<option value="д.">Доктор</option>
                                 </select>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree">
+									<option value="<?php echo $_SESSION['user_info']['academic_degree'];?>"><?php echo $_SESSION['user_info']['academic_degree'];?></option>
                                     <option value="б/с">Без степени</option>
                                     <option value="арх.н.">архитектурных наук</option>
                                     <option value="б.н.">биологических наук</option>
@@ -87,6 +100,7 @@
                                 <label for="academic_title" class="form-label">Ученое звание<span class="text-muted"></span></label>
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-10 select_background" name="academic_title">
+                                	<option value="<?php echo $_SESSION['user_info']['academic_title'];?>"><?php echo $_SESSION['user_info']['academic_title'];?></option>
                                     <option value="б/з">Без звания</option>
                                     <option value="доц.">доцент</option>
                                     <option value="проф.">профессор</option>
@@ -113,15 +127,15 @@
                             </div>
                             <div class="col-12">
                                 <label for="department" class="form-label">Отдел<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="department" name="department" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="department" name="department" placeholder="" value="<?php echo $_SESSION['user_info']['department']; ?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="job_title" class="form-label">Должность<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="" value="<?php echo $_SESSION['user_info']['job_title']; ?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="about" class="form-label">О себе<span class="text-muted"></span></label>
-                                <textarea type="text" name="about" id="about"  cols="100" class="form-control" rows="4" placeholder="Расскажите о себе" required></textarea>
+                                <textarea type="text" name="about" id="about"  cols="100" class="form-control" rows="4" placeholder="Расскажите о себе" value="" required><?php echo $_SESSION['user_info']['about']; ?></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
