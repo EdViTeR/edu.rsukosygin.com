@@ -37,9 +37,25 @@ function user($dbo, $email) {
 	return $user_data;
 }
 
+//Вытаскиваем все курсы преподавателя по id
+function get_kurs($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `user_id` = ?");
+	$stmt->execute([$user_id]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем препода по id для админки
 function user_data($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//Вытаскиваем курс по id
+function kurs_data($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
 	$stmt->execute([$id]);
 	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $user_data;

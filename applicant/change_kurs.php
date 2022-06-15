@@ -6,6 +6,8 @@
     }
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
+    $kurs_id = $_GET['kurs_id'];
+    $kurs = kurs_data($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -36,43 +38,43 @@
                     <h4 class="mb-3 ">Заполнение данных об онлайн-курсе</h4>
                     <hr>
 					<h5 class="mb-3 ">Сведения об онлайн-курсе</h5><br>
-                    <form method="POST" action="save_order_proect.php" enctype="multipart/form-data">
+                    <form method="POST" action="save_order_change_proect.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="kurs_name" class="form-label">Название курса</label>
-                                <input type="text" class="form-control" id="kurs_name" name="kurs_name" placeholder="Введите название онлайн-курса" required>
+                                <input type="text" class="form-control" id="kurs_name" name="kurs_name" value="<?php echo $kurs['kurs_name'];?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="description" class="form-label">Описание курса</label>
-                                <textarea type="text" name="description" id="description" cols="100" class="form-control" rows="3" placeholder="" required></textarea>
+                                <textarea type="text" name="description" id="description" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['description'];?>" required><?php echo $kurs['description'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="sphere" class="form-label">Область / сфера</label>
-                                <textarea type="text" name="sphere" id="sphere" cols="100" class="form-control" rows="3" placeholder="" required></textarea>
+                                <textarea type="text" name="sphere" id="sphere" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['sphere'];?>" required><?php echo $kurs['sphere'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="replacement" class="form-label">Дисциплины, которые заменяются онлайн-курсом</label>
-                                <textarea type="text" name="replacement" id="replacement" cols="100" class="form-control" rows="3" placeholder="" required></textarea>
+                                <textarea type="text" name="replacement" id="replacement" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['replacement'];?>" required><?php echo $kurs['replacement'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="route" class="form-label">Направление(я) подготовки специальность(ти)</label>
-                                <textarea type="text" name="route" id="route" cols="100" class="form-control" rows="3" placeholder="Например: 09.03.01 Информатика и вычислительная техника" required></textarea>
+                                <textarea type="text" name="route" id="route" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['route'];?>" required><?php echo $kurs['route'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="user_level" class="form-label">Необходимый уровень образования слушателей</label>
-                                <textarea type="text" name="user_level" id="user_level" cols="100" class="form-control" rows="3" placeholder="Какой уровень образования должен быть у слушателя для того, чтобы пройти курс?" required></textarea>
+                                <textarea type="text" name="user_level" id="user_level" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['user_level'];?>" required><?php echo $kurs['user_level'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="work_time" class="form-label">Объем курса (в часах)</label>
-                                <textarea type="text" name="work_time" id="work_time" cols="100" class="form-control" rows="3" placeholder="Сколько часов займет у студента прохождение Вашего курса? Включайте в эту цифру время на просмотр видео и решение заданий." required></textarea>
+                                <textarea type="text" name="work_time" id="work_time" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['work_time'];?>" required><?php echo $kurs['work_time'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="amount_lecture" class="form-label">Количество лекций</label>
-                                <textarea type="text" name="amount_lecture" id="amount_lecture" cols="100" class="form-control" rows="1" placeholder="Необходимо указать количество лекций онлайн-курса" required></textarea>
+                                <textarea type="text" name="amount_lecture" id="amount_lecture" cols="100" class="form-control" rows="1" placeholder="<?php echo $kurs['amount_lecture'];?>" required><?php echo $kurs['amount_lecture'];?></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="amount_video_lecture" class="form-label">Количество видеосеминаров</label>
-                                <textarea type="text" name="amount_video_lecture" id="amount_video_lecture" cols="100" class="form-control" rows="1" placeholder="Необходимо указать количество видеосеминаров онлайн-курса" required></textarea>
+                                <textarea type="text" name="amount_video_lecture" id="amount_video_lecture" cols="100" class="form-control" rows="1" placeholder="<?php echo $kurs['amount_video_lecture'];?>" required><?php echo $kurs['amount_video_lecture'];?></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>

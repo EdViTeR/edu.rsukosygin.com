@@ -4,6 +4,7 @@ require_once '../vendor/autoload.php';
 require_once '../database/connect_db.php';
 require_once '../database/databaseInfo.php';
 
+$id 					= $_GET['kurs_id'];
 $kurs_name 				= htmlspecialchars($_POST['kurs_name']);
 $description			= htmlspecialchars($_POST['description']);
 $sphere 				= htmlspecialchars($_POST['sphere']);
@@ -43,8 +44,8 @@ if (!empty($_POST)) {
 	$v->labels($labels);
 	$v->rules($rules);
 	if ($v->validate()) {
-		$query = ("INSERT INTO `kurs_info` SET `user_id` = :user_id, `kurs_name` = :kurs_name, `description` = :description, `sphere` = :sphere, `replacement` = :replacement, `route` = :route, `user_level` = :user_level, `work_time` = :work_time, `amount_lecture` = :amount_lecture, `amount_video_lecture` = :amount_video_lecture");
-		$params = [
+		$data = [
+			'id'					=> $id,
 		    'user_id' 				=> $user_id,
 		    'kurs_name' 			=> $kurs_name,
 		    'description'			=> $description,
@@ -56,20 +57,9 @@ if (!empty($_POST)) {
 		    'amount_lecture' 		=> $amount_lecture,
 		    'amount_video_lecture' 	=> $amount_video_lecture,
 		];
-		$stmt = $dbo->prepare($query);
-		$stmt->execute($params);
-        $_SESSION['kurs_info'][] = [
-		    'user_id' 				=> $user_id,
-		    'kurs_name' 			=> $kurs_name,
-		    'description'			=> $description,
-		    'sphere' 				=> $sphere,
-		    'replacement' 			=> $replacement,
-		    'route' 				=> $route,
-		    'user_level' 			=> $user_level,
-		    'work_time' 			=> $work_time,
-		    'amount_lecture' 		=> $amount_lecture,
-		    'amount_video_lecture' 	=> $amount_video_lecture,
-        ];
+		$sql = "UPDATE kurs_info SET user_id=:user_id, kurs_name=:kurs_name, description=:description, sphere=:sphere, replacement=:replacement, route=:route, user_level=:user_level, work_time=:work_time, user_level=:user_level, amount_lecture=:amount_lecture, amount_video_lecture=:amount_video_lecture WHERE id=:id";
+		$stmt= $dbo->prepare($sql);
+		$stmt->execute($data);
 		$_SESSION['access'] = 'Информация добавлена';
 		header('Location: user.php');
 		die;

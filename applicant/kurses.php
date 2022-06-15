@@ -1,12 +1,11 @@
 <?php
     session_start();
     include ("../database/databaseInfo.php");
-    $data = kurses($dbo);
-    $users = users($dbo);
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
     $user_id = $_SESSION['user']['id'];
+    $data = get_kurs($dbo, $user_id);
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
@@ -38,29 +37,29 @@
                 <div class="col-lg-8">
                     <!-- Онлайн-курсы -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Наши онлайн-курсы</p>
+                        <p class="h3 mb-3">Мои курсы</p>
                         <hr class="text-secondary">
                             <?  
                             $k = 0;
                             foreach ($data as $key => $value) {
                                 $k++;
                                 $kurs_id = $value['id'];
-                                $user_id = $value['head_id'];
-                                $username = $value['head_name'];
-                                $kurs_name = $value['short_name'];
+                                $kurs_name = $value['kurs_name'];
+                                $user_id = $value['user_id'];
                                 echo '<div class="d-flex text-muted pt-3">
-                                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
-                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                        </div>
-                                            <span class="d-block">' . $username . '</span>
-                                        </div>
-                                    </div>';
+                                            <a href="view_kurs.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-gray-dark">Курс</strong>
+                                                    <a href="change_kurs.php?kurs_id=' . $kurs_id . '">Редактировать</a>
+                                                </div>
+                                                <span class="d-block">' . $kurs_name . '</span>
+                                            </div>
+                                        </div>';
                             }?>
-                        <!-- <small class="d-block text-end mt-3"> -->
-                            <!-- <a href="check_teacher.php">Назад</a> -->
-                        <!-- </small> -->
+                        <small class="d-block text-end mt-3">
+                            <a href="/">Назад</a>
+                        </small>
                     </div>
                 </div>
                 <div class="col-lg-4">

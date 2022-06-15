@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	// var_dump($_SESSION['user_info']); die;
     include ("../database/databaseInfo.php");
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
+	// var_dump($_SESSION); die;
     $photo = view_photo($dbo, $_SESSION['user']['id']);
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];

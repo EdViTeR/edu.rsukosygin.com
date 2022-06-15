@@ -3,7 +3,7 @@ session_start();
 require_once '../vendor/autoload.php';
 require_once '../database/connect_db.php';
 require_once '../database/databaseInfo.php';
-// var_dump($_SESSION['user_info']); die;
+
 $first_name 			= htmlspecialchars($_POST['first_name']);
 $name 					= htmlspecialchars($_POST['name']);
 $last_name 				= htmlspecialchars($_POST['last_name']);
