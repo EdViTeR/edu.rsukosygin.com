@@ -29,6 +29,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <title>Регистрация</title>
         <link rel="stylesheet" href="../style.css">
+        <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+        <link type="Image/x-icon" href="images/favicon.ico" rel="icon">
     </head>
     <body class="body-home">
 
@@ -62,7 +64,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="you-np@rguk.ru" required>
                             </div>
 
                             <div class="col-12">
@@ -72,23 +74,9 @@
                             <div class="col-sm-12">
                                 <label for="password" class="form-label">Повторите пароль <span class="text-muted"></span></label>
                                 <input type="password" class="form-control" id="password" name="repeat_password" placeholder="Повторите пароль" required>
-                                <!-- <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div> -->
                             </div>
                         </div>
                         <br>
-                        <div class="col-sm-6">
-                            <label for="role" class="form-label">Роль</label>
-                            <select class="form-select" id="role" name="role" required>
-                                <!-- <option value="0">Выберите роль...</option> -->
-                                <option value="4">Пользователь</option>
-                                <option value="5">Эксперт</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid role.
-                            </div>
-                        </div>
                         <!-- <p class="mt-4">Последние изменение: 21.01.2022 в 23:23</p> -->
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
                         <a class="btn btn-outline-secondary btn-lg mt-4" href="index.php">Вход</a>
@@ -123,7 +111,7 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
                 </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; Центр развития электронных образовательных ресурсов</p>
             </footer>
         </div>
 
