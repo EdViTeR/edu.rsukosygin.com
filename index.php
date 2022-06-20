@@ -57,7 +57,9 @@ if (isset($_SESSION['user'])) {
               unset($_SESSION['access']);
               unset($_SESSION['message']);
           ?>
-          <p class="mt-5 mb-3 text-muted">&copy; Центр развития электронных образовательных ресурсов</p>
+        <p class="mt-5 mb-3 text-muted">Центр развития электронных<br>образовательных ресурсов<br>РГУ им. А.Н. Косыгина<br>
+            <a href="mailto:direct@rsukosygin.ru">direct@rsukosygin.ru</a>
+        </p>
         </form>
       </main>
   </body>
