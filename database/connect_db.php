@@ -1,8 +1,5 @@
 <?php
-// $link = mysqli_connect('localhost', 'sereegak_teacher', 'LNV9IKTk', 'sereegak_teacher');
-// $link = mysqli_connect('localhost', 'root', 'root', 'sereegak_teacher');
-//$link = mysqli_connect('localhost', 'root', 'root', 'site_kurses');
-    
+
     //локалка дом
     try {
       $dbo = new PDO('mysql:host=localhost;dbname=sereegak_teacher', 'root', 'root');
