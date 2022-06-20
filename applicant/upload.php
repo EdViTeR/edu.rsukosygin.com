@@ -28,7 +28,7 @@ if (isset($_FILES['image'])) {
     // Выведем название ошибки
     die($outputMessage);
   } else {
-      $folder="/OpenServer/domains/edu.rsukosygin.ru/files/images/user_images/";
+      $folder="/OpenServer/domains/edu.rsukosygin.com/files/images/user_images/";
       $way = "/files/images/user_images/" . $fileName;
       move_uploaded_file($fileTmpName, $folder.$fileName);
       save_user_images($dbo, $way, $_SESSION['user']['id']);
