@@ -9,6 +9,7 @@
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
+    $get_kurs = get_kurs($dbo, $user_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -89,7 +90,11 @@
                             }
                         ?> 
                         <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a>
-                        <a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>
+                        <?php 
+                            if (isset($get_kurs) && !empty($get_kurs)) {
+                                echo '<a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

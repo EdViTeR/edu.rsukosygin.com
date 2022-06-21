@@ -10,7 +10,7 @@ $last_name 			= htmlspecialchars($_POST['last_name']);
 $email 				= htmlspecialchars($_POST['email']);
 $password 			= htmlspecialchars($_POST['password']);
 $repeat_password 	= htmlspecialchars($_POST['repeat_password']);
-$role 				= htmlspecialchars($_POST['role']);
+$role 				= 4;
 
 
 function debug($data) {
@@ -70,6 +70,7 @@ if (!empty($_POST)) {
 		    'password' 		=> $password,
 		    'role' 			=> $role,
 		];
+		// var_dump($params); die;
 		$stmt = $dbo->prepare($query);
 		$stmt->execute($params);
 		$_SESSION['access'] = 'Вы успешно зарегистрированы';
