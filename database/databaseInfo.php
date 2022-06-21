@@ -13,6 +13,7 @@ function save_user_images($dbo, $way, $id) {
 	$stmt->execute($data);
 }
 
+//вытаскиваем фото
 function view_photo($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
 	$stmt->execute([$id]);
@@ -20,8 +21,6 @@ function view_photo($dbo, $id) {
 	$way = $user_data['photo'];
 	return $way;
 }
-
-
 
 //Вытаскиваем все курсы
 function kurses($dbo) {
@@ -34,6 +33,30 @@ function user($dbo, $email) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `email` = ?");
 	$stmt->execute([$email]);
 	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
+	return $user_data;
+}
+
+//Вытаскиваем препода по имени добавления автора
+function teacher_name($dbo, $name) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `name` = ?");
+	$stmt->execute([$name]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//Вытаскиваем препода по фамилии добавления автора
+function first_name($dbo, $name) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `first_name` = ?");
+	$stmt->execute([$name]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//Вытаскиваем препода по отчеству добавления автора
+function last_name($dbo, $name) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `last_name` = ?");
+	$stmt->execute([$name]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $user_data;
 }
 

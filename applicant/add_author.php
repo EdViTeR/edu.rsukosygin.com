@@ -1,9 +1,16 @@
 <?php
 	session_start();
-    include ("../database/databaseInfo.php");
+    include "../database/databaseInfo.php";
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
+    if (isset($_SESSION['search_teacher']) && !empty($_SESSION['search_teacher'])) {
+        $users = $_SESSION['search_teacher'];
+        $all_teacher = users($dbo);
+    } else {
+        $users = users($dbo);
+    }
+    var_dump($_SESSION); die;
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 ?>
@@ -37,60 +44,55 @@
                 <div class="col-lg-8">
                     <h4 class="mb-3 ">Регистрация заявки онлайн-курса</h4>
                     <hr>
-                    <h5 class="mb-3 ">Заполнение данных об исполнителе проекта</h5><br>
-                    <form method="POST" action="save_order_head.php" enctype="multipart/form-data">
+                    <h5 class="mb-3 ">Добавление соавтора к курсу</h5><br>
+                    <form method="POST" action="search_teacher.php" enctype="multipart/form-data">
                         <div class="row g-3">
-                            <div class="col-sm-4">
-                                <label for="first_name" class="form-label">Фамилия</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Введите фамилию" required>
+                            <div class="col-sm-5 mt-2">
+                                <label for="first_name" class="form-label">Найти преподавателя для добавления</label>
+                                <input type="text" class="form-control" id="search_teacher" name="search_teacher" placeholder="Введите имя или фамилию преподавателя" required>
                             </div>
                             <div class="col-sm-4">
-                                <label for="last_name" class="form-label">Имя</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required>
+                                <button class="btn btn-primary mb-3 me-3 mt-4" type="submit">Найти</button>
+                                <?php  
+                                    if (isset($_SESSION['search_teacher']) && !empty($_SESSION['search_teacher'])) {
+                                        echo '<a class="btn btn-outline-primary mb-3 me-3 mt-4" href="add_author.php">Показать всех</a>';
+                                    }
+                                ?>
                             </div>
-                            <div class="col-sm-4">
-                                <label for="last_name" class="form-label">Отчество</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество">
-                            </div>
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email (корпоративный) <span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="you-np@edu.rguk.ru" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="author_reg" class="form-label">Регалии<span class="text-muted"></span></label>
-                                <textarea type="text" name="author_reg"  cols="100" class="form-control" rows="3" placeholder="Укажите Ваши регалии  (ученая степень, ученое звание, прочие регалии и заслуги)" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <label for="phone" class="form-label">Телефон<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="+79009997788" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="functional" class="form-label">Выполняемые функции в проекте<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="functional" name="functional" placeholder="Руководитель курса, автор, разработчик..." required>
-                            </div>
-                            <div class="col-12">
-                                <label for="partic_ok" class="form-label">Сведения об участии в выполнении подобных проектов</label>
-                                <textarea type="text" name="partic_ok" id="partic_ok" cols="100" class="form-control" rows="3" placeholder=" (Например, разработка ЭОР/ЭУК (ссылка на ресурс), запись видеолекций, включая вебинары, разработка модулей/тем для онлайн-курсов)" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <label for="exp_ok" class="form-label">Опыт обучения на онлайн-курсах <span class="text-muted"></span></label>
-                                <textarea type="text" name="exp_ok" id="exp_ok"  cols="100" class="form-control" rows="3" placeholder="(Название платформы, название курса, сроки обучения, ссылка на сертификат (при наличии) или формальный отзыв преподавателя курса по результатам обучения)" required></textarea>
-                            </div>
-                            <input type="text" class="form-control" id="role" name="role" placeholder="" value="2" style="visibility: hidden;">
-                        </div>
-                        <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
-                        <a class="btn btn-outline-secondary btn-lg mt-4" href="user.php">На главную</a>
-                        <?php
-                            if (isset($_SESSION['errors'])) {
-                                echo '<p class="message">' . $_SESSION['errors'] . '</p>';
-                            }
-                            if (isset($_SESSION['repeat_email'])) {
-                                echo '<p class="message">' . $_SESSION['repeat_email'] . '</p>';
-                            }
-                            unset($_SESSION['errors']);
-                            unset($_SESSION['repeat_email']);
-                        ?>
+                        </div><br>
                     </form>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p class="h3 mb-3">Пользователи</p>
+                        <hr class="text-secondary">
+                            <?  
+                            $k = 0;
+                            foreach ($users as $key => $value) {
+                                $k++;
+                                $name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
+                                $email = $value['email'];
+                                $user_id = $value['id'];
+                                $role = $value['role'];
+                                if ($role == 1) {
+                                    $status = 'Преподаватель';
+                                } else {
+                                    $status = 'Админ';
+                                }
+                                $id = $key + 1;
+                                echo '<div class="d-flex text-muted pt-3">
+                                        <a href="view_teacher.php?user_id=' . $user_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <strong class="text-gray-dark">' . $name . '</strong>
+                                                <a href="add_so_teacher.php?user_id=' . $user_id . '">Добавить</a>
+                                            </div>
+                                            <span class="d-block">' . $email . '</span>
+                                        </div>
+                                    </div>';
+                                    if (isset($_SESSION['search_teacher']) && !empty($_SESSION['search_teacher'])) {
+                                        unset($_SESSION['search_teacher']);
+                                    }
+                            }?>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">
