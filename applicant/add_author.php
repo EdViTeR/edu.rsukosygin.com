@@ -10,7 +10,7 @@
     } else {
         $users = users($dbo);
     }
-    var_dump($_SESSION); die;
+    // var_dump($_SESSION); die;
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 ?>
@@ -41,9 +41,15 @@
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="kurses.php">Мои курсы</a></li>
+                    <li class="breadcrumb-item"><a href="change_kurs.php">Редактирование курса</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Добавление соавтора</li>
+                  </ol>
+                </nav><hr>
                 <div class="col-lg-8">
-                    <h4 class="mb-3 ">Регистрация заявки онлайн-курса</h4>
-                    <hr>
                     <h5 class="mb-3 ">Добавление соавтора к курсу</h5><br>
                     <form method="POST" action="search_teacher.php" enctype="multipart/form-data">
                         <div class="row g-3">

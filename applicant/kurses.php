@@ -4,6 +4,7 @@
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
+    
     $user_id = $_SESSION['user']['id'];
     $data = get_kurs($dbo, $user_id);
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
@@ -36,6 +37,12 @@
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Мои курсы</li>
+                  </ol>
+                </nav>
                 <div class="col-lg-8">
                     <!-- Онлайн-курсы -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
@@ -88,7 +95,6 @@
                             }
                         ?> 
                         <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a>
-                        <a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>
                     </div>
                 </div>
             </div>

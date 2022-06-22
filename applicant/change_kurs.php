@@ -36,8 +36,15 @@
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="kurses.php">Мои курсы</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Редактирование курса</li>
+                  </ol>
+                </nav><hr>
                 <div class="col-lg-8">
-                    <h4 class="mb-3 ">Заполнение данных об онлайн-курсе</h4>
+                    <h4 class="mb-3 ">Редактирование данных об онлайн-курсе</h4>
                     <hr>
 					<h5 class="mb-3 ">Сведения об онлайн-курсе</h5><br>
                     <form method="POST" action="save_order_change_proect.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
