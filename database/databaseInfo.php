@@ -117,21 +117,10 @@ function teach_kurs($dbo, $head_id) {
 
 //Вытаскиваем всех авторов курса по id курса
 function authors($dbo, $kurs_id) {
-	$stmt = $dbo->prepare('SELECT * FROM author WHERE `kurs_id` IN(?)');
-	    if($stmt->execute([$kurs_id])) {
-	        if($stmt->rowCount() > 0) {
-	            while($result = $stmt->fetchObject()) {
-	               $data[] = $result;
-	            }
-	        } else {
-	            $a = 'нет данных';
-	        }
-	    } else {
-	        echo 'there error in the query';
-	}
-	if (!empty($data) || !isset($a)) {
-		return $data;
-	}
+	$stmt = $dbo->prepare("SELECT * FROM author WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$author_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $author_data;
 }
 
 //Вытаскиваем все темы курса по id курса
