@@ -97,7 +97,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                             }
                         }?>
                         <small class="d-block text-end mt-3">
-                            <a href="all_kurses.php">Назад</a>
+                            <a href="kurses.php">Назад</a>
                         </small>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
                         <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
                         <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
-                        <a href="edit_kurs_info.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
+                        <a href="change_kurs.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
                         <a href="add_author.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-outline-primary mb-3 me-3" type="button">Добавить автора</a>
                     </div>
                 </div>

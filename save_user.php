@@ -95,7 +95,6 @@ if (!empty($_POST)) {
 		    'password' 		=> $password,
 		    'role' 			=> $role,
 		];
-		// var_dump($params); die;
 		$stmt = $dbo->prepare($query);
 		$stmt->execute($params);
 		$_SESSION['access'] = 'Вы успешно зарегистрированы';

@@ -3,6 +3,7 @@ session_start();
 require_once '../database/connect_db.php';
 include "../database/databaseInfo.php";
 
+$kurs_id = $_GET['kurs_id'];
 $name = mb_strtolower($_POST["search_teacher"]);
 
 function mb_ucfirst($name, $encoding='UTF-8') {
@@ -27,4 +28,4 @@ if (isset($teacher_name) && !empty($teacher_name)) {
 }
 
 $_SESSION['search_teacher'] = $teacher;
-header("Location: add_author.php");
+header("Location: add_author.php?kurs_id=$kurs_id");

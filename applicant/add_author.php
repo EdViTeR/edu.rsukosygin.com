@@ -50,7 +50,7 @@
                 </nav><hr>
                 <div class="col-lg-8">
                     <h5 class="mb-3 ">Добавление соавтора к курсу</h5><br>
-                    <form method="POST" action="search_teacher.php" enctype="multipart/form-data">
+                    <form method="POST" action="search_teacher.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-5 mt-2">
                                 <label for="first_name" class="form-label">Найти преподавателя для добавления</label>
