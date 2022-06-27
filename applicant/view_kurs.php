@@ -56,6 +56,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                         <p><strong>Описание:</strong><br>
                         <?php echo $kurs["description"];?></p>
 
+
                         <p><strong>Соавторы:</strong><br>
                             <ol>
                                 <?
@@ -72,13 +73,20 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                 ?>
                             </ol>
                         </p>
+
+                        <p><strong>Презентация:</strong><br>
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="image"><br><br>
+                            <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
+                        </form></p>
+
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Лекции курса</h6>
                         <?  
                         $k = 0;
                         if (!$themes) {
-                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
+                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "'>Добавить лекцию</a>";
                         } else {
                             foreach ($themes as $key => $value) {
                                 $k++;
