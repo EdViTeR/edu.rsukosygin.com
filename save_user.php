@@ -4,13 +4,38 @@ require_once 'vendor/autoload.php';
 require_once 'database/connect_db.php';
 require_once 'database/databaseInfo.php';
 
-$first_name 		= htmlspecialchars($_POST['first_name']);
-$name 				= htmlspecialchars($_POST['name']);
-$last_name 			= htmlspecialchars($_POST['last_name']);
+$first_name 		= mb_strtolower(htmlspecialchars($_POST['first_name']));
+$name 				= mb_strtolower(htmlspecialchars($_POST['name']));
+$last_name 			= mb_strtolower(htmlspecialchars($_POST['last_name']));
 $email 				= htmlspecialchars($_POST['email']);
 $password 			= htmlspecialchars($_POST['password']);
 $repeat_password 	= htmlspecialchars($_POST['repeat_password']);
 $role 				= 4;
+
+function mb_ucfirst_name($name, $encoding='UTF-8') {
+    $name = mb_ereg_replace('^[\ ]+', '', $name);
+    $name = mb_strtoupper(mb_substr($name, 0, 1, $encoding), $encoding).
+    mb_substr($name, 1, mb_strlen($name), $encoding);
+    return $name;
+}
+
+function mb_ucfirst_first_name($first_name, $encoding='UTF-8') {
+    $first_name = mb_ereg_replace('^[\ ]+', '', $first_name);
+    $first_name = mb_strtoupper(mb_substr($first_name, 0, 1, $encoding), $encoding).
+    mb_substr($first_name, 1, mb_strlen($first_name), $encoding);
+    return $first_name;
+}
+
+function mb_ucfirst_last_name($last_name, $encoding='UTF-8') {
+    $last_name = mb_ereg_replace('^[\ ]+', '', $last_name);
+    $last_name = mb_strtoupper(mb_substr($last_name, 0, 1, $encoding), $encoding).
+    mb_substr($last_name, 1, mb_strlen($last_name), $encoding);
+    return $last_name;
+}
+
+$name = mb_ucfirst_name($name);
+$first_name = mb_ucfirst_first_name($first_name);
+$last_name = mb_ucfirst_last_name($last_name);
 
 
 function debug($data) {
@@ -70,7 +95,6 @@ if (!empty($_POST)) {
 		    'password' 		=> $password,
 		    'role' 			=> $role,
 		];
-		// var_dump($params); die;
 		$stmt = $dbo->prepare($query);
 		$stmt->execute($params);
 		$_SESSION['access'] = 'Вы успешно зарегистрированы';

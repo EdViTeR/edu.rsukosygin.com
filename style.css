@@ -8,6 +8,13 @@ body {
     background-color: white;
 }
 
+.a_author {
+    right: 800px;
+    position: absolute;
+    color: red;
+}
+
+
 .avatar {
     border-radius: 4px;
 }

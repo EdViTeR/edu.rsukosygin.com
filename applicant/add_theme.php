@@ -1,14 +1,14 @@
 <?php
-    session_start();
+	session_start();
     include ("../database/databaseInfo.php");
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
-    
     $user_id = $_SESSION['user']['id'];
-    $data = get_kurs($dbo, $user_id);
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
+    $kurs_id = $_GET['kurs_id'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
+    $kurs = kurs_data($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -40,36 +40,39 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Мои курсы</li>
+                    <li class="breadcrumb-item"><a href="kurses.php">Мои курсы</a></li>
+                    <li class="breadcrumb-item"><a href="view_kurs.php?kurs_id=<? echo $kurs_id ?>"><?php echo $kurs['kurs_name']?></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Добавление лекции</li>
                   </ol>
-                </nav>
+                </nav><hr>
                 <div class="col-lg-8">
-                    <!-- Онлайн-курсы -->
-                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Мои курсы</p>
-                        <hr class="text-secondary">
-                            <?  
-                            $k = 0;
-                            foreach ($data as $key => $value) {
-                                $k++;
-                                $kurs_id = $value['id'];
-                                $kurs_name = $value['kurs_name'];
-                                $user_id = $value['user_id'];
-                                echo '<div class="d-flex text-muted pt-3">
-                                            <a href="view_kurs.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
-                                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                                <div class="d-flex justify-content-between">
-                                                    <strong class="text-gray-dark">Курс</strong>
-                                                    <a href="change_kurs.php?kurs_id=' . $kurs_id . '">Редактировать</a>
-                                                </div>
-                                                <span class="d-block">' . $kurs_name . '</span>
-                                            </div>
-                                        </div>';
-                            }?>
-                        <small class="d-block text-end mt-3">
-                            <a href="/">Назад</a>
-                        </small>
-                    </div>
+                    <h4 class="mb-3 ">Добавление данных об онлайн-курсе</h4>
+                    <hr>
+					<h5 class="mb-3 ">Добавление лекции</h5><br>
+                    <form method="POST" action="save_theme.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="theme_name" class="form-label">Название лекции</label>
+                                <input type="text" class="form-control" id="theme_name" name="theme_name" value="" placeholder="Введите название леции" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="theme_info" class="form-label">Описание лекции</label>
+                                <textarea type="text" name="theme_info" id="theme_info" cols="100" class="form-control" rows="3" placeholder="Введите краткую информацию по теме лекции" required></textarea>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
+                        <a class="btn btn-outline-secondary btn-lg mt-4" href="kurses.php">Назад</a>
+                        <?php
+                            if (isset($_SESSION['errors'])) {
+                                echo '<p class="message">' . $_SESSION['errors'] . '</p>';
+                            }
+                            if (isset($_SESSION['repeat_email'])) {
+                                echo '<p class="message">' . $_SESSION['repeat_email'] . '</p>';
+                            }
+                            unset($_SESSION['errors']);
+                            unset($_SESSION['repeat_email']);
+                        ?>
+                    </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">
@@ -85,16 +88,7 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
-                        <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
-                        <?php 
-                            if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
-                                echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
-                            } else {
-                                echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
-                            }
-                        ?> 
-                        <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a>
+                        <a href="kurses.php" class="btn btn-outline-primary mb-3 me-3" type="button">Назад</a>
                     </div>
                 </div>
             </div>

@@ -61,7 +61,7 @@ if (!empty($_POST)) {
 		$stmt= $dbo->prepare($sql);
 		$stmt->execute($data);
 		$_SESSION['access'] = 'Информация добавлена';
-		header('Location: user.php');
+		header('Location: kurses.php');
 		die;
 	} else {
 		$errors = '<ul>';

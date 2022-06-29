@@ -6,6 +6,7 @@
     }
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
+    $photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -34,6 +35,12 @@
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Добавление курса</li>
+                  </ol>
+                </nav>
                 <div class="col-lg-8">
                     <h4 class="mb-3 ">Заполнение данных об онлайн-курсе</h4>
                     <hr>
@@ -93,15 +100,29 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg>
+                        <?php
+                        if (!empty($photo) & isset($photo)) {
+                            echo '<img src=' . $photo . ' width="200" height="300" class="avatar">
+                                <br>';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>';
+                        } 
+                        ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
+                        <?php 
+                            if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
+                                echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
+                            } else {
+                                echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
+                            }
+                        ?> 
                         <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
                         <!-- <p class="text-muted">Для регистрации заявки необходимо заполнить данные.</p> -->
                         <!-- <b>Перед регистрацией обязательно ознакомьтесь с <a href="example.php">документацией</a>.</b></br></br> -->
-                        <a href="add_author.php" class="btn btn-primary mb-3 me-3" type="button">Добавить автора</a>
+                        <!-- <a href="add_author.php" class="btn btn-primary mb-3 me-3" type="button">Добавить автора</a> -->
                         <!-- <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить сведения об онлайн-курсе</a> -->
                         <!-- <a href="add_assay.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить онлайн-курса</a> -->
                     </div>

@@ -83,7 +83,7 @@
                         <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
                         <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
                         <?php 
-                            if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
+                            if (!empty($_SESSION['user']) && isset($_SESSION['user'])) {
                                 echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
                             } else {
                                 echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';

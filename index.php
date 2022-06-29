@@ -35,7 +35,7 @@ if (isset($_SESSION['user'])) {
   <body class="body-signin">
     <main class="form-signin">
         <form action="auth.php" method="post">
-          <a href="http://edu.rsukosygin.ru/"><img class="mb-5" src="images/rsu_logo.svg" alt="" width="70%"></a>
+          <a href="/"><img class="mb-5" src="images/rsu_logo.svg" alt="" width="70%"></a>
           <h1 class="h3 mb-3 fw-normal">Личный кабинет</h1>
       
           <div class="form-floating">

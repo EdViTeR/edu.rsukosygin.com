@@ -10,7 +10,7 @@
     } else {
         $users = users($dbo);
     }
-    var_dump($_SESSION); die;
+    $kurs_id = $_GET['kurs_id'];
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 ?>
@@ -41,11 +41,16 @@
         <!-- Контент -->
         <div class="container">
             <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="kurses.php">Мои курсы</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Добавление соавтора</li>
+                  </ol>
+                </nav><hr>
                 <div class="col-lg-8">
-                    <h4 class="mb-3 ">Регистрация заявки онлайн-курса</h4>
-                    <hr>
                     <h5 class="mb-3 ">Добавление соавтора к курсу</h5><br>
-                    <form method="POST" action="search_teacher.php" enctype="multipart/form-data">
+                    <form method="POST" action="search_teacher.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-5 mt-2">
                                 <label for="first_name" class="form-label">Найти преподавателя для добавления</label>
@@ -68,7 +73,7 @@
                             $k = 0;
                             foreach ($users as $key => $value) {
                                 $k++;
-                                $name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
+                                $author_name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
                                 $email = $value['email'];
                                 $user_id = $value['id'];
                                 $role = $value['role'];
@@ -82,8 +87,8 @@
                                         <a href="view_teacher.php?user_id=' . $user_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                             <div class="d-flex justify-content-between">
-                                                <strong class="text-gray-dark">' . $name . '</strong>
-                                                <a href="add_so_teacher.php?user_id=' . $user_id . '">Добавить</a>
+                                                <strong class="text-gray-dark">' . $author_name . '</strong>
+                                                <a href="add_so_teacher.php?user_id=' . $user_id . '&kurs_id=' . $kurs_id . '">Добавить</a>
                                             </div>
                                             <span class="d-block">' . $email . '</span>
                                         </div>
