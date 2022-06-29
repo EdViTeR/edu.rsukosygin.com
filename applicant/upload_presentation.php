@@ -2,12 +2,14 @@
 session_start();
 include ("../database/databaseInfo.php");
 require_once '../database/connect_db.php';
+$kurs_id = $_GET['kurs_id'];
 // Если в $_FILES существует "image" и она не NULL
 if (isset($_FILES['image'])) {
   $image = $_FILES['image'];
   // Получаем нужные элементы массива "image"
   $fileTmpName = $_FILES['image']['tmp_name'];
   $fileName = preg_replace('/\s+/', '', $_FILES['image']['name']);
+  // var_dump($fileName); die;
   $errorCode = $_FILES['image']['error'];
   // Проверим на ошибки
   if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($fileTmpName)) {
@@ -28,14 +30,10 @@ if (isset($_FILES['image'])) {
     // Выведем название ошибки
     die($outputMessage);
   } else {
-      $folder="/OpenServer/domains/edu.rsukosygin.com/files/images/presentations/";
-      $way = "/files/images/presentations/" . $fileName;
+      $folder="/OpenServer/domains/edu.rsukosygin.com/files/images/user_images/";
+      $way = "/files/images/user_images/" . $fileName;
       move_uploaded_file($fileTmpName, $folder.$fileName);
-      save_user_images($dbo, $way, $_SESSION['user']['id']);
-      if (isset($_SESSION['user_info']) && !empty($_SESSION['user_info'])) {
-        header('Location: edit_user_info.php');
-      } else {
-        header('Location: add_user_info.php');
-      }
+      save_presentation($dbo, $way, $kurs_id);
+      header('Location: view_kurs.php?kurs_id=' . $kurs_id);
   }
 };

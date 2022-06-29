@@ -88,11 +88,6 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
-                        <!-- <p class="text-muted">Для регистрации заявки необходимо заполнить данные.</p> -->
-                        <!-- <b>Перед регистрацией обязательно ознакомьтесь с <a href="example.php">документацией</a>.</b></br></br> -->
-                        <!-- <a href="add_author.php" class="btn btn-primary mb-3 me-3" type="button">Добавить автора</a> -->
-                        <!-- <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить сведения об онлайн-курсе</a> -->
                         <a href="kurses.php" class="btn btn-outline-primary mb-3 me-3" type="button">Назад</a>
                     </div>
                 </div>

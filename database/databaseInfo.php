@@ -13,12 +13,32 @@ function save_user_images($dbo, $way, $id) {
 	$stmt->execute($data);
 }
 
+//сохраняем презентацию курса
+function save_presentation($dbo, $way, $kurs_id) {
+	$data = [
+	    'way' => $way,
+	    'kurs_id' => $kurs_id,
+	];
+	$sql = "INSERT INTO `presentations` SET `kurs_id` = :kurs_id, `presentation` = :way";
+	$stmt= $dbo->prepare($sql);
+	$stmt->execute($data);
+}
+
 //вытаскиваем фото
 function view_photo($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
 	$stmt->execute([$id]);
 	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
 	$way = $user_data['photo'];
+	return $way;
+}
+
+//вытаскиваем фото
+function view_presentation($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM presentations WHERE `kurs_id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
+	$way = $user_data['presentation'];
 	return $way;
 }
 
@@ -123,23 +143,12 @@ function authors($dbo, $kurs_id) {
 	return $author_data;
 }
 
-//Вытаскиваем все темы курса по id курса
+//Вытаскиваем все лекции курса по id курса
 function themes($dbo, $kurs_id) {
-	$stmt = $dbo->prepare('SELECT * FROM themes WHERE `kurs_id` IN(?)');
-	    if($stmt->execute([$kurs_id])) {
-	        if($stmt->rowCount() > 0) {
-	            while($result = $stmt->fetchObject()) {
-	               $data[] = $result;
-	            }
-	        } else {
-	            $a = 'нет данных';
-	        }
-	    } else {
-	        echo 'there error in the query';
-	}
-	if (!empty($data) || !isset($a)) {
-		return $data;
-	}
+	$stmt = $dbo->prepare("SELECT * FROM theme WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$author_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $author_data;
 }
 
 //Вытаскиваем 1 тему курса по id темы и id курса
