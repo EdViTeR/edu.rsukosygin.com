@@ -56,8 +56,8 @@
                                 <input type="text" class="form-control" id="theme_name" name="theme_name" value="" placeholder="Введите название леции" required>
                             </div>
                             <div class="col-12">
-                                <label for="theme_info" class="form-label">Краткая аннотация к лекции</label>
-                                <textarea type="text" name="theme_info" id="theme_info" cols="100" class="form-control" rows="3" placeholder="Введите краткую информацию по теме лекции" required></textarea>
+                                <label for="theme_info" class="form-label">Краткое содержание к лекции</label>
+                                <textarea type="text" name="theme_info" id="theme_info" cols="100" class="form-control" rows="3" placeholder="Введите краткое содержание лекции" required></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
