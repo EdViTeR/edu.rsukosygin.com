@@ -8,7 +8,9 @@ $head_user = user_data($dbo, $head_user_id);
 $head_name = $head_user['first_name'] . ' ' . $head_user['name'] . ' ' . $head_user['last_name'];
 $authors = authors($dbo, $kurs_id);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
-$presentation = view_presentation($dbo, $kurs_id);
+if (isset($_SESSION['presentation']) && !empty($_SESSION['presentation'])) {
+    $presentation = view_presentation($dbo, $kurs_id);
+}
 $themes = themes($dbo, $kurs_id);
 ?>
 <!doctype html>

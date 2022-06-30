@@ -34,6 +34,7 @@ if (isset($_FILES['image'])) {
       $way = "/files/images/user_images/" . $fileName;
       move_uploaded_file($fileTmpName, $folder.$fileName);
       save_presentation($dbo, $way, $kurs_id);
+      $_SESSION['presentation'] = 'Презентация есть';
       header('Location: view_kurs.php?kurs_id=' . $kurs_id);
   }
 };

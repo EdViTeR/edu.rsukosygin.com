@@ -33,7 +33,7 @@ function view_photo($dbo, $id) {
 	return $way;
 }
 
-//вытаскиваем фото
+//вытаскиваем презентацию
 function view_presentation($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM presentations WHERE `kurs_id` = ?");
 	$stmt->execute([$id]);
