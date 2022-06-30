@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	// var_dump($_SESSION); die;
     include ("../database/databaseInfo.php");
     if (!isset($_SESSION['user'])) {
         header("Location: /");
@@ -114,7 +113,7 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label for="department" class="form-label">Отдел<span class="text-muted"></span></label>
+                                <label for="department" class="form-label">Отдел / кафедра<span class="text-muted"></span></label>
                                 <input type="text" class="form-control" id="department" name="department" placeholder="" value="" required>
                             </div>
                             <div class="col-12">

@@ -56,7 +56,7 @@
                                 <input type="text" class="form-control" id="theme_name" name="theme_name" value="" placeholder="Введите название леции" required>
                             </div>
                             <div class="col-12">
-                                <label for="theme_info" class="form-label">Описание лекции</label>
+                                <label for="theme_info" class="form-label">Краткая аннотация к лекции</label>
                                 <textarea type="text" name="theme_info" id="theme_info" cols="100" class="form-control" rows="3" placeholder="Введите краткую информацию по теме лекции" required></textarea>
                             </div>
                         </div>
