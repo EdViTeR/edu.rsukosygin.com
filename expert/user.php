@@ -9,7 +9,7 @@
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $get_kurs = get_kurs($dbo, $user_id);
+    $get_kurs = get_kurs_info($dbo);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -35,6 +35,9 @@
                 </div>
             </header>
         </div>
+<!-- 	////////////////////      -->
+
+
         <!-- Контент -->
         <div class="container">
             <div class="row">
@@ -44,26 +47,22 @@
                         <p class="h3 mb-3">Наши онлайн-курсы</p>
                         <hr class="text-secondary">
                             <?  
-                            $k = 0;
-                            foreach ($data as $key => $value) {
-                                $k++;
-                                $kurs_id = $value['id'];
-                                $user_id = $value['head_id'];
-                                $username = $value['head_name'];
-                                $kurs_name = $value['short_name'];
-                                echo '<div class="d-flex text-muted pt-3">
-                                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
-                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                        </div>
-                                            <span class="d-block">' . $username . '</span>
-                                        </div>
-                                    </div>';
+                            foreach ($get_kurs as $key => $value) {
+                            	$user_id = $value['user_id'];
+                            	$user_data = user_data($dbo, $user_id);
+                            	$username = $user_data["first_name"] . ' ' .  $user_data['name'] . ' ' . $user_data['last_name'];
+	                            $kurs_id = $value['id'];
+	                            $kurs_name = $value['kurs_name'];
+	                            echo '<div class="d-flex text-muted pt-3">
+	                                    <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
+	                                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+	                                    <div class="d-flex justify-content-between">
+	                                        <strong class="text-gray-dark">' . $kurs_name . '</strong>
+	                                    </div>
+	                                        <span class="d-block">' . $username . '</span>
+	                                    </div>
+	                                </div>';
                             }?>
-                        <!-- <small class="d-block text-end mt-3"> -->
-                            <!-- <a href="check_teacher.php">Назад</a> -->
-                        <!-- </small> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -99,7 +98,9 @@
                 </div>
             </div>
         </div>
-    
+
+
+<!-- 	////////////////////      -->
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
