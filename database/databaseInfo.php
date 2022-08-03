@@ -95,6 +95,14 @@ function get_kurs_info($dbo) {
 	return $data;
 }
 
+// Все курсы по заявкам
+function get_one_kurs_info($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 //Вытаскиваем все курсы преподавателя по id
 function get_kurs($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `user_id` = ?");

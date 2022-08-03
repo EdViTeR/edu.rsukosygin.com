@@ -31,7 +31,7 @@ $themes = themes($dbo, $kurs_id);
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
-                    <a href="../index.php" class="btn btn-outline-primary me-2">Выйти</a>
+                    <a href="../logout.php" class="btn btn-outline-primary me-2">Выйти</a>
                 </div>
             </header>
         </div>
@@ -79,7 +79,8 @@ $themes = themes($dbo, $kurs_id);
                         </p>
                         <?php 
                             if (isset($presentation) && !empty($presentation)) {
-                                echo '';
+                                echo "<p><strong>Презентация:</strong><br><br>
+                                    <a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a><br/></p>";
                             } else {
                                 echo '<p><strong>Презентация:</strong><br>
                                         <form action="upload_presentation.php?kurs_id=' . $kurs_id . '" method="post" enctype="multipart/form-data">
@@ -89,9 +90,6 @@ $themes = themes($dbo, $kurs_id);
                             }
 
                         ?>
-                        <p><strong>Презентация:</strong><br><br>
-                            <a class="btn btn-outline-primary mb-3 me-3" href='<?php echo '../' . $presentation;?>'>Посмотреть</a><br/>
-                        </p>
 
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">

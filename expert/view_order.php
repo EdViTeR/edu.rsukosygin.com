@@ -2,7 +2,7 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
-$kurs = kurs_data($dbo, $kurs_id);
+$kurs = get_one_kurs_info($dbo, $kurs_id);
 $head_user_id = $kurs['user_id'];
 $head_user = user_data($dbo, $head_user_id);
 $expert_name = $_SESSION["user"]["first_name"] . ' ' . $_SESSION["user"]["name"] .  ' ' . $_SESSION["user"]["last_name"];
@@ -77,10 +77,18 @@ $themes = themes($dbo, $kurs_id);
                                 ?>
                             </ol>
                         </p>
+                        <?php 
+                            if (isset($presentation) && !empty($presentation)) {
+                                echo '';
+                            } else {
+                                echo '<p><strong>Презентация:</strong><br></p>
+                                        <p>Презентация не загружена</p>';
+                            }
+
+                        ?>
                         <p><strong>Презентация:</strong><br><br>
                             <a class="btn btn-outline-primary mb-3 me-3" href='<?php echo '../' . $presentation;?>'>Посмотреть</a><br/>
                         </p>
-
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Программа курса</h6>
@@ -107,7 +115,26 @@ $themes = themes($dbo, $kurs_id);
                             echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "'>Добавить лекцию</a>";
                         }?>
                         <small class="d-block text-end mt-3">
-                            <a href="kurses.php">Назад</a>
+                            <a href="user.php">Назад</a>
+                        </small>
+                    </div>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
+                            <form method="POST" action="check_order.php">
+                                <label>Проработанность структуры и готовность материала к созданию онлайн курса</label><br><br>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 25" required><br><br>
+                                <label>Междисциплинарный подход при разработке и применении курса</label><br><br>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 25" required><br><br>
+                                <label>Обоснованность целесообразности создания курса (с подтверждением на основе опросов мониторинга и т.п.)</label><br><br>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 20" required><br><br>
+                                <label>Используемые интерактивные технологии в курсе</label><br><br>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 15" required><br><br>
+                                <label>Адаптация курса для лиц с ограниченными возможностями здоровья</label><br><br>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 15" required><br><br>
+                                <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Оценить</button>
+                            </form>
+                        <small class="d-block text-end mt-3">
+                            <a href="user.php">Назад</a>
                         </small>
                     </div>
                 </div>
