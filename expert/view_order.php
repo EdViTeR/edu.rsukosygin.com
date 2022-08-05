@@ -120,22 +120,25 @@ $themes = themes($dbo, $kurs_id);
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
-                            <form method="POST" action="check_order.php">
-                                <label>Проработанность структуры и готовность материала к созданию онлайн курса</label><br><br>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 25" required><br><br>
-                                <label>Междисциплинарный подход при разработке и применении курса</label><br><br>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 25" required><br><br>
-                                <label>Обоснованность целесообразности создания курса (с подтверждением на основе опросов мониторинга и т.п.)</label><br><br>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 20" required><br><br>
-                                <label>Используемые интерактивные технологии в курсе</label><br><br>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 15" required><br><br>
-                                <label>Адаптация курса для лиц с ограниченными возможностями здоровья</label><br><br>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите количество баллов от 0 до 15" required><br><br>
-                                <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Оценить</button>
-                            </form>
-                        <small class="d-block text-end mt-3">
-                            <a href="user.php">Назад</a>
-                        </small>
+                            <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
+                            <label for="structure" type="text"  class="form-label">Проработанность структуры и готовность материала к созданию онлайн курса</label>
+                            <input name="structure" min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            </br>
+                            <label for="podhod" class="form-label">Междисциплинарный подход при разработке и применении курса</label>
+                            <input name="podhod"  min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            </br>
+                            <label for="purpose" class="form-label">Обоснованность целесообразности создания курса (с подтверждением на основе опросов мониторинга и т.п.)
+                            </label>
+                            <input name="purpose" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
+                            </br>
+                            <label for="technology" class="form-label">Используемые интерактивные технологии в курсе</label>
+                            <input name="technology" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br>
+                            <label for="health" class="form-label">Адаптация курса для лиц с ограниченными возможностями здоровья</label>
+                            <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br></br>
+                            <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-4">
