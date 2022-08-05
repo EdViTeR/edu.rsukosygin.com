@@ -6,6 +6,9 @@
     include ("../database/databaseInfo.php");
     $data = kurses($dbo);
     $users = users($dbo);
+    $experts = expert_data($dbo);
+
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -40,6 +43,43 @@
                             <?  
                             $k = 0;
                             foreach ($users as $key => $value) {
+                                $k++;
+                                $name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
+                                $email = $value['email'];
+                                $user_id = $value['id'];
+                                $role = $value['role'];
+                                if ($role == 1) {
+                                    $status = 'Преподаватель';
+                                } else {
+                                    $status = 'Админ';
+                                }
+                                $id = $key + 1;
+                                if ($k <= 3) {
+                                    echo '<div class="d-flex text-muted pt-3">
+                                            <a href="view_teacher.php?user_id=' . $user_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-gray-dark">' . $name . '</strong>
+                                                    <a href="edit_teacher.php?user_id=' . $user_id . '">Редактировать</a>
+                                                </div>
+                                                <span class="d-block">' . $email . '</span>
+                                            </div>
+                                        </div>';
+                                }
+                            }?>
+                        <small class="d-block text-end mt-3">
+                            <a href="all_teacher.php">Все преподаватели</a>
+                        </small>
+                    </div>
+
+
+                    <!-- "Эксперты" -->
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p class="h3 mb-3">Эксперты</p>
+                        <hr class="text-secondary">
+                            <?  
+                            $k = 0;
+                            foreach ($experts as $key => $value) {
                                 $k++;
                                 $name = $value['first_name'] . ' ' .$value['name'] . ' ' .$value['last_name'];
                                 $email = $value['email'];
@@ -106,6 +146,7 @@
                         <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить преподавателя</a>
                         <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a>
                         <a href="orders.php"  class="btn btn-outline-secondary mb-3" type="button">Заявки</a>
+                        <a href="rating.php"  class="btn btn-outline-secondary mb-3" type="button">Оценки</a>
                     </div>
                 </div>
             </div>

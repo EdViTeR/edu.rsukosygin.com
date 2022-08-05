@@ -119,6 +119,14 @@ function user_data($dbo, $id) {
 	return $user_data;
 }
 
+//Вытаскиваем пользователя по роли для админки
+function expert_data($dbo) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = 5");
+	$stmt->execute([$id]);
+	$expert_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $expert_data;
+}
+
 //Вытаскиваем курс по id
 function kurs_data($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
