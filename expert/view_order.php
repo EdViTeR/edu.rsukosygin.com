@@ -2,9 +2,10 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
-$kurs = kurs_data($dbo, $kurs_id);
+$kurs = get_one_kurs_info($dbo, $kurs_id);
 $head_user_id = $kurs['user_id'];
 $head_user = user_data($dbo, $head_user_id);
+$expert_name = $_SESSION["user"]["first_name"] . ' ' . $_SESSION["user"]["name"] .  ' ' . $_SESSION["user"]["last_name"];
 $head_name = $head_user['first_name'] . ' ' . $head_user['name'] . ' ' . $head_user['last_name'];
 $authors = authors($dbo, $kurs_id);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
@@ -41,7 +42,6 @@ $themes = themes($dbo, $kurs_id);
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="user.php">Главная</a></li>
-                    <li class="breadcrumb-item"><a href="kurses.php">Мои курсы</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $kurs['kurs_name'];?></li>
                   </ol>
                 </nav>
@@ -65,13 +65,13 @@ $themes = themes($dbo, $kurs_id);
                             <ol>
                                 <?
                                 if (!$authors) {
-                                    echo "Нет добавленных авторов";
+                                    echo "Нет добавленных соавторов";
                                 } else {
                                     foreach ($authors as $key => $value) {
                                         $author = user_data($dbo, $value['user_id']);
                                         $author_name = $author['first_name'] . ' ' . $author['name'] . ' ' . $author['last_name'];
                                         $author_email = $author['email'];
-                                        echo '<li>' . $author_name . '<a class="a_author" href="delete_author.php?kurs_id=' . $kurs_id . '&author_id=' . $value['user_id'] . '">Удалить</a><br><small class="text-secondary">' . $author_email . '</small></li>';
+                                        echo '<li>' . $author_name . '<br><small class="text-secondary">' . $author_email . '</small></li>';
                                     }
                                 }
                                 ?>
@@ -79,21 +79,19 @@ $themes = themes($dbo, $kurs_id);
                         </p>
                         <?php 
                             if (isset($presentation) && !empty($presentation)) {
-                                echo "<p><strong>Презентация:</strong><br><br>
-                                    <a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a><br/></p>";
+                                echo '';
                             } else {
-                                echo '<p><strong>Презентация:</strong><br>
-                                        <form action="upload_presentation.php?kurs_id=' . $kurs_id . '" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="image"><br><br>
-                                        <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
-                                    </form></p>';
+                                echo '<p><strong>Презентация:</strong><br></p>
+                                        <p>Презентация не загружена</p>';
                             }
 
                         ?>
-
+                        <p><strong>Презентация:</strong><br><br>
+                            <a class="btn btn-outline-primary mb-3 me-3" href='<?php echo '../' . $presentation;?>'>Посмотреть</a><br/>
+                        </p>
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Лекции курса</h6>
+                        <h6 class="border-bottom pb-2 mb-0">Программа курса</h6>
                         <?  
                         $k = 0;
                         if (isset($themes) && !empty($themes)) {
@@ -113,13 +111,34 @@ $themes = themes($dbo, $kurs_id);
                                         
                                 ';
                             }
-                            echo '<br><a href="add_theme.php?kurs_id=' . $kurs_id . '">Добавить лекцию</a>';
                         } else {
                             echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "'>Добавить лекцию</a>";
                         }?>
                         <small class="d-block text-end mt-3">
-                            <a href="kurses.php">Назад</a>
+                            <a href="user.php">Назад</a>
                         </small>
+                    </div>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
+                            <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
+                            <label for="structure" type="text"  class="form-label">Проработанность структуры и готовность материала к созданию онлайн курса</label>
+                            <input name="structure" min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            </br>
+                            <label for="podhod" class="form-label">Междисциплинарный подход при разработке и применении курса</label>
+                            <input name="podhod"  min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            </br>
+                            <label for="purpose" class="form-label">Обоснованность целесообразности создания курса (с подтверждением на основе опросов мониторинга и т.п.)
+                            </label>
+                            <input name="purpose" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
+                            </br>
+                            <label for="technology" class="form-label">Используемые интерактивные технологии в курсе</label>
+                            <input name="technology" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br>
+                            <label for="health" class="form-label">Адаптация курса для лиц с ограниченными возможностями здоровья</label>
+                            <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br></br>
+                            <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -135,11 +154,8 @@ $themes = themes($dbo, $kurs_id);
                             </svg>';
                         } 
                         ?>
-                        <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
-                        <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
-                        <a href="change_kurs.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
-                        <a href="add_author.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-outline-primary mb-3 me-3" type="button">Добавить автора</a>
+                        <p class="h5 mt-4 mb-4"><?php echo $expert_name?></p>
+                        <p>Вы авторизировались как <strong>«Эксперт»</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -148,13 +164,6 @@ $themes = themes($dbo, $kurs_id);
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <!-- <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                </ul> -->
                 <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>

@@ -48,6 +48,14 @@ function kurses($dbo) {
 	return $data;
 }
 
+//Вытаскиваем всех преподов по id для экспертов
+function teacher($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
+	$stmt->execute([$user_id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем препода по email для регистрации и авторизации
 function user($dbo, $email) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `email` = ?");
@@ -78,6 +86,21 @@ function last_name($dbo, $name) {
 	$stmt->execute([$name]);
 	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $user_data;
+}
+
+
+// Все курсы по заявкам
+function get_kurs_info($dbo) {
+	$data = $dbo->query('SELECT * FROM kurs_info')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+// Все курсы по заявкам
+function get_one_kurs_info($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
 }
 
 //Вытаскиваем все курсы преподавателя по id
