@@ -48,6 +48,12 @@ function kurses($dbo) {
 	return $data;
 }
 
+//Вытаскиваем весь рейтинг
+function rating($dbo) {
+	$data = $dbo->query('SELECT * FROM rating')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 //Вытаскиваем всех преподов по id для экспертов
 function teacher($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
@@ -62,6 +68,14 @@ function user($dbo, $email) {
 	$stmt->execute([$email]);
 	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
 	return $user_data;
+}
+
+//Вытаскиваем всех преподов по роли для просмотра оценок
+function teacher_role($dbo, $role) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = ?");
+	$stmt->execute([$role]);
+	$teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $teachers;
 }
 
 //Вытаскиваем препода по имени добавления автора
