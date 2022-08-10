@@ -22,7 +22,7 @@
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
-                    <button type="button" class="btn btn-outline-primary me-2">Выйти</button>
+                    <a href="../logout.php" class="btn btn-outline-primary me-2">Выйти</a>
                 </div>
             </header>
         </div>

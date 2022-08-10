@@ -7,8 +7,6 @@
     $data = kurses($dbo);
     $users = users($dbo);
     $experts = expert_data($dbo);
-
-
 ?>
 <!doctype html>
 <html lang="ru">
@@ -105,7 +103,7 @@
                                 }
                             }?>
                         <small class="d-block text-end mt-3">
-                            <a href="all_teacher.php">Все преподаватели</a>
+                            <a href="all_expert.php">Все эксперты</a>
                         </small>
                     </div>
 
