@@ -54,6 +54,19 @@ function rating($dbo) {
 	return $data;
 }
 
+function all_rating($dbo, $expert_id)
+{
+	$stmt = $dbo->prepare("SELECT * FROM rating WHERE `expert_id` = ?");
+	$stmt->execute([$expert_id]);
+	$rating = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($rating as $key => $value) {
+		$kurs_id = $value['kurs_id'];
+		$kurs_info[] = array_merge(kurs_data($dbo, $kurs_id), $value);
+	}
+	return $kurs_info;
+}
+
+
 //Вытаскиваем всех преподов по id для экспертов
 function teacher($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
