@@ -4,10 +4,15 @@
     if (!isset($_SESSION['user'])) {
         header("Location: /");
     }
-	// var_dump($_SESSION); die;
     $photo = view_photo($dbo, $_SESSION['user']['id']);
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
+    if ($_SESSION['user_info']['academic_degree_title'] == 'б/с') {
+        unset($_SESSION['user_info']['academic_degree_title']);
+    }
+    if ($_SESSION['user_info']['academic_degree'] == 'б/с') {
+        unset($_SESSION['user_info']['academic_degree']);
+    }
 ?>
 <!doctype html>
 <html lang="ru">
@@ -66,58 +71,114 @@
                                 <label for="academic_degree_title" class="form-label">Ученая степень<span class="text-muted"></span></label>
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree_title">
-                                	<option value="<?php echo $_SESSION['user_info']['academic_degree_title'];?>"><?php echo $_SESSION['user_info']['academic_degree_title'];?></option>
-                                  	<option value="б/с">Без степени</option>
-                                  	<option value="к.">Кандидат</option>
-                                  	<option value="д.">Доктор</option>
+                                    <?php 
+                                        if (isset($_SESSION['user_info']['academic_degree_title']) && !empty($_SESSION['user_info']['academic_degree_title'])) {
+                                            echo "<option value='" . $_SESSION['user_info']['academic_degree_title'] . "'?>" . $_SESSION['user_info']['academic_degree_title'] . "</option>
+                                            <option value='б/с'>Без степени</option>
+                                            <option value='к.'>Кандидат</option>
+                                            <option value='д.'>Доктор</option>";
+                                        } else {
+                                            echo '<option value="б/с">Без степени</option>
+                                                <option value="к.">Кандидат</option>
+                                                <option value="д.">Доктор</option>';
+                                        }
+                                    ?>
                                 </select>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree">
-									<option value="<?php echo $_SESSION['user_info']['academic_degree'];?>"><?php echo $_SESSION['user_info']['academic_degree'];?></option>
-                                    <option value="б/с">Без степени</option>
-                                    <option value="арх.н.">архитектурных наук</option>
-                                    <option value="б.н.">биологических наук</option>
-                                    <option value="в.н.">ветеринарных наук</option>
-                                    <option value="воен.н.">военных наук</option>
-                                    <option value="г.н.">географических наук</option>
-                                    <option value="г.-м.н.">геолого-минералогических наук</option>
-                                    <option value="иск.">искусствоведения
-                                    <option value="и.н.">исторических наук</option>
-                                    <option value="м.н.">медицинских наук</option>
-                                    <option value="п.н.">педагогических наук</option>
-                                    <option value="пол.н.">политологических наук</option>
-                                    <option value="псх.н.">психологических наук</option>
-                                    <option value="с.-х.н.">сельскохозяйственных наук</option>
-                                    <option value="соц.н.">социологических наук</option>
-                                    <option value="т.н.">технических наук</option>
-                                    <option value="фарм.н.">фармацевтических наук</option>
-                                    <option value="ф.-м.н.">физико-математических наук</option>
-                                    <option value="фил.н.">филологических наук</option>
-                                    <option value="ф.н.">философских наук</option>
-                                    <option value="х.н.">химических наук</option>
-                                    <option value="э.н.">экономических наук</option>
-                                    <option value="ю.н.">юридических наук</option>
+                                    <?php 
+                                        if (isset($_SESSION['user_info']['academic_degree']) && !empty($_SESSION['user_info']['academic_degree'])) {
+                                            echo "<option value='" . $_SESSION['user_info']['academic_degree'] . "'?>" . $_SESSION['user_info']['academic_degree'] . "</option>
+                                                <option value='б/с'>Без степени</option>
+                                                <option value='арх.н.'>архитектурных наук</option>
+                                                <option value='б.н.'>биологических наук</option>
+                                                <option value='в.н.'>ветеринарных наук</option>
+                                                <option value='воен.н.'>военных наук</option>
+                                                <option value='г.н.'>географических наук</option>
+                                                <option value='г.-м.н.'>геолого-минералогических наук</option>
+                                                <option value='иск.'>искусствоведения
+                                                <option value='и.н.'>исторических наук</option>
+                                                <option value='м.н.'>медицинских наук</option>
+                                                <option value='п.н.'>педагогических наук</option>
+                                                <option value='пол.н.'>политологических наук</option>
+                                                <option value='псх.н.'>психологических наук</option>
+                                                <option value='с.-х.н.'>сельскохозяйственных наук</option>
+                                                <option value='соц.н.'>социологических наук</option>
+                                                <option value='т.н.'>технических наук</option>
+                                                <option value='фарм.н.'>фармацевтических наук</option>
+                                                <option value='ф.-м.н.'>физико-математических наук</option>
+                                                <option value='фил.н.'>филологических наук</option>
+                                                <option value='ф.н.'>философских наук</option>
+                                                <option value='х.н.'>химических наук</option>
+                                                <option value='э.н.'>экономических наук</option>
+                                                <option value='ю.н.'>юридических наук</option>";
+                                        } else {
+                                            echo "<option value='б/с'>Без степени</option>
+                                                <option value='арх.н.'>архитектурных наук</option>
+                                                <option value='б.н.'>биологических наук</option>
+                                                <option value='в.н.'>ветеринарных наук</option>
+                                                <option value='воен.н.'>военных наук</option>
+                                                <option value='г.н.'>географических наук</option>
+                                                <option value='г.-м.н.'>геолого-минералогических наук</option>
+                                                <option value='иск.'>искусствоведения
+                                                <option value='и.н.'>исторических наук</option>
+                                                <option value='м.н.'>медицинских наук</option>
+                                                <option value='п.н.'>педагогических наук</option>
+                                                <option value='пол.н.'>политологических наук</option>
+                                                <option value='псх.н.'>психологических наук</option>
+                                                <option value='с.-х.н.'>сельскохозяйственных наук</option>
+                                                <option value='соц.н.'>социологических наук</option>
+                                                <option value='т.н.'>технических наук</option>
+                                                <option value='фарм.н.'>фармацевтических наук</option>
+                                                <option value='ф.-м.н.'>физико-математических наук</option>
+                                                <option value='фил.н.'>филологических наук</option>
+                                                <option value='ф.н.'>философских наук</option>
+                                                <option value='х.н.'>химических наук</option>
+                                                <option value='э.н.'>экономических наук</option>
+                                                <option value='ю.н.'>юридических наук</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-5">
                                 <label for="academic_title" class="form-label">Ученое звание<span class="text-muted"></span></label>
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-10 select_background" name="academic_title">
-                                	<option value="<?php echo $_SESSION['user_info']['academic_title'];?>"><?php echo $_SESSION['user_info']['academic_title'];?></option>
-                                    <option value="б/з">Без звания</option>
-                                    <option value="доц.">доцент</option>
-                                    <option value="проф.">профессор</option>
-                                    <option value="акад. РААСН">академик РААСН</option>
-                                    <option value="акад. РАМН">академик РАМН</option>
-                                    <option value="акад. РАМ">академик РАН</option>
-                                    <option value="акад. РАО">академик РАО</option>
-                                    <option value="акад. РАСХН">академик РАСХН</option>
-                                    <option value="акад. РАХ">академик РАХ</option>
-                                    <option value="член-корр. РААСН">член-корреспондент РААСН</option>
-                                    <option value="член-корр. РАМН">член-корреспондент РАМН</option>
-                                    <option value="член-корр. РАН">член-корреспондент РАН</option>
-                                    <option value="член-корр. РАО">член-корреспондент РАО</option>
-                                    <option value="член-корр. РАСХН">член-корреспондент РАСХН</option>
-                                    <option value="член-корр. РАХ">член-корреспондент РАХ</option>
+                                    <?php 
+                                        if (isset($_SESSION['user_info']['academic_title']) && !empty($_SESSION['user_info']['academic_title'])) {
+                                            echo "<option value='" . $_SESSION['user_info']['academic_title'] . "'?>" . $_SESSION['user_info']['academic_title'] . "</option>
+                                                <option value='б/з'>Без звания</option>
+                                                <option value='доц.'>доцент</option>
+                                                <option value='проф.'>профессор</option>
+                                                <option value='акад. РААСН'>академик РААСН</option>
+                                                <option value='акад. РАМН'>академик РАМН</option>
+                                                <option value='акад. РАМ'>академик РАН</option>
+                                                <option value='акад. РАО'>академик РАО</option>
+                                                <option value='акад. РАСХН'>академик РАСХН</option>
+                                                <option value='акад. РАХ'>академик РАХ</option>
+                                                <option value='член-корр. РААСН'>член-корреспондент РААСН</option>
+                                                <option value='член-корр. РАМН'>член-корреспондент РАМН</option>
+                                                <option value='член-корр. РАН'>член-корреспондент РАН</option>
+                                                <option value='член-корр. РАО'>член-корреспондент РАО</option>
+                                                <option value='член-корр. РАСХН'>член-корреспондент РАСХН</option>
+                                                <option value='член-корр. РАХ'>член-корреспондент РАХ</option>";
+                                        } else {
+                                            echo "<option value='б/з'>Без звания</option>
+                                                <option value='доц.'>доцент</option>
+                                                <option value='проф.'>профессор</option>
+                                                <option value='акад. РААСН'>академик РААСН</option>
+                                                <option value='акад. РАМН'>академик РАМН</option>
+                                                <option value='акад. РАМ'>академик РАН</option>
+                                                <option value='акад. РАО'>академик РАО</option>
+                                                <option value='акад. РАСХН'>академик РАСХН</option>
+                                                <option value='акад. РАХ'>академик РАХ</option>
+                                                <option value='член-корр. РААСН'>член-корреспондент РААСН</option>
+                                                <option value='член-корр. РАМН'>член-корреспондент РАМН</option>
+                                                <option value='член-корр. РАН'>член-корреспондент РАН</option>
+                                                <option value='член-корр. РАО'>член-корреспондент РАО</option>
+                                                <option value='член-корр. РАСХН'>член-корреспондент РАСХН</option>
+                                                <option value='член-корр. РАХ'>член-корреспондент РАХ</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-12">
