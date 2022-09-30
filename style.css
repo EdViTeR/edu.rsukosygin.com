@@ -14,6 +14,21 @@ body {
     color: red;
 }
 
+.for_table {
+    width: 875px !important;
+}
+
+.table {
+    width: 100%;
+}
+
+.col_min {
+    max-width: 150px !important;
+}
+
+.col_min {
+    min-width: 150px !important;
+}
 
 .avatar {
     border-radius: 4px;

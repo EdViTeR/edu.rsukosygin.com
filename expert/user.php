@@ -78,28 +78,12 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <p>Вы авторизировались как <strong>«Эксперт»</strong>.</p> 
-                        <!-- <p class="small">Если Вы не эксперт, обратитесь по адресу <a href = "mailto:pivnenko-myu@rguk.ru">pivnenko-myu@rguk.ru</a>.</p> -->
-                        <?php 
-                            // if (!empty($_SESSION['user']) && isset($_SESSION['user'])) {
-                            //     echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
-                            // } else {
-                            //     echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
-                            // }
-                        ?> 
-                        <!-- <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a> -->
-                        <?php 
-                            // if (isset($get_kurs) && !empty($get_kurs)) {
-                                // echo '<a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>';
-                            // }
-                        ?>
+                        <p>Вы авторизировались как <strong>«Эксперт»</strong>.</p>
+                        <a href="marks.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои оценки</a>
                     </div>
                 </div>
             </div>
         </div>
-
-
-<!-- 	////////////////////      -->
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
