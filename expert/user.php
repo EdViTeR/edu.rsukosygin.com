@@ -9,7 +9,7 @@
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $get_kurs = get_kurs($dbo, $user_id);
+    $get_kurs = get_kurs_info($dbo);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -41,29 +41,27 @@
                 <div class="col-lg-8">
                     <!-- Онлайн-курсы -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Наши онлайн-курсы</p>
+                        <p class="h3 mb-3">Список заявок</p>
                         <hr class="text-secondary">
                             <?  
-                            $k = 0;
-                            foreach ($data as $key => $value) {
-                                $k++;
+                            foreach ($get_kurs as $key => $value) {
                                 $kurs_id = $value['id'];
-                                $user_id = $value['head_id'];
-                                $username = $value['head_name'];
-                                $kurs_name = $value['short_name'];
-                                echo '<div class="d-flex text-muted pt-3">
-                                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
-                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                        <div class="d-flex justify-content-between">
-                                            <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                        </div>
-                                            <span class="d-block">' . $username . '</span>
-                                        </div>
-                                    </div>';
+                            	$user_id = $value['user_id'];
+                            	$user_data = user_data($dbo, $user_id);
+                            	$username = $user_data["first_name"] . ' ' .  $user_data['name'] . ' ' . $user_data['last_name'];
+	                            $kurs_id = $value['id'];
+	                            $kurs_name = $value['kurs_name'];
+	                            echo '<div class="d-flex text-muted pt-3">
+	                                    <a href="view_order.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+	                                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+	                                    <div class="d-flex justify-content-between">
+	                                        <strong class="text-gray-dark">' . $kurs_name . '</strong>
+                                            <a href="view_order.php?kurs_id=' . $kurs_id . '">Посмотреть</a>
+	                                    </div>
+	                                        <span class="d-block">' . $username . '</span>
+	                                    </div>
+	                                </div>';
                             }?>
-                        <!-- <small class="d-block text-end mt-3"> -->
-                            <!-- <a href="check_teacher.php">Назад</a> -->
-                        <!-- </small> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -80,26 +78,28 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
-                        <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
+                        <p>Вы авторизировались как <strong>«Эксперт»</strong>.</p> 
+                        <!-- <p class="small">Если Вы не эксперт, обратитесь по адресу <a href = "mailto:pivnenko-myu@rguk.ru">pivnenko-myu@rguk.ru</a>.</p> -->
                         <?php 
-                            if (!empty($_SESSION['user']) && isset($_SESSION['user'])) {
-                                echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
-                            } else {
-                                echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
-                            }
+                            // if (!empty($_SESSION['user']) && isset($_SESSION['user'])) {
+                            //     echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
+                            // } else {
+                            //     echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
+                            // }
                         ?> 
-                        <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a>
+                        <!-- <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a> -->
                         <?php 
-                            if (isset($get_kurs) && !empty($get_kurs)) {
-                                echo '<a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>';
-                            }
+                            // if (isset($get_kurs) && !empty($get_kurs)) {
+                                // echo '<a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>';
+                            // }
                         ?>
                     </div>
                 </div>
             </div>
         </div>
-    
+
+
+<!-- 	////////////////////      -->
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">

@@ -48,12 +48,34 @@ function kurses($dbo) {
 	return $data;
 }
 
+//Вытаскиваем весь рейтинг
+function rating($dbo) {
+	$data = $dbo->query('SELECT * FROM rating')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+//Вытаскиваем всех преподов по id для экспертов
+function teacher($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
+	$stmt->execute([$user_id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем препода по email для регистрации и авторизации
 function user($dbo, $email) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `email` = ?");
 	$stmt->execute([$email]);
 	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
 	return $user_data;
+}
+
+//Вытаскиваем всех преподов по роли для просмотра оценок
+function teacher_role($dbo, $role) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = ?");
+	$stmt->execute([$role]);
+	$teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $teachers;
 }
 
 //Вытаскиваем препода по имени добавления автора
@@ -80,6 +102,21 @@ function last_name($dbo, $name) {
 	return $user_data;
 }
 
+
+// Все курсы по заявкам
+function get_kurs_info($dbo) {
+	$data = $dbo->query('SELECT * FROM kurs_info')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+// Все курсы по заявкам
+function get_one_kurs_info($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 //Вытаскиваем все курсы преподавателя по id
 function get_kurs($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `user_id` = ?");
@@ -94,6 +131,14 @@ function user_data($dbo, $id) {
 	$stmt->execute([$id]);
 	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $user_data;
+}
+
+//Вытаскиваем пользователя по роли для админки
+function expert_data($dbo) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = 5");
+	$stmt->execute([$id]);
+	$expert_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $expert_data;
 }
 
 //Вытаскиваем курс по id

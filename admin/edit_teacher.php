@@ -1,7 +1,7 @@
 <?php 
     include ("../database/databaseInfo.php");
     $user_id = $_GET['user_id'];
-    $user = user($link, $user_id);
+    $user = user_data($dbo, $user_id);
     foreach ($user as $key => $value) {
         $email = $value[1];
         $allName = $value[2];
