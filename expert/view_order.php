@@ -112,7 +112,7 @@ $themes = themes($dbo, $kurs_id);
                                 ';
                             }
                         } else {
-                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "'>Добавить лекцию</a>";
+                            echo "</br>Добавленных лекций нет.";
                         }?>
                         <small class="d-block text-end mt-3">
                             <a href="user.php">Назад</a>
@@ -140,7 +140,7 @@ $themes = themes($dbo, $kurs_id);
                                 ';
                             }
                         } else {
-                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "'>Добавить лекцию</a>";
+                            echo "</br>Добавленных лекций нет.";
                         }?>
                         <small class="d-block text-end mt-3">
                             <a href="user.php">Назад</a>
@@ -148,7 +148,7 @@ $themes = themes($dbo, $kurs_id);
                     </div>
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
-                            <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
+                        <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
                             <label for="structure" type="text"  class="form-label">Проработанность структуры и готовность материала к созданию онлайн курса</label>
                             <input name="structure" min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
                             </br>

@@ -7,6 +7,12 @@
         header("Location: /");
     }
     $user_id = $_SESSION['user']['id'];
+    $rating = expert_rating($dbo, $user_id);
+    if (isset($rating) && !empty($rating)) {
+        foreach ($rating as $key => $value) {
+            $kurs_id_all[] = $value['kurs_id'];
+        }
+    }
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
     $get_kurs = get_kurs_info($dbo);
@@ -46,6 +52,11 @@
                             <?  
                             foreach ($get_kurs as $key => $value) {
                                 $kurs_id = $value['id'];
+                                if (isset($kurs_id_all) && in_array($kurs_id, $kurs_id_all)) {
+                                    $status = '<b class="status_access">Оценен</b>';
+                                } else {
+                                    $status = '<b class="status_not_access">Не оценен</b>';
+                                }
                             	$user_id = $value['user_id'];
                             	$user_data = user_data($dbo, $user_id);
                             	$username = $user_data["first_name"] . ' ' .  $user_data['name'] . ' ' . $user_data['last_name'];
@@ -58,7 +69,7 @@
 	                                        <strong class="text-gray-dark">' . $kurs_name . '</strong>
                                             <a href="view_order.php?kurs_id=' . $kurs_id . '">Посмотреть</a>
 	                                    </div>
-	                                        <span class="d-block">' . $username . '</span>
+	                                        <span class="d-block">' . $username . '&nbsp&nbsp&nbsp&nbsp&nbsp'.$status .'</b></span>
 	                                    </div>
 	                                </div>';
                             }?>

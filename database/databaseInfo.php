@@ -54,7 +54,7 @@ function rating($dbo) {
 	return $data;
 }
 
-function all_rating($dbo, $expert_id)
+function expert_rating($dbo, $expert_id)
 {
 	$stmt = $dbo->prepare("SELECT * FROM rating WHERE `expert_id` = ?");
 	$stmt->execute([$expert_id]);
@@ -207,6 +207,14 @@ function themes($dbo, $kurs_id) {
 	$stmt->execute([$kurs_id]);
 	$author_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $author_data;
+}
+
+//Вытаскиваем одну лекцию курса по id лекции для редактирования
+function themes_info($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM theme WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$themes_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $themes_info;
 }
 
 //Вытаскиваем 1 тему курса по id темы и id курса
