@@ -5,7 +5,7 @@ include ("../database/databaseInfo.php");
 $user_id = $_SESSION['user']['id'];
 $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $teachers = teacher_role($dbo, 4);
-$all_rating = all_rating($dbo, $user_id);
+$expert_rating = expert_rating($dbo, $user_id);
 $rating = rating($dbo);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
@@ -42,7 +42,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
 
 						  	<?
 						  		$k = 1;
-						  		foreach ($all_rating as $key => $value) {
+						  		foreach ($expert_rating as $key => $value) {
 						  			echo '<table class="table table-striped">
 						    					<tр align="center">
 						    					  <td rowspan="2" class="col_min">' . $value["kurs_name"] . '</th>
