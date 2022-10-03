@@ -106,6 +106,7 @@ $themes = themes($dbo, $kurs_id);
                                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
                                                     <strong class="text-gray-dark">Лекция ' . $k . '</strong>
+                                                    <a href="change_lection.php?themes_id=' . $themes_id . '&kurs_id=' . $kurs_id . '">Редактировать</a>
                                                 </div>
                                                 <span class="d-block d-block-themes">' . $themes_name . '</span>
                                             </div>

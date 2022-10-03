@@ -209,6 +209,14 @@ function themes($dbo, $kurs_id) {
 	return $author_data;
 }
 
+//Вытаскиваем одну лекцию курса по id лекции для редактирования
+function themes_info($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM theme WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$themes_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $themes_info;
+}
+
 //Вытаскиваем 1 тему курса по id темы и id курса
 function theme($dbo, $theme_id) {
 	$stmt = $dbo->prepare('SELECT * FROM themes WHERE `id` IN(?)');
