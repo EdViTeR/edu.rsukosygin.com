@@ -75,6 +75,14 @@ function teacher($dbo, $user_id) {
 	return $user_data;
 }
 
+//Вытаскиваем всех экспертов для статистики
+function expert($dbo, $role) {
+	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = ?");
+	$stmt->execute([$role]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем препода по email для регистрации и авторизации
 function user($dbo, $email) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `email` = ?");
