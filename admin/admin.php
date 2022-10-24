@@ -1,7 +1,5 @@
 <?php
     include ("../database/databaseInfo.php");
-    $data = kurses($link);
-    $users = users($link);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -16,10 +14,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="emblem" src="/images/emblem.svg" alt="RSU Kosygin">
+                    <img class="emblem" src="/images/logo_admin.svg" width="400px" alt="RSU Kosygin">
                 </div>
                 <div class="col-md-8 order-md-first">
-                    <a href="/index.html"><img class="logo" src="/images/logo.svg" alt="RSU Kosygin"></a>
                 </div>
             </div>
         </div>
@@ -32,8 +29,8 @@
                             <p>Привет, хороший человек! Здесь ты можешь почувствовать себя Богом онлайн-курсов. Не забывай есть печеньки!</p>
                         </div>
                         <div class="row">
-                            <a href="add_teacher.php" class="btn btn-outline-primary me-2">Добавить преподавателя</a><br>
-                            <a href="check_teacher.php" class="btn btn-outline-primary me-2">Посмотреть преподавателей</a><br>
+                            <a href="check_teacher.php" class="btn btn-outline-primary me-2">Посмотреть пользователей</a><br>
+                            <a href="add_teacher.php" class="btn btn-outline-primary me-2">Добавить эксперта</a><br>
                             <a href="delete_info.php" class="btn btn-outline-primary me-2">Удаленная информация</a><br>
                         </div>
                         </br></br></br>

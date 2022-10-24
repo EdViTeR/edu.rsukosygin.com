@@ -70,7 +70,6 @@
                         </small>
                     </div>
 
-
                     <!-- "Эксперты" -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <p class="h3 mb-3">Эксперты</p>
@@ -139,11 +138,11 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-light border rounded-3">
-                        <h2>Личный кабинет</h2>
-                        <p>Вы авторизировались как <strong>«Администратор»</strong>.</p> <p>Вам доступны следующие дествия:</p>
-                        <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить преподавателя</a>
-                        <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a>
-                        <a href="orders.php"  class="btn btn-outline-secondary mb-3" type="button">Заявки</a>
+                        <h3>Панель администратора</h3></br>
+                        <p>Привет, хороший человек! Здесь ты можешь почувствовать себя Богом онлайн-курсов. Не забывай есть печеньки!</p>
+                        <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить пользователя</a>
+                        <!-- <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a> -->
+                        <a href="stats.php"  class="btn btn-outline-secondary mb-3" type="button">Статистика</a>
                         <a href="rating.php"  class="btn btn-outline-secondary mb-3" type="button">Оценки</a>
                     </div>
                 </div>
@@ -153,16 +152,8 @@
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <!-- <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                </ul> -->
                 <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
-
     </body>
 </html>
