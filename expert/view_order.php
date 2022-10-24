@@ -149,20 +149,20 @@ $themes = themes($dbo, $kurs_id);
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
                         <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
-                            <label for="structure" type="text"  class="form-label">Проработанность структуры и готовность материала к созданию онлайн курса</label>
-                            <input name="structure" min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            <label for="structure" type="text"  class="form-label"><b>Актуальность онлайн-курса.</b> Является ли курс востребованным в настоящее время?</label>
+                            <input name="structure" min='0' max='30' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 30" value="" required="true">
                             </br>
-                            <label for="podhod" class="form-label">Междисциплинарный подход при разработке и применении курса</label>
-                            <input name="podhod"  min='0' max='25' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 25" value="" required="true">
+                            <label for="podhod" class="form-label">Структура онлайн-курса проработана, обоснована и логично изложена.</label>
+                            <input name="podhod"  min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
                             </br>
-                            <label for="purpose" class="form-label">Обоснованность целесообразности создания курса (с подтверждением на основе опросов мониторинга и т.п.)
+                            <label for="purpose" class="form-label"><b>Содержание материалов соответствует целям и задачам курса.</b> Участники курса по итогам прохождения обучения получают теоретические и практические навыки, актуальные в современном обществе в соответствии с заявленной тематикой.
                             </label>
                             <input name="purpose" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
                             </br>
-                            <label for="technology" class="form-label">Используемые интерактивные технологии в курсе</label>
+                            <label for="technology" class="form-label"><b>Универсальность онлайн-курса.</b> Курс создан, в том числе, и для слушателей разных специальностей.</label>
                             <input name="technology" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="health" class="form-label">Адаптация курса для лиц с ограниченными возможностями здоровья</label>
+                            <label for="health" class="form-label"><b>Готовность материалов заявки к созданию онлайн-курса и его качества.</b> Материал проработан и понятно изложен, тема курса полностью раскрыта.</label>
                             <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br></br>
                             <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
