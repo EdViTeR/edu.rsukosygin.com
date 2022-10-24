@@ -90,7 +90,7 @@ $themes = themes($dbo, $kurs_id);
                         ?>
                         
                     </div>
-                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+<!--                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Информация о разработчиках курса</h6>
                         <?  
                         $k = 0;
@@ -117,7 +117,7 @@ $themes = themes($dbo, $kurs_id);
                         <small class="d-block text-end mt-3">
                             <a href="user.php">Назад</a>
                         </small>
-                    </div>
+                    </div> -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Программа курса</h6>
                         <?  
