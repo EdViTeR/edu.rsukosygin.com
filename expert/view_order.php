@@ -60,6 +60,27 @@ $themes = themes($dbo, $kurs_id);
                         <p><strong>Описание:</strong><br>
                         <?php echo $kurs["description"];?></p>
 
+                        <p><strong>Область / сфера:</strong><br>
+                        <?php echo $kurs["sphere"];?></p>
+
+                        <p><strong>Дисциплины, которые заменяются онлайн-курсом:</strong><br>
+                        <?php echo $kurs["replacement"];?></p>
+
+                        <p><strong>Направление(я) подготовки специальность(ти):</strong><br>
+                        <?php echo $kurs["route"];?></p>
+
+                        <p><strong>Необходимый уровень образования слушателей:</strong><br>
+                        <?php echo $kurs["user_level"];?></p>
+
+                        <p><strong>Объем курса (в часах):</strong><br>
+                        <?php echo $kurs["work_time"];?></p>
+
+                        <p><strong>Количество лекций:</strong><br>
+                        <?php echo $kurs["amount_lecture"];?></p>
+
+                        <p><strong>Количество видеолекций:</strong><br>
+                        <?php echo $kurs["amount_video_lecture"];?></p>
+
 
                         <p><strong>Соавторы:</strong><br>
                             <ol>
