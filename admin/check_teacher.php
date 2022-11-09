@@ -144,6 +144,7 @@
                         <!-- <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a> -->
                         <a href="stats.php"  class="btn btn-outline-secondary mb-3" type="button">Статистика</a>
                         <a href="rating.php"  class="btn btn-outline-secondary mb-3" type="button">Оценки</a>
+                        <a href="check_teacher_info.php"  class="btn btn-outline-secondary mb-3" type="button">Препод</a>
                     </div>
                 </div>
             </div>
