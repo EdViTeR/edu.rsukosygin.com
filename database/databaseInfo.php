@@ -170,6 +170,14 @@ function kurs_data($dbo, $id) {
 	return $user_data;
 }
 
+//Вытаскиваем рейтинг курса по id
+function kurs16($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM rating WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем курс по id для админки
 function kurs($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teach_kurs WHERE `id` = ?");
