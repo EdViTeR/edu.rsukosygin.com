@@ -19,7 +19,7 @@
         ];
         switch ($user_data['role']) {
             case '1':
-                header("Location: user/user.php?user_id=$id"); //преподаватель
+                header("Location: user/user.php"); //преподаватель
                 break;
             case '2':
                 header("Location: admin/check_teacher.php"); //админ
