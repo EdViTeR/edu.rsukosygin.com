@@ -6,26 +6,11 @@ $user_id = $_SESSION['user_id'];
 $kurs = kurs_data($dbo, $kurs_id);
 $head_id = $kurs['user_id'];
 $head_info = teacher($dbo, $head_id);
-$user_info = user_info($dbo, $head_id);
+$user_info = user_info_one($dbo, $head_id);
 $head_name = $head_info['first_name'] . ' ' . $head_info['name'] . ' ' . $head_info['last_name'];
 $authors = authors($dbo, $kurs_id);
-// $themes = themes($link, $kurs_id);
-// foreach ($kurs as $key => $value) {
-//     $kurs_name = $value[1];
-//     $short_name = $value[2];
-//     $head_name = $value[4];
-//     $head_reg = $value[5];
-//     $kurs_short_info = $value[6];
-//     $speaker_name = $value[7];
-//     $short_video_text_speaker = $value[8];
-//     $short_video_text_kurs = $value[9];
-//     $status = $value[11];
-//     if ($status == 0) {
-//         $need_status = 'В обработке';
-//     } else {
-//         $need_status = 'Обработан';
-//     }
-// }
+$head_reg = $user_info['academic_degree'] . ', ' . $user_info['academic_degree'] . '</br>' . $user_info['about'];
+$themes = themes($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -33,6 +18,8 @@ $authors = authors($dbo, $kurs_id);
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
         <title>Авторизация в личный кабинет</title>
         <link rel="stylesheet" href="../style.css">
     </head>
@@ -94,19 +81,25 @@ $authors = authors($dbo, $kurs_id);
                             echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
                         } else {     
                             foreach ($themes as $key => $value) {
+                                $theme_name = $value['name'];
+                                // var_dump($value); die;
                                 $k++;
-                                $themes_id = $value[0];
-                                $themes_name = $value[3];
                                     echo '<div class="d-flex text-muted pt-3">
-                                                        <a href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
-                                                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                                        <div class="d-flex justify-content-between">
-                                                            <strong class="text-gray-dark">Лекция ' . $k . '</strong>
-                                                            <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Редактировать</a>
-                                                        </div>
-                                                        <span class="d-block d-block-themes">' . $themes_name . '</span>
-                                                        </div>
-                                                    </div>';
+                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                <div class="d-flex justify-content-between">
+                                                    <strong class="text-gray-dark">Лекция '.$k.'</strong>
+                                                    <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Редактировать</a>
+                                                </div>
+                                                <span class="d-block d-block-themes">' . $theme_name . '</span>
+                                            <div class="collapse" id="collapseExample'.$k.'">
+                                            </br>
+                                                <div class="card card-body">
+                                                    ' . $value['info'] . '
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
                             }
                         }?>
                         <small class="d-block text-end mt-3">

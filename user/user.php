@@ -48,6 +48,7 @@ $data = get_kurs($dbo, $user_id);
                                 foreach ($data as $key => $value) {
                                     $kurs_name = $value["kurs_name"];
                                     $kurs_id = $value["id"];
+                                    $_SESSION['kurs_id'] = $kurs_id;
                                     echo '<div class="d-flex text-muted pt-3">
                                             <a href="view_kurs.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
@@ -61,6 +62,7 @@ $data = get_kurs($dbo, $user_id);
                                 }
                             }?>
                     </div>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23039BE5&ctz=Europe%2FMoscow&mode=WEEK&showTitle=1&showDate=1&showTabs=1&showCalendars=1&src=Y19vcWpwcDR2OHNxcTh2ajlpMm12cmlzaHBsb0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23B39DDB" style="border:solid 1px #777" width="855" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">

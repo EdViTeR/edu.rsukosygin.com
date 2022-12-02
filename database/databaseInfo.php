@@ -154,6 +154,14 @@ function user_info($dbo, $user_id) {
 	return $user_data;
 }
 
+//Вытаскиваем инфу о преподе по id
+function user_info_one($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
+	$stmt->execute([$user_id]);
+	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем препода по id для админки
 function user_data($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
