@@ -54,7 +54,7 @@ $data = get_kurs($dbo, $user_id);
                                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
                                                     <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                                    <a href="edit_kurs_info.php?kurs_id=' . $kurs_id . '">Редактировать</a>
+                                                    <a href="add_kurs.php?kurs_id=' . $kurs_id . '">Добавить информацию</a>
                                                 </div>
                                                 <span class="d-block">Курс в разбработке</span>
                                             </div>
@@ -74,11 +74,7 @@ $data = get_kurs($dbo, $user_id);
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
 
                         <p>Вы авторизировались как <strong>«Разработчик»</strong>.</p> 
-                        <p>Вам доступны следующие дествия:</p>
-
-                        <a href="edit_kurs_info.php?kurs_id=<?php echo $kurs_id;?>&user_id=<?php echo $user_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
-                        <a href="add_theme.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить тему</a>
-                        <a href="add_autor.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить автора</a>
+                        <!-- <p>Вам доступны следующие дествия:</p> -->
                     </div>
                 </div>
             </div>

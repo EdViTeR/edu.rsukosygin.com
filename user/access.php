@@ -1,5 +1,6 @@
 <?php
-$user_id = $_GET['user_id'];
+session_start();
+$user_id = $_SESSION['user']["id"];
 ?>
 <!doctype html>
 <html lang="ru">
@@ -15,7 +16,7 @@ $user_id = $_GET['user_id'];
         <!-- Шапка -->
         <div class="container pt-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between pb-3 mb-4 border-bottom">
-                <a href="user.php?user_id=<?php echo $user_id;?>" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <a href="user.php" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
@@ -30,7 +31,7 @@ $user_id = $_GET['user_id'];
                     <div class="col-md-8">
                     	<h1>Информация добавлена</h1>
                         </br></br>
-                        <?php echo '<a href="user.php?user_id=' . $user_id . '" class="btn btn-outline-primary me-2">Вернуться в личный кабинет</a>'?>
+                        <?php echo '<a href="user.php" class="btn btn-outline-primary me-2">Вернуться в личный кабинет</a>'?>
                     </div>
                 </div>
             </div>

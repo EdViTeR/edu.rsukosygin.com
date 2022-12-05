@@ -9,7 +9,7 @@ $head_info = teacher($dbo, $head_id);
 $user_info = user_info_one($dbo, $head_id);
 $head_name = $head_info['first_name'] . ' ' . $head_info['name'] . ' ' . $head_info['last_name'];
 $authors = authors($dbo, $kurs_id);
-$head_reg = $user_info['academic_degree'] . ', ' . $user_info['academic_degree'] . '</br>' . $user_info['about'];
+$head_reg = $user_info['academic_degree'] . ', ' . $user_info['academic_title'] . '</br>' . $user_info['about'];
 $themes = themes($dbo, $kurs_id);
 ?>
 <!doctype html>
@@ -32,7 +32,7 @@ $themes = themes($dbo, $kurs_id);
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
-                    <a href="../index.php" class="btn btn-outline-primary me-2">Выйти</a>
+                    <a href="../logout.php" class="btn btn-outline-primary me-2">Выйти</a>
                 </div>
             </header>
         </div>
@@ -48,7 +48,7 @@ $themes = themes($dbo, $kurs_id);
                 <div class="col-lg-8">
                     <!-- Информация о курсе -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3"><?php echo $short_name;?></p></p>
+                        <p class="h3 mb-3">Курс: <?php echo $kurs['kurs_name'];?></p></p>
                         <hr class="text-secondary">
                         
                         <p><strong>Полное название онлайн-курса:</strong><br>
@@ -82,20 +82,31 @@ $themes = themes($dbo, $kurs_id);
                         } else {     
                             foreach ($themes as $key => $value) {
                                 $theme_name = $value['name'];
-                                // var_dump($value); die;
+                                $theme_id = $value['id'];
+                                $text_less = $value['text_less'];
+                                if (!isset($text_less) && empty($text_less)) {
+                                    $text_less = 'Информация не добавлена';
+                                }
                                 $k++;
                                     echo '<div class="d-flex text-muted pt-3">
                                                 <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
                                                     <strong class="text-gray-dark">Лекция '.$k.'</strong>
-                                                    <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '">Редактировать</a>
+                                                    <a href="edit_theme.php?kurs_id=' . $kurs_id . '&theme_id=' . $theme_id . '">Редактировать</a>
                                                 </div>
                                                 <span class="d-block d-block-themes">' . $theme_name . '</span>
                                             <div class="collapse" id="collapseExample'.$k.'">
                                             </br>
                                                 <div class="card card-body">
+                                                    <b>Краткая информация</b>
+                                                    <hr>
                                                     ' . $value['info'] . '
+                                                </div></br>
+                                                <div class="card card-body">
+                                                    <b>Текст лекции</b>
+                                                    <hr>
+                                                    ' . $text_less . '
                                                 </div>
                                             </div>
                                         </div>
@@ -119,9 +130,10 @@ $themes = themes($dbo, $kurs_id);
                         <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
                         <p>Вам доступны следующие дествия:</p>
 
-                        <a href="edit_kurs_info.php?kurs_id=<?php echo $kurs_id;?>&user_id=<?php echo $user_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
-                        <a href="add_theme.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить тему</a>
-                        <a href="add_autor.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить автора</a>
+                        <!-- <a href="add_kurs.php" class="btn btn-primary mb-3 me-3" type="button">Добавить информацию о курсе</a> -->
+                        <a href="edit_kurs_info.php?status=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
+                        <a href="add_theme_new.php?kurs_id=<?php echo $kurs_id ?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить тему</a>
+                        <!-- <a href="add_autor.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить автора</a> -->
                     </div>
                 </div>
             </div>
