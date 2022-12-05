@@ -1,17 +1,17 @@
 <?php
 include ("../database/databaseInfo.php");
 $user_id = $_GET['user_id'];
-$kurs_id = $_GET['kurs_id'];
-$kurs = kurs($link, $kurs_id);
+$status = $_GET['status'];
+$kurs = kurs_data_all($dbo, $status);
 foreach ($kurs as $key => $value) {
-    $kurs_name                  = $value[1];
-    $short_name                 = $value[2];
-    $head_name                  = $value[4];
-    $head_reg                   = $value[5];
-    $kurs_short_info            = $value[6];
-    $speaker_name               = $value[7];
-    $short_video_text_speaker   = $value[8];
-    $short_video_text_kurs      = $value[9];
+    $kurs_name                  = $value['kurs_name'];
+    $short_name                 = $value['short_name'];
+    $head_name                  = $value['head_name'];
+    $head_reg                   = $value['head_reg'];
+    $kurs_short_info            = $value['kurs_short_info'];
+    $speaker_name               = $value['speaker_name'];
+    $short_video_text_speaker   = $value['short_video_text_speaker'];
+    $short_video_text_kurs      = $value['short_video_text_kurs'];
 }
 ?>
 
@@ -33,7 +33,7 @@ foreach ($kurs as $key => $value) {
                     <img src="../images/rsu_logo.svg" alt="" width="200"></a>
                 </a>
                 <div class="col-md-3 text-end">
-                    <a href="../index.php" class="btn btn-outline-primary me-2">Выйти</a>
+                    <a href="../logout.php" class="btn btn-outline-primary me-2">Выйти</a>
                 </div>
             </header>
         </div>
@@ -73,7 +73,7 @@ foreach ($kurs as $key => $value) {
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<h4>Текст с информацией о курсе</h3>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea type="text" class="form-control" name="short_video_text_kurs"  cols="100" rows="3" placeholder="В этом поле укажите текст выступления спикера с рассказом, о чем курс (в целом). Что будете изучать (подробнее)? О чем рассказывать? Чем полезен курс? Какие компетенции приобретет слушатель? Прочее. " required><?php echo $short_video_text_kurs?></textarea>
                 </br></br></br>
-                <?php echo '<a href="user.php?user_id='. $user_id . '"class="btn btn-outline-primary me-2">Вернуться</a>'?>
+                <?php echo '<a href="user.php"class="btn btn-outline-primary me-2">Вернуться</a>'?>
                 <input type="submit" name="submit_image" value="Изменить" class="btn btn-outline-primary me-2">
             </form>
         </div>

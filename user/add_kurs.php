@@ -1,5 +1,7 @@
 <?php
-    $user_id = $_GET['user_id'];
+session_start();
+$user_id = $_SESSION['user']["id"];
+$kurs_id = $_GET['kurs_id'];
 ?>
 
 <!doctype html>
@@ -29,7 +31,7 @@
             <h1 class="title-article">
                 Добавление курса
             </h1><br>
-            <?php echo '<form method="POST" action="save_kurs.php?user_id=' . $user_id . '" enctype="multipart/form-data">'?>
+            <?php echo '<form method="POST" action="save_kurs.php?user_id=' . $user_id . '&kurs_id=' . $kurs_id . '" enctype="multipart/form-data">'?>
                 <p><h2>Название онлайн-курса</h2></p>
                     <textarea type="text" name="kurs_name" class="form-control"  cols="100" rows="3" placeholder="Укажите полное название" required></textarea>
                 </br></br>
