@@ -24,6 +24,18 @@ function save_presentation($dbo, $way, $kurs_id) {
 	$stmt->execute($data);
 }
 
+//сохраняем презентацию лекции
+function save_presentation_theme($dbo, $way, $kurs_id, $theme_id) {
+	$data = [
+	    'way' => $way,
+	    'kurs_id' => $kurs_id,
+	    'theme_id' => $theme_id,
+	];
+	$sql = "INSERT INTO `presentations` SET `kurs_id` = :kurs_id, `theme_id` = :theme_id, `presentation` = :way";
+	$stmt= $dbo->prepare($sql);
+	$stmt->execute($data);
+}
+
 //вытаскиваем фото
 function view_photo($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `id` = ?");
@@ -146,6 +158,14 @@ function get_kurs($dbo, $user_id) {
 	return $user_data;
 }
 
+//Вытаскиваем курс по id для показа соавторам
+function get_kurs_author($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
 //Вытаскиваем инфу о преподе по id
 function user_info($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
@@ -230,6 +250,14 @@ function teach_kurs($dbo, $head_id) {
 function authors($dbo, $kurs_id) {
 	$stmt = $dbo->prepare("SELECT * FROM author WHERE `kurs_id` = ?");
 	$stmt->execute([$kurs_id]);
+	$author_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $author_data;
+}
+
+//Вытаскиваем всех авторов
+function authors_all($dbo) {
+	$stmt = $dbo->prepare("SELECT * FROM author");
+	$stmt->execute();
 	$author_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $author_data;
 }

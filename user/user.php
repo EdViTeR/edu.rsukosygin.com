@@ -9,7 +9,15 @@ $user_id = $_SESSION['user']['id'];
 $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $user = user($dbo, $user_id);
 $data = get_kurs($dbo, $user_id);
-
+$authors_all = authors_all($dbo);
+$user_status = 'Разработчик';
+foreach ($authors_all as $key => $value) {
+    if ($user_id === $value['user_id']) {
+        $kurs_id = $value['kurs_id'];
+        $data = get_kurs_author($dbo, $kurs_id);
+        $user_status = 'Соавтор';
+    }
+}
 ?>
 <!doctype html>
 <html lang="ru">
@@ -46,6 +54,7 @@ $data = get_kurs($dbo, $user_id);
                                 echo "</br><h4>У вас пока нет добавленных курсов</h4>";
                             } else {
                                 foreach ($data as $key => $value) {
+                                    // var_dump($data); die;
                                     $kurs_name = $value["kurs_name"];
                                     $kurs_id = $value["id"];
                                     $_SESSION['kurs_id'] = $kurs_id;
@@ -73,7 +82,7 @@ $data = get_kurs($dbo, $user_id);
                         </svg>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
 
-                        <p>Вы авторизировались как <strong>«Разработчик»</strong>.</p> 
+                        <p>Вы авторизировались как <strong>«<?php echo $user_status;?>»</strong>.</p> 
                         <!-- <p>Вам доступны следующие дествия:</p> -->
                     </div>
                 </div>

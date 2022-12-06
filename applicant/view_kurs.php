@@ -88,7 +88,6 @@ $themes = themes($dbo, $kurs_id);
                                         <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
                                     </form></p>';
                             }
-
                         ?>
 
                     </div>
