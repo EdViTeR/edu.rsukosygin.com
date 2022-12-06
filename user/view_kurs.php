@@ -110,12 +110,17 @@ $themes = themes($dbo, $kurs_id);
                                                 </div></br>
                                                 <div class="card card-body">
                                                     <b>Презентация</b>
-                                                    <hr>'; 
+                                                    <hr>';
+                                                    $view_presentation_kurs = view_presentation_kurs($dbo, $theme_id);
+                                                    foreach ($view_presentation_kurs as $key => $value) {
+                                                        $presentation = $value['way'];
+                                                    }
                                                     if (isset($presentation) && !empty($presentation)) {
-                                                        echo "<p><strong>Презентация:</strong><br><br>
-                                                            <a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a><br/></p>";
+                                                        echo "<div><a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a>
+                                                            <a class='btn btn-outline-danger mb-3 me-3' href='delete_presentation_kurs.php?theme_id=" . $theme_id . "&kurs_id=" . $kurs_id . "'>Удалить</a></div>";
+                                                        unset($presentation);
                                                     } else {
-                                                        echo '<form action="upload_presentation.php?kurs_id=' . $kurs_id . '?theme_id=' . $theme_id . '" method="post" enctype="multipart/form-data">
+                                                        echo '<form action="upload_presentation.php?kurs_id=' . $kurs_id . '&theme_id=' . $theme_id . '" method="post" enctype="multipart/form-data">
                                                             <input type="file" name="image"><br><br>
                                                             <button type="submit" class="btn btn-outline-primary mb-3 me-3">Загрузить</button>
                                                         </form></p>';
@@ -140,7 +145,7 @@ $themes = themes($dbo, $kurs_id);
                         </svg>
                         <p class="h5 mt-4 mb-4"><?php echo $head_name?></p>
 
-                        <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
+                        <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
                         <p>Вам доступны следующие дествия:</p>
 
                         <!-- <a href="add_kurs.php" class="btn btn-primary mb-3 me-3" type="button">Добавить информацию о курсе</a> -->

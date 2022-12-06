@@ -27,11 +27,11 @@ function save_presentation($dbo, $way, $kurs_id) {
 //сохраняем презентацию лекции
 function save_presentation_theme($dbo, $way, $kurs_id, $theme_id) {
 	$data = [
-	    'way' => $way,
 	    'kurs_id' => $kurs_id,
 	    'theme_id' => $theme_id,
+	    'way' => $way,
 	];
-	$sql = "INSERT INTO `presentations` SET `kurs_id` = :kurs_id, `theme_id` = :theme_id, `presentation` = :way";
+	$sql = "INSERT INTO `presentation_kurs` SET `kurs_id` = :kurs_id, `theme_id` = :theme_id, `way` = :way";
 	$stmt= $dbo->prepare($sql);
 	$stmt->execute($data);
 }
@@ -52,6 +52,21 @@ function view_presentation($dbo, $id) {
 	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
 	$way = $user_data['presentation'];
 	return $way;
+}
+
+//вытаскиваем все презентации курса по id
+function view_presentation_kurs($dbo, $theme_id) {
+	$stmt = $dbo->prepare("SELECT * FROM presentation_kurs WHERE `theme_id` = ?");
+	$stmt->execute([$theme_id]);
+	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//удаление презентации лекции по id
+function delete_presentation_kurs($dbo, $theme_id) {
+	$sql = "DELETE FROM presentation_kurs WHERE theme_id=?";
+	$stmt = $dbo->prepare($sql);
+	$stmt->execute([$theme_id]);
 }
 
 //Вытаскиваем все курсы

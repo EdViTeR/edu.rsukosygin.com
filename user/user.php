@@ -10,12 +10,12 @@ $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' 
 $user = user($dbo, $user_id);
 $data = get_kurs($dbo, $user_id);
 $authors_all = authors_all($dbo);
-$user_status = 'Разработчик';
+$_SESSION['user']['user_status'] = 'Разработчик';
 foreach ($authors_all as $key => $value) {
     if ($user_id === $value['user_id']) {
         $kurs_id = $value['kurs_id'];
         $data = get_kurs_author($dbo, $kurs_id);
-        $user_status = 'Соавтор';
+        $_SESSION['user']['user_status'] = 'Соавтор';
     }
 }
 ?>
@@ -82,7 +82,7 @@ foreach ($authors_all as $key => $value) {
                         </svg>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
 
-                        <p>Вы авторизировались как <strong>«<?php echo $user_status;?>»</strong>.</p> 
+                        <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
                         <!-- <p>Вам доступны следующие дествия:</p> -->
                     </div>
                 </div>

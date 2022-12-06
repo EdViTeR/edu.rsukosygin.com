@@ -7,7 +7,7 @@ $uploadname = $uploaddir . $_FILES['userfile']['name'];
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadname)) {
     $sql="UPDATE themes SET present_name ='$uploadname', present_path ='$uploadname' WHERE id='$id'";
 	$result = mysqli_query($link, $sql);
-    	header("Location: http://edu.rsukosygin.ru/user/access.php?user_id=$user_id");
+    	header("Location: access.php?user_id=$user_id");
     } else { 
 		echo 'Ошибка';
 	}
