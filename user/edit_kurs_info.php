@@ -42,7 +42,7 @@ foreach ($kurs as $key => $value) {
             <div class="col-md-8 order-md-first">
                 <h3 class="title-article">Изменение информации о курсе</h3></br>
             </div>
-            <?php echo '<form method="POST" action="save_kurs_edit.php?user_id='. $user_id . '&kurs_id=' . $kurs_id . '" enctype="multipart/form-data">'?>
+            <?php echo '<form method="POST" action="save_kurs_edit.php?user_id='. $user_id . '&status=' . $status . '" enctype="multipart/form-data">'?>
                 <p><h3>Название онлайн-курса</h3></p>
                     <textarea type="text" name="kurs_name" class="form-control"  cols="100" rows="3" placeholder="Укажите полное название" required><?php echo $kurs_name?></textarea>
                 </br></br>
