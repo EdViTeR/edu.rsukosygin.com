@@ -54,7 +54,6 @@ foreach ($authors_all as $key => $value) {
                                 echo "</br><h4>У вас пока нет добавленных курсов</h4>";
                             } else {
                                 foreach ($data as $key => $value) {
-                                    // var_dump($data); die;
                                     $kurs_name = $value["kurs_name"];
                                     $kurs_id = $value["id"];
                                     $_SESSION['kurs_id'] = $kurs_id;
@@ -62,9 +61,14 @@ foreach ($authors_all as $key => $value) {
                                             <a href="view_kurs.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                             <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
-                                                    <strong class="text-gray-dark">' . $kurs_name . '</strong>
-                                                    <a href="add_kurs.php?kurs_id=' . $kurs_id . '">Добавить информацию</a>
-                                                </div>
+                                                    <strong class="text-gray-dark">' . $kurs_name . '</strong>';
+                                    $kurs = kurs_data_all($dbo, $kurs_id);
+                                    if (isset($kurs) && !empty($kurs)) {
+                                        echo 'Информация добавлена';
+                                    } else {
+                                        echo '<a href="add_kurs.php?kurs_id=' . $kurs_id . '">Добавить информацию</a>';
+                                    }
+                                    echo '           </div>
                                                 <span class="d-block">Курс в разбработке</span>
                                             </div>
                                         </div>';
