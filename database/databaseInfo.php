@@ -69,6 +69,13 @@ function delete_presentation_kurs($dbo, $theme_id) {
 	$stmt->execute([$theme_id]);
 }
 
+//удаление презентации лекции по id
+function delete_theme($dbo, $theme_id) {
+	$sql = "DELETE FROM theme WHERE id=?";
+	$stmt = $dbo->prepare($sql);
+	$stmt->execute([$theme_id]);
+}
+
 //Вытаскиваем все курсы
 function kurses($dbo) {
 	$data = $dbo->query('SELECT * FROM teach_kurs')->fetchAll(PDO::FETCH_ASSOC);

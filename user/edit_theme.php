@@ -61,6 +61,7 @@
                             </br>
                             <?php echo '<a href="view_kurs.php?kurs_id=' . $kurs_id . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
                             <input type="submit" name="submit_image" value="Изменить" class="btn btn-outline-primary me-2">
+                            <?php echo '<a href="delete_theme.php?theme_id=' . $theme_id . '&kurs_id=' . $kurs_id . '" class="btn btn-outline-danger me-2">Удалить лекцию</a>'?>
                         </form>
                     </div>
                 </div>
