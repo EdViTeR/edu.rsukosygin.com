@@ -1,8 +1,11 @@
 <?php
+session_start();
 include ("../database/databaseInfo.php");
 $user_id = $_GET['user_id'];
 $status = $_GET['status'];
+$username = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $kurs = kurs_data_all($dbo, $status);
+$kurs_info = kurs_data($dbo, $status);
 foreach ($kurs as $key => $value) {
     $kurs_name                  = $value['kurs_name'];
     $short_name                 = $value['short_name'];
@@ -37,45 +40,68 @@ foreach ($kurs as $key => $value) {
                 </div>
             </header>
         </div>
-        <div class="container-fluid page">
-            <div class="container">
-            <div class="col-md-8 order-md-first">
-                <h3 class="title-article">Изменение информации о курсе</h3></br>
+        <div class="container">
+            <div class="row">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="user.php">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="view_kurs.php?kurs_id=<?php echo $status; ?>"><?php echo $kurs_info["kurs_name"];?></a></li>
+                        <li class="breadcrumb-item">Изменение информации о курсе</li>
+                    </ol>
+                </nav>
+                <div class="col-lg-8">
+                    <!-- Преподаватели -->
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <h4 class="border-bottom pb-2 mb-0">Изменение информации о курсе</h4>
+                        <?php echo '<form method="POST" action="save_kurs_edit.php?user_id='. $user_id . '&status=' . $status . '" enctype="multipart/form-data">'?>
+                            <p><h5>Название онлайн-курса</h5></p>
+                            <textarea type="text" name="kurs_name" class="form-control"  cols="100" rows="2" placeholder="Укажите полное название" required><?php echo $kurs_name?></textarea>
+                            </br>
+                            <p><h5>Короткое название онлайн-курса(если возможно)</h5></p>
+                            <textarea type="text" name="short_name" class="form-control"  cols="100" rows="2" placeholder="Укажите короткое название (при возможности)" required><?php echo $short_name?></textarea>
+                            </br>
+                            <p><h5>Руководитель онлайн курса</h5></p>
+                            <textarea type="text" name="head_name" class="form-control"  cols="100" rows="2" placeholder="ФИО руководителя курса" required><?php echo $head_name?></textarea>
+                            </br>
+                            <p><h5>Регалии руководителя онлайн курса</h5></p>
+                            <textarea type="text" name="head_reg" class="form-control"  cols="100" rows="3" placeholder="Ф. И. О., ученая степень, ученое звание (пр. регалии и заслуги)" required><?php echo $head_reg?></textarea>
+                            </br>
+                            <p><h5>Краткая аннотация онлайн-курса(не более 1000 знаков)</h5></p>
+                            <textarea type="text" name="kurs_short_info" class="form-control"  cols="100" rows="3" placeholder="В этом поле укажите текст краткой аннотации онлайн-курса для размещения на образовательной онлайн-платформе в разделе «Описание к курсу» объемом не более 1000 печатных знаков." maxlength=1000  required><?php echo $kurs_short_info?></textarea>
+                        </br>
+                    </div>
+                    <div class="mb-4 p-5 bg-body rounded shadow-sm">
+                        <p><h5>Текст выступления к видео-презентации онлайн-курса (не более 1,5 минут)</h5></p>
+                            <hr>
+                            </br>
+                            <p><h5>ФИО спикера</h5></p>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" class="form-control" name="speaker_name" size="70" placeholder="Укажите ФИО спикера" maxlength=100 value="<?php echo $speaker_name?>" required></input>
+                            </br></br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<h5>Текст с информацией о спикере</h5>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea type="text" class="form-control" name="short_video_text_speaker"  cols="100" rows="4" placeholder="В этом поле укажите текст выступления спикера с приветствием и небольшим рассказом о себе (опыт, достижения, заслуги)." required><?php echo $short_video_text_speaker?></textarea>
+                            </br>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<h5>Текст с информацией о курсе</h5>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea type="text" class="form-control" name="short_video_text_kurs"  cols="100" rows="5" placeholder="В этом поле укажите текст выступления спикера с рассказом, о чем курс (в целом). Что будете изучать (подробнее)? О чем рассказывать? Чем полезен курс? Какие компетенции приобретет слушатель? Прочее. " required><?php echo $short_video_text_kurs?></textarea>
+                            </br>
+                            <?php echo '<a href="view_kurs.php?kurs_id=' . $kurs_info['id'] . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
+                            <input type="submit" name="submit_image" value="Изменить" class="btn btn-outline-primary me-2">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-5 bg-white border rounded-3">
+                        <!-- <img src="/images/я.jpg" alt="Письма мастера дзен" width="160" height="160"> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <p class="h5 mt-4 mb-4"><?php echo $username?></p>
+
+                        <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
+                        <!-- <p>Вам доступны следующие дествия:</p> -->
+                    </div>
+                </div>
             </div>
-            <?php echo '<form method="POST" action="save_kurs_edit.php?user_id='. $user_id . '&status=' . $status . '" enctype="multipart/form-data">'?>
-                <p><h3>Название онлайн-курса</h3></p>
-                    <textarea type="text" name="kurs_name" class="form-control"  cols="100" rows="3" placeholder="Укажите полное название" required><?php echo $kurs_name?></textarea>
-                </br></br>
-                <p><h3>Короткое название онлайн-курса(если возможно)</h3></p>
-                    <textarea type="text" name="short_name" class="form-control"  cols="100" rows="3" placeholder="Укажите короткое название (при возможности)" required><?php echo $short_name?></textarea>
-                </br></br>
-                <p><h3>Руководитель онлайн курса</h3></p>
-                    <textarea type="text" name="head_name" class="form-control"  cols="100" rows="2" placeholder="ФИО руководителя курса" required><?php echo $head_name?></textarea>
-                </br></br>
-                <p><h3>Регалии руководителя онлайн курса</h3></p>
-                    <textarea type="text" name="head_reg" class="form-control"  cols="100" rows="3" placeholder="Ф. И. О., ученая степень, ученое звание (пр. регалии и заслуги)" required><?php echo $head_reg?></textarea>
-                </br></br>
-                <p><h3>Краткая аннотация онлайн-курса(не более 1000 знаков)</h3></p>
-                    <textarea type="text" name="kurs_short_info" class="form-control"  cols="100" rows="3" placeholder="В этом поле укажите текст краткой аннотации онлайн-курса для размещения на образовательной онлайн-платформе в разделе «Описание к курсу» объемом не более 1000 печатных знаков." maxlength=1000  required><?php echo $kurs_short_info?></textarea>
-                </br></br>
-                <hr>
-                </br></br>
-                <p><h3>Текст выступления к видео-презентации онлайн-курса (не более 1,5 минут)</h3></p>
-                </br></br>
-                <hr>
-                </br>
-                <p><h3>ФИО спикера</h3></p>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" class="form-control" name="speaker_name" size="70" placeholder="Укажите ФИО спикера" maxlength=100 value="<?php echo $speaker_name?>" required></input>
-                </br></br>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<h4>Текст с информацией о спикере</h3>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea type="text" class="form-control" name="short_video_text_speaker"  cols="100" rows="3" placeholder="В этом поле укажите текст выступления спикера с приветствием и небольшим рассказом о себе (опыт, достижения, заслуги)." required><?php echo $short_video_text_speaker?></textarea>
-                </br>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<h4>Текст с информацией о курсе</h3>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<textarea type="text" class="form-control" name="short_video_text_kurs"  cols="100" rows="3" placeholder="В этом поле укажите текст выступления спикера с рассказом, о чем курс (в целом). Что будете изучать (подробнее)? О чем рассказывать? Чем полезен курс? Какие компетенции приобретет слушатель? Прочее. " required><?php echo $short_video_text_kurs?></textarea>
-                </br></br></br>
-                <?php echo '<a href="user.php"class="btn btn-outline-primary me-2">Вернуться</a>'?>
-                <input type="submit" name="submit_image" value="Изменить" class="btn btn-outline-primary me-2">
-            </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
