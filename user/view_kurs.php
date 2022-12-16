@@ -11,6 +11,7 @@ $head_name = $head_info['first_name'] . ' ' . $head_info['name'] . ' ' . $head_i
 $authors = authors($dbo, $kurs_id);
 $head_reg = $user_info['academic_degree'] . ', ' . $user_info['academic_title'] . '</br>' . $user_info['about'];
 $themes = themes($dbo, $kurs_id);
+$photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -138,11 +139,17 @@ $themes = themes($dbo, $kurs_id);
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">
-                        <!-- <img src="/images/я.jpg" alt="Письма мастера дзен" width="160" height="160"> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg>
+                        <?php
+                        if (!empty($photo) & isset($photo)) {
+                            echo '<img src=' . $photo . ' width="200" height="300" class="avatar">
+                                <br>';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>';
+                        } 
+                        ?>
                         <p class="h5 mt-4 mb-4"><?php echo $head_name?></p>
 
                         <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 

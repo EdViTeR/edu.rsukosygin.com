@@ -18,6 +18,7 @@ foreach ($authors_all as $key => $value) {
         $_SESSION['user']['user_status'] = 'Соавтор';
     }
 }
+$photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -79,15 +80,37 @@ foreach ($authors_all as $key => $value) {
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-white border rounded-3">
-                        <!-- <img src="/images/я.jpg" alt="Письма мастера дзен" width="160" height="160"> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <?php
+                        if (!empty($photo) & isset($photo)) {
+                            echo '<div class="photo_none">
+                                <img src=' . $photo . ' width="200" height="300" class="avatar"></div>
+                                <p class="h5 mt-4 mb-4">' . $name . '</p>
+                                <p>Вы авторизировались как <strong>' . $_SESSION['user']['user_status'] . '</strong>.</p> 
+                                <div class="photo_tool">
+                                    <p>Изменить фото</p>
+                                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="image"><br><br>
+                                        <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
+                                    </form>
+                                </div>  ';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#CCC" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                </svg>
+                                <p class="h5 mt-4 mb-4">' . $name . '</p>
+                                <p>Вы авторизировались как <strong>' . $_SESSION['user']['user_status'] . '</strong>.</p> 
+                                <div class="photo_tool">
+                                <p>Добавьте фото</p>
+                                <form action="upload.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="image"><br><br>
+                                    <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
+                                </form></div>';
+                        } 
+                        ?>
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                         </svg>
-                        <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-
-                        <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
-                        <!-- <p>Вам доступны следующие дествия:</p> -->
                     </div>
                 </div>
             </div>
