@@ -214,9 +214,7 @@ function user_data($dbo, $id) {
 
 //Вытаскиваем пользователя по роли для админки
 function expert_data($dbo) {
-	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = 5");
-	$stmt->execute([$id]);
-	$expert_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$expert_data = $dbo->query("SELECT * FROM teacher WHERE `role` = 5")->fetchAll(PDO::FETCH_ASSOC);
 	return $expert_data;
 }
 
