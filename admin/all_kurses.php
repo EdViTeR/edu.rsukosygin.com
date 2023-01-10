@@ -1,7 +1,7 @@
 <?php
     session_start();
     include ("../database/databaseInfo.php");
-    $data = kurses($dbo);
+    $data = get_kurs_info($dbo);
     $users = users($dbo);
 ?>
 <!doctype html>
@@ -43,19 +43,19 @@
                             <?  
                             $k = 0;
                             foreach ($data as $key => $value) {
-                                $k++;
+                                $user_id = $value['user_id'];
+                                $user_info = teacher($dbo, $user_id);
+                                $user_name = $user_info['first_name'] . ' ' . $user_info['name'] . ' ' . $user_info['last_name'];
                                 $kurs_id = $value['id'];
-                                $user_id = $value['head_id'];
-                                $username = $value['head_name'];
-                                $kurs_name = $value['short_name'];
-                                echo '<div class="d-flex text-muted pt-3">
+                                $kurs_name = $value['kurs_name'];
+                                    echo '<div class="d-flex text-muted pt-3">
                                         <a href="view_kurs.php?kurs_id=' . $kurs_id . '&user_id=' . $user_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bdy=".3em"></text></svg></a>
                                         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                         <div class="d-flex justify-content-between">
                                             <strong class="text-gray-dark">' . $kurs_name . '</strong>
                                             <a href="edit_kurs_info.php?kurs_id=' . $kurs_id . '">Редактировать</a>
                                         </div>
-                                            <span class="d-block">' . $username . '</span>
+                                            <span class="d-block">' . $user_name . '</span>
                                         </div>
                                     </div>';
                             }?>
