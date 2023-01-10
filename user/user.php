@@ -69,8 +69,8 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                     } else {
                                         echo '<a href="add_kurs.php?kurs_id=' . $kurs_id . '">Добавить информацию</a>';
                                     }
-                                    echo '           </div>
-                                                <span class="d-block">Курс в разбработке</span>
+                                    echo '</div>
+                                                <span class="d-block">Курс в разработке</span>
                                             </div>
                                         </div>';
                                 }
