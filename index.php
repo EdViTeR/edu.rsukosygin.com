@@ -35,31 +35,31 @@ if (isset($_SESSION['user'])) {
   <body class="body-signin">
     <main class="form-signin">
         <form action="auth.php" method="post">
-          <a href="/"><img class="mb-5" src="images/rsu_logo.svg" alt="" width="70%"></a>
-          <h1 class="h3 mb-3 fw-normal">Личный кабинет</h1>
-      
-          <div class="form-floating">
-            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-            <label for="floatingInput">Email</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-            <label for="floatingPassword">Пароль</label>
-          </div>
-          <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
-          <!-- <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a> -->
-          <?php 
-              if (isset($_SESSION['access'])) {
-                  echo '<p class="access">' . $_SESSION['access'] . '</p>';
-              } elseif (isset($_SESSION['message'])) {
-                  echo '<p class="message">' . $_SESSION['message'] . '</p>';
-              }
-              unset($_SESSION['access']);
-              unset($_SESSION['message']);
-          ?>
-        <p class="mt-5 mb-3 text-muted">Центр развития электронных<br>образовательных ресурсов<br>РГУ им. А.Н. Косыгина<br>
-            <a href="mailto:direct@rsukosygin.ru">direct@rsukosygin.ru</a>
-        </p>
+            <a href="/"><img class="mb-5" src="images/rsu_logo.svg" alt="" width="70%"></a>
+            <h1 class="h3 mb-3 fw-normal">Личный кабинет</h1>
+            <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <label for="floatingPassword">Пароль</label>
+            </div>
+            <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
+            <!-- <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a> -->
+            </br></br>
+            <?php 
+                if (isset($_SESSION['access'])) {
+                    echo '<p class="access">' . $_SESSION['access'] . '</p>';
+                } elseif (isset($_SESSION['message'])) {
+                    echo '<p class="message">' . $_SESSION['message'] . '</p>';
+                }
+                unset($_SESSION['access']);
+                unset($_SESSION['message']);
+            ?>
+            <p class="mt-4 mb-3 text-muted">Центр развития электронных<br>образовательных ресурсов<br>РГУ им. А.Н. Косыгина</br>
+            <a href="mailto:reor@rguk.ru">reor@rguk.ru</a>
+            </p>
         </form>
       </main>
   </body>
