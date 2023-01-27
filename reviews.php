@@ -30,7 +30,7 @@ session_start();
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h5 class="border-bottom pb-2 mb-0">Отзывы и пожелания</h5><br>
                         <form method="POST" action="check_reviews.php">
-                            <label for="technology" class="form-label">Оставьте свой отзыв о работе платформы и взаимодействия с ней. Подробно укажите пожелания для улучшения качества работы сервиса и процесса разработки онлайн-курсов.</label></br></br>
+                            <label for="technology" class="form-label">Оставьте свой отзыв о работе платформы и взаимодействия с ней. Подробно укажите пожелания для улучшения качества работы сервиса, а также совершенствования системы оценивания онлайн-курсов.</label></br></br>
                             <textarea type="text" name="review" class="form-control"  cols="100" rows="7" placeholder="Введите текст" required></textarea>
                             </br>
                             <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
