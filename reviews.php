@@ -44,9 +44,9 @@ session_start();
                                         }
                                     </style>
                                 <b>' . $_SESSION["access"] . '</b></br></br>
-                                <a href="logout.php" class="w-100 btn btn-outline-success btn-lg">Выйти</a>';
+                                <a href="logout.php" class="w-100 btn btn-outline-secondary btn-lg">Выйти</a>';
                             } else {
-                                echo '</br>';
+                                echo '</br><a href="logout.php" class="w-100 btn btn-outline-secondary btn-lg">Вернуться</a>';
                             }
                         ?> 
                     </div>
