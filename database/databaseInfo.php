@@ -249,6 +249,12 @@ function users($dbo) {
 	return $data;
 }
 
+//Вытаскиваем все отзывы
+function reviews($dbo) {
+	$data = $dbo->query('SELECT * FROM reviews')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 //Вытаскиваем все курсы преподавателя по его id
 function teach_kurs($dbo, $head_id) {
 	$stmt = $dbo->prepare('SELECT * FROM teach_kurs WHERE `head_id` IN(?)');
