@@ -144,9 +144,9 @@
                         <a href="add_teacher.php" class="btn btn-primary mb-3 me-3" type="button">Добавить пользователя</a>
                         <!-- <a href="delete_info.php"  class="btn btn-outline-secondary mb-3" type="button">Архив</a> -->
                         <a href="stats.php"  class="btn btn-outline-secondary mb-3" type="button">Статистика</a>
-                        <a href="rating.php"  class="btn btn-outline-secondary mb-3" type="button">Оценки</a>
+                        <!-- <a href="rating.php"  class="btn btn-outline-secondary mb-3" type="button">Оценки</a> -->
                         <a href="check_teacher_info.php"  class="btn btn-outline-secondary mb-3" type="button">Проверка</a>
-                        <a href="unloading.php"  class="btn btn-outline-secondary mb-3" type="button">Выгрузка</a>
+                        <!-- <a href="unloading.php"  class="btn btn-outline-secondary mb-3" type="button">Выгрузка</a> -->
                     </div>
                 </div>
             </div>
