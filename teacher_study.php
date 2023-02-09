@@ -1,26 +1,7 @@
-<?php 
-    session_start();
-    require_once 'vendor/autoload.php';
-    if (isset($_SESSION['user'])) {
-        switch ($_SESSION['user']['role']) {
-            case '1':
-                header("Location: user/user.php?user_id=$id"); //преподаватель
-                break;
-            case '2':
-                header("Location: admin/check_teacher.php"); //админ
-                break;
-            case '3':
-                header("Location: producer/check_teacher.php?prod_id=$id"); //продюссер
-                break;
-            case '4':
-                header("Location: producer/check_teacher.php?prod_id=$id"); //пользователь
-                break;
-            case '5':
-                header("Location: producer/check_teacher.php?prod_id=$id"); //эксперт
-                break;
-        } 
-    }
+<?php
+
 ?>
+
 <!doctype html>
 <html lang="ru">
     <head>
@@ -46,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h4 class="mb-3 ">Регистрация разработчика онлайн-курсов</h4>
+                    <h4 class="mb-3">Регистрация разработчика онлайн-курсов</h4>
                     <hr><br>
                     <form method="POST" action="save_user.php" enctype="multipart/form-data">
                         <div class="row g-3">
@@ -61,25 +42,35 @@
                             <div class="col-sm-4">
                                 <label for="last_name" class="form-label">Отчество</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество" value="">
-                            </div>
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="you-np@rguk.ru" required>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="password" class="form-label">Пароль <span class="text-muted"></span></label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required>
-                            </div>
-                            <div class="col-sm-12">
-                                <label for="password" class="form-label">Повторите пароль <span class="text-muted"></span></label>
-                                <input type="password" class="form-control" id="password" name="repeat_password" placeholder="Повторите пароль" required>
-                            </div>
+                            </div><br></br><br></br>
+                            <h4 class="mb-3">Выберите дату</h4>
+                            <br></br>
+							<div class="form_radio_btn">
+								<input id="radio-1" type="radio" name="radio" value="1" checked>
+								<label for="radio-1">15.02<hr>10:00<hr>1444</label>
+								<input id="radio-2" type="radio" name="radio" value="2">
+								<label for="radio-2">16.02<hr>10:00<hr>1444</label>
+								<input id="radio-3" type="radio" name="radio" value="3">
+								<label for="radio-3">17.02<hr>10:00<hr>1444</label>
+								<input id="radio-4" type="radio" name="radio" value="4">
+								<label for="radio-4">18.02<hr>10:00<hr>1444</label>
+								<input id="radio-5" type="radio" name="radio" value="5">
+								<label for="radio-5">19.02<hr>10:00<hr>1444</label>
+								<input id="radio-1" type="radio" name="radio" value="1" checked>
+								<label for="radio-1">15.02<hr>10:00<hr>1444</label>
+								<input id="radio-2" type="radio" name="radio" value="2">
+								<label for="radio-2">16.02<hr>10:00<hr>1444</label>
+								<input id="radio-3" type="radio" name="radio" value="3">
+								<label for="radio-3">17.02<hr>10:00<hr>1444</label>
+								<input id="radio-4" type="radio" name="radio" value="4">
+								<label for="radio-4">18.02<hr>10:00<hr>1444</label>
+								<input id="radio-5" type="radio" name="radio" value="5">
+								<label for="radio-5">19.02<hr>10:00<hr>1444</label>
+							</div>
                         </div>
                         <br>
                         <!-- <p class="mt-4">Последние изменение: 21.01.2022 в 23:23</p> -->
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
-                        <a class="btn btn-outline-secondary btn-lg mt-4" href="index.php">Вход</a>
                         <?php
                             if (isset($_SESSION['errors'])) {
                                 echo '<p class="message">' . $_SESSION['errors'] . '</p>';
@@ -104,14 +95,7 @@
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <!-- <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; Центр развития электронных образовательных ресурсов</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; РГУ им. А.Н. Косыгина (ТЕХНОЛОГИИ.ДИЗАЙН.ИСКУССТВО)</p>
             </footer>
         </div>
 
