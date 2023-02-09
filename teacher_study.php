@@ -29,7 +29,7 @@
                 <div class="col-lg-8">
                     <h4 class="mb-3">Регистрация разработчика онлайн-курсов</h4>
                     <hr><br>
-                    <form method="POST" action="save_user.php" enctype="multipart/form-data">
+                    <form method="POST" action="save_teacher_study_user.php" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4">
                                 <label for="first_name" class="form-label">Фамилия</label>
@@ -42,7 +42,7 @@
                             <div class="col-sm-4">
                                 <label for="last_name" class="form-label">Отчество</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество" value="">
-                            </div><br></br><br></br>
+                            </div><br></br><br></br><hr>
                             <h4 class="mb-3">Выберите дату</h4>
                             <br></br>
 							<div class="form_radio_btn">
@@ -56,16 +56,14 @@
 								<label for="radio-4">18.02<hr>10:00<hr>1444</label>
 								<input id="radio-5" type="radio" name="radio" value="5">
 								<label for="radio-5">19.02<hr>10:00<hr>1444</label>
-								<input id="radio-1" type="radio" name="radio" value="1" checked>
-								<label for="radio-1">15.02<hr>10:00<hr>1444</label>
-								<input id="radio-2" type="radio" name="radio" value="2">
-								<label for="radio-2">16.02<hr>10:00<hr>1444</label>
-								<input id="radio-3" type="radio" name="radio" value="3">
-								<label for="radio-3">17.02<hr>10:00<hr>1444</label>
-								<input id="radio-4" type="radio" name="radio" value="4">
-								<label for="radio-4">18.02<hr>10:00<hr>1444</label>
-								<input id="radio-5" type="radio" name="radio" value="5">
-								<label for="radio-5">19.02<hr>10:00<hr>1444</label>
+								<input id="radio-6" type="radio" name="radio" value="6">
+								<label for="radio-6">15.02<hr>10:00<hr>1444</label>
+								<input id="radio-7" type="radio" name="radio" value="7">
+								<label for="radio-7">16.02<hr>10:00<hr>1444</label>
+								<input id="radio-8" type="radio" name="radio" value="8">
+								<label for="radio-8">17.02<hr>10:00<hr>1444</label>
+								<input id="radio-9" type="radio" name="radio" value="9">
+								<label for="radio-9">18.02<hr>10:00<hr>1444</label>
 							</div>
                         </div>
                         <br>
