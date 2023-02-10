@@ -87,7 +87,7 @@ foreach ($teacher_study as $key => $value) {
                                 <label for="last_name" class="form-label">Отчество</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Введите отчество" value="">
                             </div><br></br><br></br><hr>
-                            <h4 class="mb-3">Выберите дату занятия (Продолжительность занятия 1 час 20 минут)</h4>
+                            <h4 class="mb-3">Выберите дату занятия (продолжительность занятия - 1 час 20 минут)</h4>
                             <br></br>
 							<div class="form_radio_btn">
                                 <?php if ($q > 0): ?>
@@ -145,11 +145,11 @@ foreach ($teacher_study as $key => $value) {
                     <div class="p-5 bg-light border rounded-3">
                         <h2>Регистрация</h2>
                         <p>Внимательно проверьте все данные перед сохранением.</p>
+                        <a class="btn btn-outline-primary btn-lg mt-4 me-3" href="https://docs.google.com/spreadsheets/d/1VaK4GZvl9pfcsjMMJQY1iSyB4UACMMuct2d469nxCes/edit?usp=sharing">Ссылка для просмотра записей</a>
                     </div>
                 </div>
             </div>
-        </div>
-    
+        </div>   
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
