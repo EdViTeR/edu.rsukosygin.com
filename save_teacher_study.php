@@ -8,7 +8,7 @@ $name 			= $_POST['name'];
 $last_name 		= $_POST['last_name'];
 $date 			= $_POST['radio'];
 
-if (empty($first_name) || empty($name) || empty($last_name) || empty($date)) {
+if (empty($first_name) || empty($name) || empty($date)) {
 	$_SESSION['errors'] = 'Заполнены не все данные';
 	header('Location: teacher_study.php');
 }
