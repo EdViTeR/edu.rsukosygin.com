@@ -8,6 +8,11 @@ $name 			= $_POST['name'];
 $last_name 		= $_POST['last_name'];
 $date 			= $_POST['radio'];
 
+if (empty($first_name) || empty($name) || empty($last_name) || empty($date)) {
+	$_SESSION['errors'] = 'Заполнены не все данные';
+	header('Location: teacher_study.php');
+}
+
 switch ($date) {
 	case '1':
 		$need_time = '28.02 | 10:50';
@@ -50,7 +55,7 @@ $stmt->execute($params);
 if($stmt->rowCount() > 0) {
 	$_SESSION['success'] = 'Вы успешно зарегистрированы';
 } else {
-	$_SESSION['errors'] = 'Что-то пошло не так';
+	$_SESSION['errors'] = 'Что-то пошло не так. Проверьте правильно ли заполнены данные.';
 }
 header('Location: teacher_study.php');
 ?>
