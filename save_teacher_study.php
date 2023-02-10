@@ -10,28 +10,28 @@ $date 			= $_POST['radio'];
 
 switch ($date) {
 	case '1':
-		$need_time = '28.02';
+		$need_time = '28.02 | 10:50';
 		break;
 	case '2':
-		$need_time = '28.02';
+		$need_time = '28.02 | 12:25';
 		break;
 	case '3':
-		$need_time = '02.03';
+		$need_time = '02.03 | 10:50';
 		break;
 	case '4':
-		$need_time = '02.03';
+		$need_time = '02.03 | 12:25';
 		break;
 	case '5':
-		$need_time = '03.03';
+		$need_time = '03.03 | 10:50';
 		break;
 	case '6':
-		$need_time = '03.03';
+		$need_time = '03.03 | 12:25';
 		break;
 	case '7':
-		$need_time = '09.03';
+		$need_time = '09.03 | 10:50';
 		break;
 	case '8':
-		$need_time = '09.03';
+		$need_time = '09.03 | 12:25';
 		break;
 	
 	default:

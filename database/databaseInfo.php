@@ -304,6 +304,12 @@ function themes_info($dbo, $id) {
 	return $themes_info;
 }
 
+//Вытаскиваем всех зарегистрированных зав.кафедр (временно)
+function teacher_study($dbo) {
+	$stmt = $dbo->query("SELECT * FROM teacher_study")->fetchAll(PDO::FETCH_ASSOC);
+	return $stmt;
+}
+
 //Вытаскиваем 1 тему курса по id темы и id курса
 function theme($dbo, $theme_id) {
 	$stmt = $dbo->prepare('SELECT * FROM themes WHERE `id` IN(?)');
