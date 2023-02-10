@@ -2,14 +2,14 @@
 session_start();
 require_once 'database/databaseInfo.php';
 $teacher_study = teacher_study($dbo);
-$q = 10;
-$w = 10;
-$e = 10;
-$r = 10;
-$t = 10;
-$y = 10;
-$u = 10;
-$i = 10;
+$q = 1;
+$w = 1;
+$e = 1;
+$r = 1;
+$t = 1;
+$y = 1;
+$u = 1;
+$i = 1;
 foreach ($teacher_study as $key => $value) {
     switch ($value['date']) {
         case '28.02 | 10:50':
