@@ -1,5 +1,49 @@
 <?php
 session_start();
+require_once 'database/databaseInfo.php';
+$teacher_study = teacher_study($dbo);
+$q = 10;
+$w = 10;
+$e = 10;
+$r = 10;
+$t = 10;
+$y = 10;
+$u = 10;
+$i = 10;
+foreach ($teacher_study as $key => $value) {
+    switch ($value['date']) {
+        case '28.02 | 10:50':
+            $q--;
+            break;
+        case '28.02 | 12:25':
+            $w--;
+            break;
+        case '02.03 | 10:50':
+            $e--;
+            break;
+        case '02.03 | 12:25':
+            $r--;
+            break;
+        case '03.03 | 10:50':
+            $t--;
+            break;
+        case '03.03 | 12:25':
+            $y--;
+            break;
+        case '09.03 | 10:50':
+            $u--;
+            break;
+        case '09.03 | 12:25':
+            $i--;
+            break;
+        
+        default:
+            // code...
+            break;
+    }
+}
+
+
 ?>
 
 <!doctype html>
@@ -46,24 +90,40 @@ session_start();
                             <h4 class="mb-3">Выберите дату занятия (Продолжительность занятия 1 час 20 минут)</h4>
                             <br></br>
 							<div class="form_radio_btn">
-								<input id="radio-1" type="radio" name="radio" value="1" checked>
-								<label for="radio-1">28.02<hr>10:50<hr>Каб. 1440</label>
-								<input id="radio-2" type="radio" name="radio" value="2">
-								<label for="radio-2">28.02<hr>12:25<hr>Каб. 1440</label>
-								<input id="radio-3" type="radio" name="radio" value="3">
-								<label for="radio-3">02.03<hr>10:50<hr>Каб. 1440</label>
-								<input id="radio-4" type="radio" name="radio" value="4">
-								<label for="radio-4">02.03<hr>12:25<hr>Каб. 1440</label>
+                                <?php if ($q > 0): ?>
+								    <input id="radio-1" type="radio" name="radio" value="1" checked>
+								    <label for="radio-1">Мест: <?php echo $q;?><hr>28.02<hr>10:50<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($w > 0): ?>
+								    <input id="radio-2" type="radio" name="radio" value="2">
+								    <label for="radio-2">Мест: <?php echo $w;?><hr>28.02<hr>12:25<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($e > 0): ?>
+    								<input id="radio-3" type="radio" name="radio" value="3">
+    								<label for="radio-3">Мест: <?php echo $e;?><hr>02.03<hr>10:50<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($r > 0): ?>
+    								<input id="radio-4" type="radio" name="radio" value="4">
+    								<label for="radio-4">Мест: <?php echo $r;?><hr>02.03<hr>12:25<hr>Каб. 1440</label>
+                                <?php endif ?>
                             </div>
                             <div class="form_radio_btn">
-								<input id="radio-5" type="radio" name="radio" value="5">
-								<label for="radio-5">03.03<hr>10:50<hr>Каб. 1440</label>
-								<input id="radio-6" type="radio" name="radio" value="6">
-								<label for="radio-6">03.03<hr>12:25<hr>Каб. 1440</label>
-								<input id="radio-7" type="radio" name="radio" value="7">
-								<label for="radio-7">09.03<hr>10:50<hr>Каб. 1440</label>
-								<input id="radio-8" type="radio" name="radio" value="8">
-								<label for="radio-8">09.03<hr>12:25<hr>Каб. 1440</label>
+                                <?php if ($t > 0): ?>
+    								<input id="radio-5" type="radio" name="radio" value="5">
+    								<label for="radio-5">Мест: <?php echo $t;?><hr>03.03<hr>10:50<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($y > 0): ?>
+    								<input id="radio-6" type="radio" name="radio" value="6">
+    								<label for="radio-6">Мест: <?php echo $y;?><hr>03.03<hr>12:25<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($u > 0): ?>
+    								<input id="radio-7" type="radio" name="radio" value="7">
+    								<label for="radio-7">Мест: <?php echo $u;?><hr>09.03<hr>10:50<hr>Каб. 1440</label>
+                                <?php endif ?>
+                                <?php if ($i > 0): ?>
+    								<input id="radio-8" type="radio" name="radio" value="8">
+    								<label for="radio-8">Мест: <?php echo $i;?><hr>09.03<hr>12:25<hr>Каб. 1440</label>
+                                <?php endif ?>
 							</div>
                         </div>
                         <br>
