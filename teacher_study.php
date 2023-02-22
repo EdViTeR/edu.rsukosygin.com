@@ -73,7 +73,10 @@ foreach ($teacher_study as $key => $value) {
                 <div class="col-lg-8">
                     <h4 class="mb-3">Регистрация на практические занятия по работе в удаленном кабинете</h4>
                     <hr><br>
-                    <form method="POST" action="save_teacher_study.php" enctype="multipart/form-data">
+                    <h5>Регистрация завершена. <!-- По вопросам обращайтесь на почту ыва"выа <p> или по телефону:<p>
+                    8912<p>
+                    89123</h5> -->
+<!--                     <form method="POST" action="save_teacher_study.php" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4">
                                 <label for="first_name" class="form-label">Фамилия</label>
@@ -139,7 +142,7 @@ foreach ($teacher_study as $key => $value) {
                         ?>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
                         <a href="logout.php" class="btn btn-outline-secondary btn-lg mt-4 me-3" type="submit">Выйти</a>
-                    </form>
+                    </form> -->
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-light border rounded-3">
