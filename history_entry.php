@@ -1,47 +1,40 @@
 <?php
 session_start();
 require_once 'database/databaseInfo.php';
-$teacher_study = teacher_study($dbo);
-$q = 10;
-$w = 10;
-$e = 10;
-$r = 10;
-$t = 10;
-$y = 10;
-$u = 10;
-$i = 10;
-foreach ($teacher_study as $key => $value) {
-    switch ($value['date']) {
-        case '28.02 | 10:50':
-            $q--;
-            break;
-        case '28.02 | 12:25':
-            $w--;
-            break;
-        case '02.03 | 10:50':
-            $e--;
-            break;
-        case '02.03 | 12:25':
-            $r--;
-            break;
-        case '03.03 | 10:50':
-            $t--;
-            break;
-        case '03.03 | 12:25':
-            $y--;
-            break;
-        case '09.03 | 10:50':
-            $u--;
-            break;
-        case '09.03 | 12:25':
-            $i--;
-            break;
+$need_date = takeDate($dbo);
+
+// foreach ($teacher_study as $key => $value) {
+//     switch ($value['date']) {
+//         case '03.05 | 12:00':
+//             $q--;
+//             break;
+//         case '28.02 | 12:25':
+//             $w--;
+//             break;
+//         case '02.03 | 10:50':
+//             $e--;
+//             break;
+//         case '02.03 | 12:25':
+//             $r--;
+//             break;
+//         case '03.03 | 10:50':
+//             $t--;
+//             break;
+//         case '03.03 | 12:25':
+//             $y--;
+//             break;
+//         case '09.03 | 10:50':
+//             $u--;
+//             break;
+//         case '09.03 | 12:25':
+//             $i--;
+//             break;
         
-        default:
-            // code...
-            break;
-    }
-}
+//         default:
+//             // code...
+//             break;
+//     }
+// }
 
 
 ?>
@@ -76,7 +69,7 @@ foreach ($teacher_study as $key => $value) {
                 <div class="col-lg-8">
                     <h4 class="mb-3">Регистрация на запись видеолекций курса по Истории</h4>
                     <hr><br>
-                    <form method="POST" action="save_teacher_study.php" enctype="multipart/form-data">
+                    <form method="POST" action="save_history_entry.php" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4">
                                 <label for="first_name" class="form-label">Фамилия</label>
@@ -93,74 +86,196 @@ foreach ($teacher_study as $key => $value) {
                             <h4 class="mb-3">Выберите дату занятия (продолжительность занятия - 1 час 20 минут)</h4>
                             <b class="mb-3">Видеосъемка происходит в кабинете <u>1449</u></b>
                             <br></br>
-                            <div>
-                                <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-</div>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Май - первая неделя</a>
+                                </h5>
                             </div>
-                                <div class="form_radio_btn">
-                                    <?php if ($q > 0): ?>
-    								    <input id="radio-1" type="radio" name="radio" value="1" checked>
-    								    <label for="radio-1">28.02<hr>12:00</label>
-                                    <?php endif ?>
-                                    <?php if ($w > 0): ?>
-    								    <input id="radio-2" type="radio" name="radio" value="2">
-    								    <label for="radio-2">28.02<hr>12:00</label>
-                                    <?php endif ?>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 1 && $value['month'] == 'may') {
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $value['date'] . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $value['date'] . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
-                                <div class="form_radio_btn">
-                                    <?php if ($q > 0): ?>
-                                        <input id="radio-1" type="radio" name="radio" value="1" checked>
-                                        <label for="radio-1">28.02<hr>12:00</label>
-                                    <?php endif ?>
-                                    <?php if ($w > 0): ?>
-                                        <input id="radio-2" type="radio" name="radio" value="2">
-                                        <label for="radio-2">28.02<hr>12:00</label>
-                                    <?php endif ?>
-    							</div>
+                            </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Май - вторая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 2 && $value['month'] == 'may') {
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $value['date'] . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $value['date'] . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Май - третья неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 3 && $value['month'] == 'may') {
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $value['date'] . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $value['date'] . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Май - четвертая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 4 && $value['month'] == 'may') {
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $value['date'] . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $value['date'] . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Май - пятая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 5 && $value['month'] == 'may') {
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $value['date'] . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $value['date'] . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></br>
+                <hr></br>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOneJun">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOneJun" aria-expanded="false" aria-controls="collapseOneJun">Июнь - первая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseOneJun" class="collapse" aria-labelledby="headingOneJun" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 1 && $value['month'] == 'june') {
+                                                $id = $value['date'] . 'june';
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $id . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $id . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwoJune">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoJune" aria-expanded="false" aria-controls="collapseTwoJune">Июнь - вторая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseTwoJune" class="collapse" aria-labelledby="headingTwoJune" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 2 && $value['month'] == 'june') {
+                                                $id = $value['date'] . 'juner';
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $id . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $id . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                         <br>
                         <?php
                             if (isset($_SESSION['errors'])) {
