@@ -200,3 +200,7 @@ li {
 .form_radio_btn label:hover {
     color: #666;
 }
+
+.back_gray {
+    background: #f5f5f5; 
+}

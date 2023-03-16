@@ -352,3 +352,11 @@ function takePresent($link, $id) {
 	$data = mysqli_fetch_all($result);
 	return $data;
 }
+
+
+//Вытаскиваем даты по истории
+function takeDate($dbo) {
+	$stmt = $dbo->query("SELECT * FROM history_date")->fetchAll(PDO::FETCH_ASSOC);
+	return $stmt;
+}
+
