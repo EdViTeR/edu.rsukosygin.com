@@ -29,5 +29,5 @@ if($stmt->rowCount() > 0) {
 } else {
 	$_SESSION['errors'] = 'Что-то пошло не так. Проверьте правильно ли заполнены данные.';
 }
-header('Location: history_entry.php');
+header('Location: check_history.php');
 ?>
