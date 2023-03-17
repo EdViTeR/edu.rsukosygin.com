@@ -295,7 +295,7 @@ $need_date = takeDate($dbo);
                     <div class="p-5 bg-light border rounded-3">
                         <h2>Регистрация</h2>
                         <p>Внимательно проверьте все данные перед сохранением.</p>
-                        <a class="btn btn-outline-primary btn-lg mt-4 me-3" href="https://docs.google.com/spreadsheets/d/1VaK4GZvl9pfcsjMMJQY1iSyB4UACMMuct2d469nxCes/edit?usp=sharing">Ссылка для просмотра записей</a>
+                        <a class="btn btn-outline-primary btn-lg mt-4 me-3" href="check_history.php">Ссылка для просмотра записей</a>
                     </div>
                 </div>
             </div>
