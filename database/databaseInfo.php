@@ -360,3 +360,16 @@ function takeDate($dbo) {
 	return $stmt;
 }
 
+
+//Вытаскиваем даты записи по истории
+function takeDateRegistry($dbo) {
+	$stmt = $dbo->query("SELECT * FROM history_entry")->fetchAll(PDO::FETCH_ASSOC);
+	return $stmt;
+}
+
+//удаление записи по истории
+function delete_history_date($dbo, $date) {
+	$sql = "DELETE FROM history_date WHERE date=?";
+	$stmt = $dbo->prepare($sql);
+	$stmt->execute([$date]);
+}
