@@ -3,40 +3,6 @@ session_start();
 require_once 'database/databaseInfo.php';
 $need_date = takeDate($dbo);
 
-// foreach ($teacher_study as $key => $value) {
-//     switch ($value['date']) {
-//         case '03.05 | 12:00':
-//             $q--;
-//             break;
-//         case '28.02 | 12:25':
-//             $w--;
-//             break;
-//         case '02.03 | 10:50':
-//             $e--;
-//             break;
-//         case '02.03 | 12:25':
-//             $r--;
-//             break;
-//         case '03.03 | 10:50':
-//             $t--;
-//             break;
-//         case '03.03 | 12:25':
-//             $y--;
-//             break;
-//         case '09.03 | 10:50':
-//             $u--;
-//             break;
-//         case '09.03 | 12:25':
-//             $i--;
-//             break;
-        
-//         default:
-//             // code...
-//             break;
-//     }
-// }
-
-
 ?>
 
 <!doctype html>
@@ -260,7 +226,88 @@ $need_date = takeDate($dbo);
                                         <?php 
                                         foreach ($need_date as $key => $value) {
                                             if ($value['week'] == 2 && $value['month'] == 'june') {
-                                                $id = $value['date'] . 'juner';
+                                                $id = $value['date'] . 'june';
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $id . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $id . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThreeJune">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThreeJune" aria-expanded="false" aria-controls="collapseThreeJune">Июнь - третья неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseThreeJune" class="collapse" aria-labelledby="headingThreeJune" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 3 && $value['month'] == 'june') {
+                                                $id = $value['date'] . 'june';
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $id . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $id . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFourJune">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourJune" aria-expanded="false" aria-controls="collapseFourJune">Июнь - четвертая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseFourJune" class="collapse" aria-labelledby="headingFourJune" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 4 && $value['month'] == 'june') {
+                                                $id = $value['date'] . 'june';
+                                                $time = explode("|", $value['date']);
+                                                $day = $time['0'];
+                                                $need_time = $time['1'];
+                                                echo '
+                                                    <input id="' . $id . '" type="radio" name="radio" value="' . $value['date'] . '">
+                                                    <label for="' . $id . '">' . $day . '<hr>' . $need_time . '</label>
+                                                ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFiveJune">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFiveJune" aria-expanded="false" aria-controls="collapseFiveJune">Июнь - пятая неделя</a>
+                                </h5>
+                            </div>
+                            <div id="collapseFiveJune" class="collapse" aria-labelledby="headingFiveJune" data-parent="#accordion">
+                                <div class="card-body back_gray">
+                                    <div class="form_radio_btn">
+                                        <?php 
+                                        foreach ($need_date as $key => $value) {
+                                            if ($value['week'] == 5 && $value['month'] == 'june') {
+                                                $id = $value['date'] . 'june';
                                                 $time = explode("|", $value['date']);
                                                 $day = $time['0'];
                                                 $need_time = $time['1'];
@@ -277,16 +324,6 @@ $need_date = takeDate($dbo);
                         </div>
                     </div>
                         <br>
-                        <?php
-                            if (isset($_SESSION['errors'])) {
-                                echo '<p class="message">' . $_SESSION['errors'] . '</p>';
-                            }
-                            if (isset($_SESSION['success'])) {
-                                echo '<p class="access">' . $_SESSION['success'] . '</p>';
-                            }
-                            unset($_SESSION['errors']);
-                            unset($_SESSION['success']);
-                        ?>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Зарегистрироваться</button>
                         <a href="logout.php" class="btn btn-outline-secondary btn-lg mt-4 me-3" type="submit">Выйти</a>
                     </form>
@@ -297,6 +334,16 @@ $need_date = takeDate($dbo);
                         <p>Внимательно проверьте все данные перед сохранением.</p>
                         <a class="btn btn-outline-primary btn-lg mt-4 me-3" href="check_history.php">Ссылка для просмотра записей</a>
                     </div>
+                        <?php
+                            if (isset($_SESSION['errors'])) {
+                                echo '<p class="message">' . $_SESSION['errors'] . '</p>';
+                            }
+                            if (isset($_SESSION['success'])) {
+                                echo '<p class="access">' . $_SESSION['success'] . '</p>';
+                            }
+                            unset($_SESSION['errors']);
+                            unset($_SESSION['success']);
+                        ?>
                 </div>
             </div>
         </div>   

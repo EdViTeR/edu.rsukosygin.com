@@ -109,6 +109,12 @@ function teacher($dbo, $user_id) {
 	return $user_data;
 }
 
+//Вытаскиваем всех преподов для выгрузки в админку
+function teacherAll($dbo) {
+	$data = $dbo->query('SELECT * FROM teacher')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 //Вытаскиваем всех экспертов для статистики
 function expert($dbo, $role) {
 	$stmt = $dbo->prepare("SELECT * FROM teacher WHERE `role` = ?");
