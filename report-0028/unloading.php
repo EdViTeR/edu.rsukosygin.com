@@ -1,6 +1,6 @@
 <?php
-require '../vendor/autoload.php'; # У меня данный файл находился на уровень выше
-require_once '../database/databaseInfo.php';
+require '../../vendor/autoload.php'; # У меня данный файл находился на уровень выше
+
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -25,7 +25,9 @@ $sheet->getColumnDimension('E')->setWidth(30);
 $sheet->getColumnDimension('F')->setWidth(30);
 $sheet->getColumnDimension('G')->setWidth(30);
 
-$teacher = teacherAll($dbo);
+  $sql = "SELECT * FROM `teacher`";      #Получение данных из таблицы teacher
+  $result = mysqli_query($dbo, $sql);
+  $teacher = mysqli_fetch_all($result, true);
   
   $i = 2;
   foreach ($teacher as $key => $value) {       
@@ -33,14 +35,17 @@ $teacher = teacherAll($dbo);
 
     $sheet->setCellValue('B'.$i, $value['first_name'].' '.$value['name'].' '.$value['last_name']);  #Заполнение поля ФИО
 
-    $user_id = $value['id'];
-    $kurs_info = get_kurs($dbo, $user_id);
-    var_dump($kurs_info); die;
+    $teach_id = $value['id'];
+    $sql = "SELECT * FROM `kurs_info` WHERE `user_id` = $teach_id";         #Получение данных из таблицы kurs_info
+    $result = mysqli_query($dbo, $sql);
+    $kurs_info = mysqli_fetch_all($result, true);
 
     $sheet->setCellValue('C'.$i, $kurs_info[0]['kurs_name']);     #Заполнение поля Курс  
 
     $kurs_id = $kurs_info[0]['id'];
-    $theme = themes($dbo, $kurs_id);
+    $sql = "SELECT * FROM `theme` WHERE `kurs_id` = $kurs_id";    #Получение данных из таблицы theme 
+    $result = mysqli_query($dbo, $sql);
+    $theme = mysqli_fetch_all($result, true);
 
     $sheet->setCellValue('D'.$i, count($theme));    #Заполнение поля Добавлено лекций 
 
