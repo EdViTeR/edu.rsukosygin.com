@@ -2,11 +2,13 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user']['id'];
 $kurs = kurs_data($dbo, $kurs_id);
 $head_id = $kurs['user_id'];
 $head_info = teacher($dbo, $head_id);
 $user_info = user_info_one($dbo, $head_id);
+$username = teacher($dbo, $user_id);
+$user_need_name = $username['first_name'] . ' ' . $username['name'] . ' ' . $username['last_name'];
 $head_name = $head_info['first_name'] . ' ' . $head_info['name'] . ' ' . $head_info['last_name'];
 $authors = authors($dbo, $kurs_id);
 $head_reg = $user_info['academic_degree'] . ', ' . $user_info['academic_title'] . '</br>' . $user_info['about'];
@@ -67,7 +69,8 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                     foreach ($authors as $key => $value) {
                                         $author_info = teacher($dbo, $value['user_id']);
                                         $author_name = $author_info['first_name'] . ' ' . $author_info['name'] . ' ' . $author_info['last_name'];
-                                        echo '<li>' . $author_name . '<br><small class="text-secondary">' . $authors_reg . '</small></li>';
+                                        // echo '<li>' . $author_name . '<br><small class="text-secondary">' . $authors_reg . '</small></li>';
+                                        echo '<li>' . $author_name . '<br>';
                                 }
                                 ?>
                             </ol>
@@ -90,7 +93,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                 }
                                 $k++;
                                     echo '<div class="d-flex text-muted pt-3">
-                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $themes_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $theme_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
                                                     <strong class="text-gray-dark">Лекция '.$k.'</strong>
@@ -150,7 +153,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                             </svg>';
                         } 
                         ?>
-                        <p class="h5 mt-4 mb-4"><?php echo $head_name?></p>
+                        <p class="h5 mt-4 mb-4"><?php echo $user_need_name?></p>
 
                         <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
                         <p>Вам доступны следующие дествия:</p>

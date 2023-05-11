@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ("../database/databaseInfo.php");
-$user_id = $_GET['user_id'];
+$user_id = $_SESSION['user']['id'];
 $status = $_GET['status'];
 $username = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $kurs = kurs_data_all($dbo, $status);

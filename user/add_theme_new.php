@@ -2,7 +2,7 @@
 session_start();
 include ("../database/databaseInfo.php");
 $username = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
-$user_id = $_GET['user_id'];
+$user_id = $_SESSION['user']['id'];
 $kurs_id = $_GET['kurs_id'];
 $kurs = kurs_data($dbo, $kurs_id);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
