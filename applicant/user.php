@@ -81,8 +81,8 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
-                        <p>Подача заявок на конкурс онлайн-курсов завершена.</p></br>
+                        <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
+                        <!-- <p>Подача заявок на конкурс онлайн-курсов завершена.</p></br> -->
                         <?php 
                             if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
                                 echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
@@ -90,7 +90,7 @@
                                 echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
                             }
                         ?> 
-                        <!-- <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a> -->
+                        <a href="add_kurs_info.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Добавить курс</a>
                         <?php 
                             if (isset($get_kurs) && !empty($get_kurs)) {
                                 echo '<a href="kurses.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои курсы</a>';
