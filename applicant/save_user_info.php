@@ -54,6 +54,7 @@ if (!empty($_POST)) {
 		];
 		$stmt = $dbo->prepare($query);
 		$stmt->execute($params);
+		// var_dump($stmt->execute($params)); die;
         $_SESSION['user_info'] = [
             "user_id" 				=> $user_id,
             "phone" 				=> $phone,
