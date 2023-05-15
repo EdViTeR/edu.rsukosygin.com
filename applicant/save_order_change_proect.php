@@ -4,18 +4,16 @@ require_once '../vendor/autoload.php';
 require_once '../database/connect_db.php';
 require_once '../database/databaseInfo.php';
 
-$id 					= $_GET['kurs_id'];
-$kurs_name 				= htmlspecialchars($_POST['kurs_name']);
-$description			= htmlspecialchars($_POST['description']);
-$sphere 				= htmlspecialchars($_POST['sphere']);
-$replacement 			= htmlspecialchars($_POST['replacement']);
-$route 					= htmlspecialchars($_POST['route']);
-$user_level 			= htmlspecialchars($_POST['user_level']);
-$work_time 				= htmlspecialchars($_POST['work_time']);
-$amount_lecture 		= htmlspecialchars($_POST['amount_lecture']);
-$amount_video_lecture 	= htmlspecialchars($_POST['amount_video_lecture']);
-$user_id 				= $_SESSION['user']['id'];
-
+$user_id 			= $_SESSION['user']['id'];
+$kurs_name 			= htmlspecialchars($_POST['kurs_name']);
+$description		= htmlspecialchars($_POST['description']);
+$lections 			= htmlspecialchars($_POST['lections']);
+$tasks 				= htmlspecialchars($_POST['tasks']);
+$certificate 		= htmlspecialchars($_POST['certificate']);
+$for_whom 			= htmlspecialchars($_POST['for_whom']);
+$why 				= htmlspecialchars($_POST['why']);
+$status 			= 1;
+$id 				= $_GET['kurs_id'];
 
 function debug($data) {
 	echo '<pre>' . print_r($data, 1) . '</pre>';
@@ -24,16 +22,15 @@ function debug($data) {
 $labels = [
 	'kurs_name' => 'Телефон',
 	'description' => 'Ученая степень',
-	'sphere' => 'Ученая степень (наука)',
-	'replacement' => 'Ученое звание',
-	'route' => 'Место работы',
-	'user_level' => 'Должность',
-	'work_time' => 'Должность',
-	'amount_lecture' => 'О себе',
-	'amount_video_lecture' => 'О себе',
+	'lections' => 'Ученая степень (наука)',
+	'tasks' => 'Ученое звание',
+	'certificate' => 'Место работы',
+	'for_whom' => 'Должность',
+	'why' => 'О себе',
+	'status' => 'О себе',
 ];
 $rules = [
-	'required' => ['kurs_name', 'description', 'sphere', 'replacement', 'route', 'work_time', 'user_level', 'amount_lecture', 'amount_video_lecture'],
+	'required' => ['kurs_name', 'description', 'lections', 'tasks', 'certificate', 'for_whom', 'why'],
     // ['phone', 'match', 'pattern' => '/^(8)[(](\d{3})[)](\d{3})[-](\d{2})[-](\d{2})/', 'message' => 'Телефона, должно быть в формате 8(XXX)XXX-XX-XX'],
 ];
 
@@ -45,19 +42,17 @@ if (!empty($_POST)) {
 	$v->rules($rules);
 	if ($v->validate()) {
 		$data = [
-			'id'					=> $id,
 		    'user_id' 				=> $user_id,
 		    'kurs_name' 			=> $kurs_name,
 		    'description'			=> $description,
-		    'sphere' 				=> $sphere,
-		    'replacement' 			=> $replacement,
-		    'route' 				=> $route,
-		    'user_level' 			=> $user_level,
-		    'work_time' 			=> $work_time,
-		    'amount_lecture' 		=> $amount_lecture,
-		    'amount_video_lecture' 	=> $amount_video_lecture,
+		    'lections' 				=> $lections,
+		    'tasks' 				=> $tasks,
+		    'certificate' 			=> $certificate,
+		    'for_whom' 				=> $for_whom,
+		    'why' 					=> $why,
+		    'status' 				=> $status,
 		];
-		$sql = "UPDATE kurs_info SET user_id=:user_id, kurs_name=:kurs_name, description=:description, sphere=:sphere, replacement=:replacement, route=:route, user_level=:user_level, work_time=:work_time, user_level=:user_level, amount_lecture=:amount_lecture, amount_video_lecture=:amount_video_lecture WHERE id=:id";
+		$sql = "UPDATE `sereegak_teacher`.`order_2023` SET user_id=:user_id, kurs_name=:kurs_name, description=:description, lections=:lections, tasks=:tasks, certificate=:certificate, for_whom=:for_whom, why=:why, status=:status WHERE id=:id";
 		$stmt= $dbo->prepare($sql);
 		$stmt->execute($data);
 		$_SESSION['access'] = 'Информация добавлена';
@@ -72,7 +67,7 @@ if (!empty($_POST)) {
 		}
 		$errors .= '</ul>';
 		$_SESSION['errors'] = $errors;
-		header('Location: add_user_info.php');
+		header('Location: kurses.php');
 		die;
 	}
 }

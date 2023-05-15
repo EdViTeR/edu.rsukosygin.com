@@ -2,6 +2,7 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
+$name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $kurs = kurs_data($dbo, $kurs_id);
 $head_user_id = $kurs['user_id'];
 $head_user = user_data($dbo, $head_user_id);
@@ -136,7 +137,7 @@ $themes = themes($dbo, $kurs_id);
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
+                        <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
                         <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
                         <a href="change_kurs.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
                         <a href="add_author.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-outline-primary mb-3 me-3" type="button">Добавить автора</a>
@@ -155,7 +156,7 @@ $themes = themes($dbo, $kurs_id);
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
                 </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 

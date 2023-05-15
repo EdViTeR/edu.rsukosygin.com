@@ -81,7 +81,7 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
+                        <p>Вы авторизировались как <strong>«Преподаватель»</strong></p> 
                         <!-- <p>Подача заявок на конкурс онлайн-курсов завершена.</p></br> -->
                         <?php 
                             if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
@@ -104,7 +104,7 @@
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 

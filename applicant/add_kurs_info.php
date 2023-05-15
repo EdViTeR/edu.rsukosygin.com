@@ -56,37 +56,37 @@
                                 <textarea type="text" name="description" id="description" cols="100" class="form-control" rows="3" placeholder="Несколько абзацев, в которых подробно раскрывается тема курса. Если тема или название курса неочевидные (например, «Комбинаторика для чайников»), нужно авторское определение просты языком, о чем этот курс." required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="sphere" class="form-label">Лекции курса</label>
-                                <textarea type="text" name="sphere" id="sphere" cols="100" class="form-control" rows="3" placeholder="Сколько лекций в курсе?
+                                <label for="lections" class="form-label">Лекции курса</label>
+                                <textarea type="text" name="lections" id="lections" cols="100" class="form-control" rows="3" placeholder="Сколько лекций в курсе?
 Сколько видеолекций в курсе?
 Пример: 16 лекций из них 14 видеолекций" required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="replacement" class="form-label">Задания</label>
-                                <textarea type="text" name="replacement" id="replacement" cols="100" class="form-control" rows="5" placeholder="Сколько заданий планируется в курсе и какие. Пример:
+                                <label for="tasks" class="form-label">Задания</label>
+                                <textarea type="text" name="tasks" id="tasks" cols="100" class="form-control" rows="5" placeholder="Сколько заданий планируется в курсе и какие. Пример:
 5 тестовых заданий
 2 практических задания
 1 итоговый тест
 " required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="route" class="form-label">Сертификат (Какая часть курса должна быть пройдена слушателем для успешного прохождения курса)</label>
-                                <textarea type="text" name="route" id="route" cols="100" class="form-control" rows="3" placeholder="Примеры:
+                                <label for="certificate" class="form-label">Сертификат (Какая часть курса должна быть пройдена слушателем для успешного прохождения курса)</label>
+                                <textarea type="text" name="certificate" id="certificate" cols="100" class="form-control" rows="3" placeholder="Примеры:
 Должны быть выполнены все задания и итоговый тест;
 Должно быть выполнено 5 заданий из 6. 
 " required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="user_level" class="form-label">Для кого (опишите аудиторию курса)</label>
-                                <textarea type="text" name="user_level" id="user_level" cols="100" class="form-control" rows="5" placeholder="Курс будет полезен тем, кто:
+                                <label for="for_whom" class="form-label">Для кого (опишите аудиторию курса)</label>
+                                <textarea type="text" name="for_whom" id="for_whom" cols="100" class="form-control" rows="5" placeholder="Курс будет полезен тем, кто:
 пропустил некоторые темы и затрудняется решать тематические задачи;
 готовится к олимпиаде;
 студент бакалавриата по направлению химических технологий.
 " required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="work_time" class="form-label">Зачем (что получит слушатель при прохождении онлайн-курса)</label>
-                                <textarea type="text" name="work_time" id="work_time" cols="100" class="form-control" rows="4" placeholder="Увидеть практическое применение математики;
+                                <label for="why" class="form-label">Зачем (что получит слушатель при прохождении онлайн-курса)</label>
+                                <textarea type="text" name="why" id="why" cols="100" class="form-control" rows="4" placeholder="Увидеть практическое применение математики;
 Почувствовать азарт от решения задач;
 Увидеть другой подход к преподаванию.
 " required></textarea>
@@ -141,7 +141,7 @@
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 
