@@ -46,7 +46,7 @@ if (isset($_SESSION['user'])) {
                 <label for="floatingPassword">Пароль</label>
             </div>
             <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
-            <!-- <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a> -->
+            <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a>
             </br></br>
             <?php 
                 if (isset($_SESSION['access'])) {
