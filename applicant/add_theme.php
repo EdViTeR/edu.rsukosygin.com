@@ -8,7 +8,7 @@
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $kurs_id = $_GET['kurs_id'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $kurs = kurs_data($dbo, $kurs_id);
+    $kurs = kurs_data_2023($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
