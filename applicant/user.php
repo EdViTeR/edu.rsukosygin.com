@@ -10,7 +10,7 @@
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $get_kurs = get_kurs($dbo, $user_id);
+    $get_kurs = get_kurs_2023($dbo, $user_id);
     $user_info = user_info($dbo, $user_id);
 ?>
 <!doctype html>
