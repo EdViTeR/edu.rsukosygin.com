@@ -182,8 +182,24 @@ function get_one_kurs_info($dbo, $kurs_id) {
 function get_kurs($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `user_id` = ?");
 	$stmt->execute([$user_id]);
-	$user_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	return $user_data;
+	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+//Вытаскиваем все курсы преподавателя по id 2023
+function get_kurs_2023($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM order_kurs_2023 WHERE `user_id` = ?");
+	$stmt->execute([$user_id]);
+	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+//Вытаскиваем курс по id
+function kurs_data_2023($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM order_kurs_2023 WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
 }
 
 //Вытаскиваем курс по id для показа соавторам
@@ -378,4 +394,11 @@ function delete_history_date($dbo, $date) {
 	$sql = "DELETE FROM history_date WHERE date=?";
 	$stmt = $dbo->prepare($sql);
 	$stmt->execute([$date]);
+}
+
+function head_reg($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
+	$stmt->execute([$user_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
 }

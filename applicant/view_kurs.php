@@ -2,10 +2,22 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
-$kurs = kurs_data($dbo, $kurs_id);
+$kurs = kurs_data_2023($dbo, $kurs_id);
 $head_user_id = $kurs['user_id'];
 $head_user = user_data($dbo, $head_user_id);
 $head_name = $head_user['first_name'] . ' ' . $head_user['name'] . ' ' . $head_user['last_name'];
+$head_reg = head_reg($dbo, $head_user_id);
+if ($head_reg['academic_degree'] == 'б/сб/с' || $head_reg['academic_degree'] == 'б/с') {
+    $academic_degree = 'Без степени';
+} else {
+    $academic_degree = $head_reg['academic_degree'];
+}
+if ($head_reg['academic_title'] == 'б/з' || $head_reg['academic_degree'] == 'б/с') {
+    $academic_title = 'без звания';
+} else {
+    $academic_title = $head_reg['academic_title'];
+}
+$job_title = $head_reg['job_title'];
 $authors = authors($dbo, $kurs_id);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
 if (isset($_SESSION['presentation']) && !empty($_SESSION['presentation'])) {
@@ -54,10 +66,11 @@ $themes = themes($dbo, $kurs_id);
                         <p><strong>Руководитель:</strong><br>
                         <?php echo $head_name;?></p>
 
-                        <!-- <p><strong>Регалии руководителя:</strong><br> -->
-                        <!-- <?php echo $kurs['head_reg'];?></p> -->
+                        <p><strong>Регалии руководителя:</strong><br>
+                        <?php echo $academic_degree . ', ' . $academic_title;?></p>
+                        <?php echo $job_title;?></p>
 
-                        <p><strong>Описание:</strong><br>
+                        <p><strong>Описание курса:</strong><br>
                         <?php echo $kurs["description"];?></p>
 
 
@@ -79,10 +92,10 @@ $themes = themes($dbo, $kurs_id);
                         </p>
                         <?php 
                             if (isset($presentation) && !empty($presentation)) {
-                                echo "<p><strong>Презентация:</strong><br><br>
+                                echo "<p><strong>Презентация курса:</strong><br><br>
                                     <a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a><br/></p>";
                             } else {
-                                echo '<p><strong>Презентация:</strong><br>
+                                echo '<p><strong>Презентация курса:</strong><br>
                                         <form action="upload_presentation.php?kurs_id=' . $kurs_id . '" method="post" enctype="multipart/form-data">
                                         <input type="file" name="image"><br><br>
                                         <button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
@@ -136,7 +149,7 @@ $themes = themes($dbo, $kurs_id);
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <!-- <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p>  -->
+                        <p>Вы авторизировались как <strong>«Разработчик»</strong>.</p> 
                         <!-- <p>Вы можете подать заявку на регистрацию онлайн-курса.</p></br> -->
                         <a href="change_kurs.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
                         <a href="add_author.php?kurs_id=<?php echo $kurs_id;?>" class="btn btn-outline-primary mb-3 me-3" type="button">Добавить автора</a>

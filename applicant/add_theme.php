@@ -53,7 +53,7 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="theme_name" class="form-label">Название лекции</label>
-                                <input type="text" class="form-control" id="theme_name" name="theme_name" value="" placeholder="Введите название леции" required>
+                                <input type="text" class="form-control" id="theme_name" name="theme_name" value="" placeholder="Введите название леции" max="100" required>
                             </div>
                             <div class="col-12">
                                 <label for="theme_info" class="form-label">Краткое содержание к лекции</label>

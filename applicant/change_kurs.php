@@ -8,7 +8,7 @@
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $kurs_id = $_GET['kurs_id'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $kurs = kurs_data($dbo, $kurs_id);
+    $kurs = kurs_data_2023($dbo, $kurs_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -51,7 +51,7 @@
                     <form method="POST" action="save_order_change_proect.php?kurs_id=<?php echo $kurs_id;?>" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="kurs_name" class="form-label">Название курса</label>
+                                <label for="kurs_name" class="form-label">Полное название курса</label>
                                 <input type="text" class="form-control" id="kurs_name" name="kurs_name" value="<?php echo $kurs['kurs_name'];?>" required>
                             </div>
                             <div class="col-12">
@@ -59,34 +59,27 @@
                                 <textarea type="text" name="description" id="description" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['description'];?>" required><?php echo $kurs['description'];?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="sphere" class="form-label">Область / сфера</label>
-                                <textarea type="text" name="sphere" id="sphere" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['sphere'];?>" required><?php echo $kurs['sphere'];?></textarea>
+                                <label for="lection" class="form-label">Лекции курса</label>
+                                <textarea type="text" name="lection" id="lection" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['lection'];?>" required><?php echo $kurs['lection'];?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="replacement" class="form-label">Дисциплины, которые заменяются онлайн-курсом</label>
-                                <textarea type="text" name="replacement" id="replacement" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['replacement'];?>" required><?php echo $kurs['replacement'];?></textarea>
+                                <label for="task" class="form-label">Задания</label>
+                                <textarea type="text" name="task" id="task" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['task'];?>" required><?php echo $kurs['task'];?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="route" class="form-label">Направление(я) подготовки специальность(ти)</label>
-                                <textarea type="text" name="route" id="route" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['route'];?>" required><?php echo $kurs['route'];?></textarea>
+                                <label for="sertificate" class="form-label">Сертификат (Какая часть курса должна быть пройдена слушателем для успешного прохождения курса)</label>
+                                <textarea type="text" name="sertificate" id="sertificate" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['sertificate'];?>" required><?php echo $kurs['sertificate'];?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="user_level" class="form-label">Необходимый уровень образования слушателей</label>
-                                <textarea type="text" name="user_level" id="user_level" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['user_level'];?>" required><?php echo $kurs['user_level'];?></textarea>
+                                <label for="for_whom" class="form-label">Для кого (опишите аудиторию курса)</label>
+                                <textarea type="text" name="for_whom" id="for_whom" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['for_whom'];?>" required><?php echo $kurs['for_whom'];?></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="work_time" class="form-label">Объем курса (в часах)</label>
-                                <textarea type="text" name="work_time" id="work_time" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['work_time'];?>" required><?php echo $kurs['work_time'];?></textarea>
-                            </div>
-                            <div class="col-12">
-                                <label for="amount_lecture" class="form-label">Количество лекций</label>
-                                <textarea type="text" name="amount_lecture" id="amount_lecture" cols="100" class="form-control" rows="1" placeholder="<?php echo $kurs['amount_lecture'];?>" required><?php echo $kurs['amount_lecture'];?></textarea>
-                            </div>
-                            <div class="col-12">
-                                <label for="amount_video_lecture" class="form-label">Количество видеосеминаров</label>
-                                <textarea type="text" name="amount_video_lecture" id="amount_video_lecture" cols="100" class="form-control" rows="1" placeholder="<?php echo $kurs['amount_video_lecture'];?>" required><?php echo $kurs['amount_video_lecture'];?></textarea>
+                                <label for="why" class="form-label">Зачем (что получит слушатель при прохождении онлайн-курса)</label>
+                                <textarea type="text" name="why" id="why" cols="100" class="form-control" rows="3" placeholder="<?php echo $kurs['why'];?>" required><?php echo $kurs['why'];?></textarea>
                             </div>
                         </div>
+                        </br>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
                         <a class="btn btn-outline-secondary btn-lg mt-4" href="kurses.php">Назад</a>
                         <?php

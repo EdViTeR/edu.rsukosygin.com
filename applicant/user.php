@@ -11,6 +11,7 @@
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
     $get_kurs = get_kurs($dbo, $user_id);
+    $user_info = user_info($dbo, $user_id);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -81,10 +82,11 @@
                         } 
                         ?>
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
-                        <p>Вы авторизировались как <strong>«Преподаватель»</strong>.</p> 
+                        <p>Вы авторизировались как <strong>«Разработчик»</strong>.</p> 
                         <!-- <p>Подача заявок на конкурс онлайн-курсов завершена.</p></br> -->
+                        <a href='../files/Инструкция для разработчиков 2023.pdf' target="_blank" class="btn btn-outline-danger mb-3 me-3" type="button">Инструкция по подаче заявки</a>
                         <?php 
-                            if (!empty($_SESSION['user_info']) && isset($_SESSION['user_info'])) {
+                            if (!empty($user_info) && isset($user_info)) {
                                 echo '<a href="edit_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Редактировать профиль</a><br>';
                             } else {
                                 echo '<a href="add_user_info.php" class="btn btn-primary mb-3 me-3" type="button">Заполнить профиль</a><br>';
