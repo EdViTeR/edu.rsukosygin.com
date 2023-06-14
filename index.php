@@ -46,7 +46,9 @@ if (isset($_SESSION['user'])) {
                 <label for="floatingPassword">Пароль</label>
             </div>
             <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
-            <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a>
+        </form>
+            <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a></br></br>    
+            <a href='files/instruction.pdf' target="_blank" class="btn btn-outline-danger mb-3 me-3" type="button">Инструкция по подаче заявки</a>
             </br></br>
             <?php 
                 if (isset($_SESSION['access'])) {
@@ -60,7 +62,6 @@ if (isset($_SESSION['user'])) {
             <p class="mt-4 mb-3 text-muted">Центр развития электронных<br>образовательных ресурсов<br>РГУ им. А.Н. Косыгина</br>
             <a href="mailto:reor@rguk.ru">reor@rguk.ru</a>
             </p>
-        </form>
       </main>
   </body>
 </html>

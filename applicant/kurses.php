@@ -47,7 +47,7 @@
                 <div class="col-lg-8">
                     <!-- Онлайн-курсы -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <p class="h3 mb-3">Мои курсы</p>
+                        <p class="h4 mb-3">Мои курсы</p>
                         <hr class="text-secondary">
                             <?  
                             $k = 0;
