@@ -2,10 +2,10 @@
     session_start();
     require_once 'database/connect_db.php';
     require_once 'database/databaseInfo.php';
-    
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user_data = user($dbo, $email);
+    // var_dump($email); die;
     if (password_verify($password, $user_data['password'])) {
         $_SESSION['user'] = [
             "id" => $user_data['id'],
