@@ -1,9 +1,49 @@
-<?php 
+<?php
 require_once 'database/connect_db.php';
 require_once 'database/databaseInfo.php';
-
-$news = getNews($dbo);
-// var_dump($news); die;
+$id = $_GET['id'];
+$news_item = getNewsItem($dbo, $id);
+$result = mb_substr($news_item['date'], 0, 10);
+list($year, $month, $day) = explode("-", $result);
+switch ($month) {
+	case '01':
+		$month = 'Января';
+		break;
+	case '02':
+		$month = 'Февраля';
+		break;
+	case '03':
+		$month = 'Марта';
+		break;
+	case '04':
+		$month = 'Апреля';
+		break;
+	case '05':
+		$month = 'Мая';
+		break;
+	case '06':
+		$month = 'Июня';
+		break;
+	case '07':
+		$month = 'Июля';
+		break;
+	case '08':
+		$month = 'Августа';
+		break;
+	case '09':
+		$month = 'Сентября';
+		break;
+	case '10':
+		$month = 'Октября';
+		break;
+	case '11':
+		$month = 'Ноября';
+		break;
+	case '12':
+		$month = 'Декабря';
+		break;
+}
+$date = $day . ' ' . $month . ' ' . $year;
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -41,39 +81,21 @@ $news = getNews($dbo);
 		</div>
 	</div>
 </div>
-<section class="course_all">
-	<div class="head__all__info">
-		<div class="head__info">
-			<h1 class="head__info__title">НОВОСТИ УНИВЕРСИТЕТА</h1>
-		</div>
-	</div>
-	<?php 
-		$k = 0;
-		foreach ($news as $key => $value) {
-			$id = $value['id'];
-			$news_name = $value['name'];
-			if ($k == 0 || $k == 3) {
-				echo '<div class="about">';
-			}
-			$k++;
-			echo '<a class="kurs__href" href="item.php?id=' . $id . '"><div class="about__item">
-					<div class="about__img">
-						<img src="images/index_img/kurs1.png">
-					</div>
-				<div class="about__text">' . $news_name . '</div>
-			</div></a>';
-			if ($k == 3) {
-				echo '</div>';
-				$k = 0;
-			}
-		}
 
-	?>
+<section class="course_all">
+	<div class="news__item">
+		<div class="news__photo"></div>
+		<div class="news__header"><?php echo $news_item['name']; ?></div>
+		<div class="news__date"><?php echo $date; ?></div>
+		<div class="news__title"><?php echo $news_item['title']; ?></div>
+		<div class="news__text"><?php echo $news_item['text']; ?></div>
 	</div>
-	<div class="back__button">
-		<a class="back__button__link" href="index.php">Вернуться</a>
+	<div class="button__link__item">
+		<a class="back__button__link__item" href="news.php">Вернуться</a>
 	</div>
 </section>
+
+
 <footer class="footer">
 	123123
 </footer>

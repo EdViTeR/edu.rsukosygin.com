@@ -402,9 +402,25 @@ function delete_history_date($dbo, $date) {
 	$stmt->execute([$date]);
 }
 
+// получаем регалии руководителя
 function head_reg($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
 	$stmt->execute([$user_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+
+// получаем все новости
+function getNews($dbo) {
+	$stmt = $dbo->query("SELECT * FROM news")->fetchAll(PDO::FETCH_ASSOC);
+	return $stmt;
+}
+
+// получаем одну новость по id
+function getNewsItem($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM news WHERE `id` = ?");
+	$stmt->execute([$id]);
 	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;
 }

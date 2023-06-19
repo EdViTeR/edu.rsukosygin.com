@@ -300,12 +300,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .index__photo {
+	margin-left: -2%;
 	margin-top: 60px;
 	width: 100vw;
-	height: 700px;
+	height: 500px;
 	background: 
 	url("images/index_img/index__photo__last.svg") no-repeat;
-/*	background-size: cover;*/
 	background-size: 100% 100%;
 }
 
@@ -409,7 +409,7 @@ h1, h2, h3, h4, h5, h6 {
 	gap: 10px;
 	width: 204px;
 	height: 32px;
-	background: #FFFFFF;
+	background: #F4F7FE;
 	border: 2px solid #0074FC;
 	border-radius: 15px;
 	flex: none;
@@ -431,4 +431,109 @@ h1, h2, h3, h4, h5, h6 {
 
 .kurs__href:hover {
 	transform: translate3d(-10px, -10px, 0px);
+}
+
+.news__item {
+	border-radius: 15px 15px 0px 0px;
+	margin: 0 auto;
+	margin-top: 6%;
+	width: 80%;
+	height: 550px;
+	background-color: #ffffff;
+}
+
+.news__photo {
+	border-radius: 15px 15px 0px 0px;
+	margin: 0 auto;
+	width: 100%;
+	height: 250px;
+	background: 
+	url("images/index_img/item_news.jpg") center no-repeat;
+}
+
+.news__header {
+	padding-left: 5%;
+	padding-top: 1%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 140%;
+	color: #2B3674;
+}
+
+.news__date {
+	padding-left: 5%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 140%;
+	color: #2B3674;
+}
+
+.news__title {
+	padding-left: 5%;
+	padding-top: 3%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 140%;
+	color: #2B3674;
+}
+
+.news__text {
+	width: 90%;
+	padding-left: 5%;
+	padding-top: 1%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 140%;
+	color: #2B3674;
+}
+
+.button__link__item {
+ 	height: 10em;
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center
+}
+
+.back__button__link__item {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 24px 120px;
+	gap: 10px;
+	width: 204px;
+	height: 32px;
+	background: #F4F7FE;
+	border: 2px solid #0074FC;
+	border-radius: 15px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	line-height: 140%;
+	color: #0074FC;
+	text-decoration: none;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 17px;
+}
+
+.button__link__item :hover {
+	background: #0074FC;
+	color: #F4F7FE;
+}
+
+.hr_courses {
+	height: 1.5px;
+	background-color: #989898;
 }
