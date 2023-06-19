@@ -4,7 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="index_style.css">
-	<title>Онлайн-курсы</title>
+	<title>Новости</title>
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
 <body>
 
@@ -32,6 +34,37 @@
 		</div>
 	</div>
 </div>
+<section class="course_all">
+	<div class="head__all__info">
+		<div class="head__info">
+			<h1 class="head__info__title">НОВОСТИ УНИВЕРСИТЕТА</h1>
+		</div>
+	</div>
+	<div class="about">
+		<a class="kurs__href" href="qwe.php"><div class="about__item">
+			<div class="about__img">
+				<img src="images/index_img/kurs1.png">
+			</div>
+			<div class="about__text">Фотопринт</div>
+		</div></a>
+		<a class="kurs__href" href="qwe.php"><div class="about__item">
+			<div class="about__img">
+				<img src="images/index_img/kurs2.png">
+			</div>
+			<div class="about__text">Современные технологии физического совершенствования</div>
+		</div></a>
+		<a class="kurs__href" href="qwe.php"><div class="about__item">
+			<div class="about__img">
+				<img src="images/index_img/kurs2.png">
+			</div>
+			<div class="about__text">Современные технологии физического совершенствования</div>
+		</div></a>
+	</div>
+
+	<div class="back__button">
+		<a class="back__button__link" href="index.php">Вернуться</a>
+	</div>
+</section>
 <footer class="footer">
 	123123
 </footer>

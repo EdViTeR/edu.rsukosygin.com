@@ -1,3 +1,11 @@
+<?php 
+require_once 'database/connect_db.php';
+require_once 'database/databaseInfo.php';
+
+$kurses = kurses_for_index($dbo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,6 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="index_style.css">
 	<title>Онлайн-курсы</title>
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
 <body>
 
@@ -41,18 +51,30 @@
 			<h2 class="head__info__course__text">Университет Косыгина активно участвует в создании и продвижении доступного и качественного образования, с использованием дистанционных технологий.<p>Представленные в разделе курсы относятся к дисциплинам «свободного модуля». Программы курсов разработаны ведущими преподавателями университета — экспертами в своей области.</h2>
 		</div>
 	</div>
+	<?php 
+		$k = 0;
+		foreach ($kurses as $key => $value) {
+			$kurs_name = $value['name'];
+			if ($k == 0 || $k == 3) {
+				echo '<div class="about">';
+			}
+			$k++;
+			echo '<div class="about__item">
+					<div class="about__img">
+						<img src="images/index_img/kurs1.png">
+					</div>
+				<div class="about__text">' . $kurs_name . '</div>
+			</div>';
+			if ($k == 3) {
+				echo '</div>';
+				$k = 0;
+			}
+		}
 
-	<div class="courses__all__cards">
-		<div class="block__three__cards">
-			<div class="course__block">
-				<div class="course__photo">
-					
-				</div>
-				<div class="course__name">
-					
-				</div>
-			</div>
-		</div>
+	?>
+	</div>
+	<div class="back__button">
+		<a class="back__button__link" href="index.php">Вернуться</a>
 	</div>
 </section>
 <footer class="footer">

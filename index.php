@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="index_style.css">
 	<title>Онлайн-курсы</title>
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
 <body>
 
@@ -17,7 +19,7 @@
 				<a class="header__link" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="">Личный кабинет</a>
+				<a class="nav__link__lk" href="index_old.php">Личный кабинет</a>
 				<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 			</nav>
 		</div>

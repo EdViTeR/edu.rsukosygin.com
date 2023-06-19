@@ -304,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100vw;
 	height: 700px;
 	background: 
-	url("images/index_img/index__photo__new.svg") no-repeat;
+	url("images/index_img/index__photo__last.svg") no-repeat;
 /*	background-size: cover;*/
 	background-size: 100% 100%;
 }
@@ -336,6 +336,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .head__info__course__text {
+	color: #2B3674;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 300;
@@ -345,8 +346,89 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
-.course_all{
+.course_all {
 	margin: 0 auto;
 	width: 100%;
 	max-width: 1200px;
+}
+
+.about {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+	margin-top: 80px;
+}
+
+.about__item {
+	width: 356px;
+	position: relative;
+	border-radius: 10px;
+	background-color: #ffffff;
+	margin-left: 30px;
+}
+
+.about__item {
+	width: 356px;
+	position: relative;
+	background-color: #ffffff;
+}
+
+.about__text {
+	color: #2B3674;
+	height: 180px;
+	width: 100%;
+	font-family: 'Inter';
+	font-weight: 500;
+	font-size: 28px;
+	line-height: 35px;
+	padding-left: 20px;
+	padding-top: 15px;
+}
+
+.back__button {
+ 	height: 15em;
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center
+}
+
+.back__button :hover {
+	background: #0074FC;
+	color: #F4F7FE;
+}
+
+.back__button__link {
+	box-sizing: border-box;
+	display: flex;
+	font-family: 'Inter';
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 24px 120px;
+	gap: 10px;
+	width: 204px;
+	height: 32px;
+	background: #FFFFFF;
+	border: 2px solid #0074FC;
+	border-radius: 15px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	line-height: 140%;
+	color: #0074FC;
+	text-decoration: none;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 17px;
+}
+
+.kurs__href {
+	text-decoration: none;
+}
+
+.kurs__href:hover {
+	transform: translate3d(-10px, -10px, 0px);
 }
