@@ -88,6 +88,14 @@ function kurses_for_index($dbo) {
 	return $data;
 }
 
+//Вытаскиваем один курс для страницы курсов
+function kurs_for_index($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurses WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$kurs = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $kurs;
+}
+
 //Вытаскиваем весь рейтинг
 function rating($dbo) {
 	$data = $dbo->query('SELECT * FROM rating')->fetchAll(PDO::FETCH_ASSOC);

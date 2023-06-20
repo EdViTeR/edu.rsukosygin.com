@@ -54,17 +54,18 @@ $kurses = kurses_for_index($dbo);
 	<?php 
 		$k = 0;
 		foreach ($kurses as $key => $value) {
+			$id = $value['id'];
 			$kurs_name = $value['name'];
 			if ($k == 0 || $k == 3) {
 				echo '<div class="about">';
 			}
 			$k++;
-			echo '<div class="about__item">
+			echo '<a class="kurs__href" href="course.php?id=' . $id . '"><div class="about__item">
 					<div class="about__img">
 						<img src="images/index_img/kurs1.png">
 					</div>
 				<div class="about__text">' . $kurs_name . '</div>
-			</div>';
+			</div></a>';
 			if ($k == 3) {
 				echo '</div>';
 				$k = 0;
