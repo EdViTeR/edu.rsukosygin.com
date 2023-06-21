@@ -1,7 +1,14 @@
+@font-face {
+font-family: "Inter"; 
+src: url("images/fonts/Inter-Regular.otf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+} 
+
 body {
 	margin: 0;
 	font-family: 'Inter';
-	background: #F4F7FE;
+	background: #F4F7FE !important;
 }
 
 *,
@@ -15,9 +22,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container {
-	width: 100%;
-	max-width: 1249px;
-	margin: 0 auto;
+	width: 100% !important;
+	max-width: 1249px !important;
+	margin: 0 auto !important;
 }
 
 .intro {
@@ -93,6 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: 10px;
 	padding: 0px 20px;
 	text-decoration: none;
+	font-family: Inter;
 }
 
 
@@ -144,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav__link :hover {
 	background: #0074FC;
-	color: #F4F7FE;
+	color: #FFFFFF;
 }
 
 .nav__link__edu {
@@ -194,10 +202,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	font-size: 48px;
 	line-height: 140%;
-	/* or 67px */
 	width: 100%;
-	/* Основной текст */
-
 	color: #2B3674;
 }
 
@@ -252,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course__head {
-	max-width: 315px;
+	max-width: 80%;
 	width: 100%;
 	padding-top: 32px;
 	padding-left: 361px;
@@ -266,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course__text {
-	max-width: 315px;
+	max-width: 80%;
 	width: 100%;
 	padding-top: 14px;
 	padding-left: 361px;
@@ -290,11 +295,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .head__video {
+	text-align: center;
 	margin-top: 16px;
 	width: 100%;
 	max-width: 776px;
-	background: black;
+/*	background: black;*/
 	height: 416px;
+	border-radius: 15px;
 }
 
 .index__photo {
@@ -378,8 +385,8 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	font-family: 'Inter';
 	font-weight: 500;
-	font-size: 28px;
-	line-height: 35px;
+	font-size: 24px;
+	line-height: 1.5em;
 	padding-left: 20px;
 	padding-top: 15px;
 }
@@ -532,8 +539,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hr_courses {
-	height: 1.5px;
-	background-color: #989898;
+	height: 1px;
+	background-color: #2B3674;
 }
 
 .kurs__info {
@@ -839,4 +846,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .lection_link {
 	text-decoration: none;
+}
+
+.for__nav__link__edu {
+	border-radius: 10px;
+}
+
+.for__nav__link__edu :hover {
+	background-color: #FFFFFF;
+	color: #0074FC;
+	border: 2px solid #0074FC;
 }
