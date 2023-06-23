@@ -3,7 +3,6 @@ require_once 'database/connect_db.php';
 require_once 'database/databaseInfo.php';
 
 $news = getNews($dbo);
-// var_dump($news); die;
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -111,6 +111,9 @@ $kurs = kurs_for_index($dbo, $id);
 		<a class="lection_button_link" href="#">Все лекции</a>
 	</div>
 	<div class="author__title">АВТОРЫ КУРСА</div>
+	<div class="author__info">
+		<div class="author__photo"></div>
+	</div>
 </section>
 
 <footer class="footer">

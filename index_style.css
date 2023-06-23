@@ -362,7 +362,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-flow: row nowrap;
     align-items: center;
     align-content: center;
-	margin-top: 80px;
+	margin-top: 4%;
 }
 
 .about__item {
@@ -547,7 +547,7 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 20px;
 	margin-top: 5%;
 	width: 100%;
-	height: 47em;
+	height: 49em;
 	background-color: #FFFFFF;
 }
 
@@ -641,7 +641,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text__title {
-	margin-top: 1%;
+	margin-top: 4%;
 	text-align: center;
 	font-family: 'Inter';
 	font-style: normal;
@@ -856,4 +856,17 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #FFFFFF;
 	color: #0074FC;
 	border: 2px solid #0074FC;
+}
+
+.author__info {
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.author__photo {
+	margin: 0 auto;
+	width: 100%;
+	height: 35vh;
+	background: url("images/index_img/author__photo.png") no-repeat;
 }
