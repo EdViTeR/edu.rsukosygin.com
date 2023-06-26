@@ -418,6 +418,14 @@ function head_reg($dbo, $user_id) {
 	return $data;
 }
 
+// получаем регалии руководителя
+function lection_for_site($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM lection_for_site WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 
 // получаем все новости
 function getNews($dbo) {

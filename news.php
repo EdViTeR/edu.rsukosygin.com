@@ -77,8 +77,8 @@ $news = getNews($dbo);
 		<a class="back__button__link" href="index.php">Вернуться</a>
 	</div>
 </section>
-<footer class="footer">
-	123123
-</footer>
+<?php 
+	include('footer.php');
+?>
 </body>
 </html>

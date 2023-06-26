@@ -66,29 +66,29 @@
 					<p>Самые актуальные новости об <br>онлайн-образовании нашего университета </p>
 				</div>
 			</div></a>
-		</div>
+		</div><br>
 
-		<div class="head__video__info">
+<!-- 		<div class="head__video__info">
 			<div class="head__video__text">ОБ ОНЛАЙН-КУРСАХ</div>
 			<div class="head__video">
 				<video controls  poster="images/index_img/video_fon.png" width="766px" height="416px"><source src="images/index_img/index_video.mp4" type='video/ogg; codecs="theora, vorbis"'></video>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 <div class="index__photo"></div>
 <section class="head_all">
 	<div class="news">
 		<div class="head__video__text">НОВОСТИ</div>
-		<div class="news__card">
+<!-- 		<div class="news__card">
 			<div class="news__logo"></div>
 			<div class="news__text">Центр развития электронных образовательнгых ресурсов</div>
 			<div class="news__date">10 апреля 2023</div>
 			<div class="news__img"></div>
 			<div class="news__info"></div>
-		</div>
+		</div> -->
 	</div>
-<div id="carouselExampleIndicators" class="carousel slide">
+<div id="carouselExampleIndicators" class="carousel slide carousel__all">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -97,16 +97,48 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/index_img/video_fon.png" class="d-block w-100" alt="...">
+    	<div class="carousel__item__head">
+    		<div class="carousel__item__logo"></div>
+    		<div class="carousel__item__head__all">
+	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
+	    		<div class="carousel__item__date">10 апреля 2023</div>
+    		</div>
+    	</div>
+    	<div class="card__photo"></div>
+    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
     </div>
     <div class="carousel-item">
-      <img src="images/index_img/video_fon.png" class="d-block w-100" alt="...">
+    	<div class="carousel__item__head">
+    		<div class="carousel__item__logo"></div>
+    		<div class="carousel__item__head__all">
+	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
+	    		<div class="carousel__item__date">10 апреля 2023</div>
+    		</div>
+    	</div>
+    	<div class="card__photo"></div>
+    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
     </div>
     <div class="carousel-item">
-      <img src="images/index_img/video_fon.png" class="d-block w-100" alt="...">
+    	<div class="carousel__item__head">
+    		<div class="carousel__item__logo"></div>
+    		<div class="carousel__item__head__all">
+	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
+	    		<div class="carousel__item__date">10 апреля 2023</div>
+    		</div>
+    	</div>
+    	<div class="card__photo"></div>
+    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
     </div>
     <div class="carousel-item">
-      <img src="images/index_img/video_fon.png" class="d-block w-100" alt="...">
+    	<div class="carousel__item__head">
+    		<div class="carousel__item__logo"></div>
+    		<div class="carousel__item__head__all">
+	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
+	    		<div class="carousel__item__date">10 апреля 2023</div>
+    		</div>
+    	</div>
+    	<div class="card__photo"></div>
+    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -120,16 +152,39 @@
 </div>
 </section>
 <section class="contacts">
-	<div class="contacts__head">КОНТАКТЫ</div>
-	<div class="contacts__form">
-		ИМЯ ПОЧТА СООБЩЕНИЕ ОТПРАВИТЬ
-	</div>
+	<div class="contacts__head">ОБРАТНАЯ СВЯЗЬ</div>
+  <div class="row g-3 contacts__form">
+  	<div class="col-sm-1"></div>
+  	<div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control text__for__contacts__input input__contacts" id="first_name" name="first_name" placeholder="Имя" value="" required>
+    </div>
+    <div class="col-sm-2">
+      <input type="text" class="form-control text__for__contacts__input input__contacts" id="name" name="name" placeholder="Почта" value="" required>
+    </div>
+    <div class="col-sm-4 contacts__text">Центр развития электронных образовательных ресурсов <p>РГУ им. А.Н. Косыгина</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1"></div>
+   	<div class="col-5">
+      <textarea type="text" class="form-control text__for__contacts__input textarea__contacts" id="email" name="email" placeholder="Сообщение" rows="3" required></textarea>
+   	</div>
+   	<div class="col-sm-2 contacts__number">8 800 80 00 доб. 1619<br>
+   		<div class="contacts__address">
+   			ул. Малая Калужская д.1 каб. 1448
+   		</div>
+   	</div>
+		<div class="back__button__contacts">
+			<a class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
+		</div>
+  </div>
 	<div class="map">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.2213113075927!2d37.59818307740528!3d55.71990599452383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b728c701631%3A0x9640f31546b08960!2z0JzQsNC70LDRjyDQmtCw0LvRg9C20YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTE5MDcx!5e0!3m2!1sru!2sru!4v1683516642741!5m2!1sru!2sru" width="1200" height="512" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
 </section>
-<footer class="footer">
-	123123
-</footer>
+
+<?php 
+	include('footer.php');
+?>
 </body>
 </html>

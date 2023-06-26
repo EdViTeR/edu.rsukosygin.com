@@ -100,8 +100,8 @@ $date = $day . ' ' . $month . ' ' . $year;
 </section>
 
 
-<footer class="footer">
-	123123
-</footer>
+<?php 
+	include('footer.php');
+?>
 </body>
 </html>

@@ -4,6 +4,15 @@ require_once 'database/databaseInfo.php';
 
 $id = $_GET['id'];
 $kurs = kurs_for_index($dbo, $id);
+$head = head_reg($dbo, $kurs["head_id"]);
+$user = teacher($dbo, $kurs["head_id"]);
+$head_name = $user['first_name'] . ' ' . $user['name'] . ' ' . $user['last_name'];
+$for_whom_all = $kurs['for_whom'];
+$for_whom = explode(';', $for_whom_all);
+$why_all = $kurs['why'];
+$why = explode(';', $why_all);
+$lections = lection_for_site($dbo, $kurs["id"]);
+$head_reg = user_info_one($dbo, $kurs["head_id"]);
 ?>
 
 <!DOCTYPE html>
@@ -57,39 +66,44 @@ $kurs = kurs_for_index($dbo, $id);
 				<img class="kurs__author__photo" src="photo.png"></img>
 			</div>
 			<div class="info__inline">
-				<div class="kurs__author__name">Цинцадзе Марина Зиевна</div>
+				<div class="kurs__author__name"><?php echo $head_name; ?></div>
 				<div class="lector">ЛЕКТОР КУРСА</div>
-				<div class="author_reg">Старший преподаватель кафедры Энергоресурсоэффективных технологий, промышленной экологии и безопасности</div>
+				<div class="author_reg"><?php echo $head['about']; ?></div>
 				<div class="laboriousness">Общая трудоемкость курса: 72 часа</div>
 				<div class="kurs_button">
 					<a class="kurs_button_link" href="#">Записаться</a>
 				</div>
 			</div>
 			<div class="text__title">О КУРСЕ</div>
-			<div class="text__kurs__info">Курс направлен на повышение экологической грамотности слушателя. Проблемы охраны окружающей среды и вопросы, связанные с ними, широко представлены в средствах массовой информации, однако вокруг этой тематики существует большое количество заблуждений. Курс также развеивает некоторые их них. Основные темы: основы экологии; загрязнение окружающей среды; традиционная и альтернативная энергетика; изменение климата; проблема твердых коммунальных отходов; методы и пути устранения проблемы отходов потребления; государственная политика и международное сотрудничество в области охраны окружающей среды.</div>
+			<div class="text__kurs__info"><?php echo $kurs['data']; ?></div>
 			
 		</div>
 	</div>
 	<div class="for__kurs__video">
 		<div class="video__kurs">
-			<video controls poster="images/index_img/video_fon.png" width="766px" height="416px"><source src="images/index_img/index_video.mp4" type='video/ogg; codecs="theora, vorbis"'></video>
+			<iframe width="760" height="428" src="https://www.youtube.com/embed/lDJBBQ7bD6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		</div>
 	</div>
 	<div class="for__whom__all">
 		<div class="left__for__whom">
 			<div class="left__for__whom__title">Для кого этот курс:</div><hr class="for__whom__hr">
 			<div class="left__for__whom__text">
-				<p>Курс рассчитан на студентов всех направлений подготовки;<p>
-				<p>Основное направление 09.03.02;<p>
+				<?php 
+					foreach ($for_whom as $key => $value) {
+						echo '<p>'. $value . '</p>';
+					}
+				?>
 			</div>
 		</div>
 		<div class="right__for__whom">
 			<div class="right__for__whom__title">Что вы получите:</div><hr class="for__whom__hr">
 			<div class="right__for__whom__text">
 				<ul>
-					<li>9 лекций;</li>
-					<li>Сертификат о прохождении курса и отметку в диплом о высшем образовании;</li>
-					<li>Все материалы данного курса доступны для обучения</li>
+					<?php 
+						foreach ($why as $key => $value) {
+							echo '<li>'. $value . '</li>';
+						}
+					?>
 				</ul>
 			</div>
 		</div>
@@ -97,27 +111,39 @@ $kurs = kurs_for_index($dbo, $id);
 	<div class="program__title">ПРОГРАММА КУРСА</div>
 	<div class="program__subtitle">*Курс состоит из лекционных иметодических материалов, тестовых и практических заданий</div>
 	<div class="all__lections">
-		<a class="lection_link" href="#"><div class="lection__item">
-			<div class="lection__item__text">ЛЕКЦИЯ 1. Введение в предмет экологии. Основные понятия и термины</div>
-		</div></a>
-		<a class="lection_link" href="#"><div class="lection__item">
-			<div class="lection__item__text">ЛЕКЦИЯ 2. Введение в предмет экологии. Основные понятия и термины</div>
-		</div></a>
-		<a class="lection_link" href="#"><div class="lection__item">
-			<div class="lection__item__text">ЛЕКЦИЯ 3. Введение в предмет экологии. Основные понятия и термины</div>
-		</div></a>
+		<?php 
+		$k = 0;
+		foreach ($lections as $key => $value) {
+			$k++;
+			echo '<div class="lection__item">
+					<div class="lection__item__text">ЛЕКЦИЯ ' .$k. '. ' . $value["name"] . '</div>
+					</div>
+			';
+		}
+
+		?>
 	</div>
-	<div class="lection_button">
+<!-- 	<div class="lection_button">
 		<a class="lection_button_link" href="#">Все лекции</a>
-	</div>
+	</div> -->
 	<div class="author__title">АВТОРЫ КУРСА</div>
 	<div class="author__info">
 		<div class="author__photo"></div>
+		<div class="author__name"><?php echo $head_name;?></div>
+		<hr class="for__author__hr">
+		<div class="author__reg"><?php echo $head_reg["about"];?></div>
+	</div>
+
+	<div class="registration__all">
+		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
+	</div>
+	<div class="back__button">
+		<a class="back__button__link" href="courses.php">Вернуться</a>
 	</div>
 </section>
 
-<footer class="footer">
-	123123
-</footer>
+<?php 
+	include('footer.php');
+?>
 </body>
 </html>
