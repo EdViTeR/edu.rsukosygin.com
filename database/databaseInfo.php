@@ -13,6 +13,17 @@ function save_user_images($dbo, $way, $id) {
 	$stmt->execute($data);
 }
 
+//сохраняем фото курса
+function save_kurs_images($dbo, $way, $id) {
+	$data = [
+	    'way' => $way,
+	    'id' => $id,
+	];
+	$sql = "UPDATE kurses SET img=:way WHERE id=:id";
+	$stmt= $dbo->prepare($sql);
+	$stmt->execute($data);
+}
+
 //сохраняем презентацию курса
 function save_presentation($dbo, $way, $kurs_id) {
 	$data = [
@@ -80,6 +91,20 @@ function delete_theme($dbo, $theme_id) {
 function kurses($dbo) {
 	$data = $dbo->query('SELECT * FROM teach_kurs')->fetchAll(PDO::FETCH_ASSOC);
 	return $data;
+}
+
+//Вытаскиваем все курсы для страницы курсов
+function kurses_for_index($dbo) {
+	$data = $dbo->query('SELECT * FROM kurses')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+//Вытаскиваем один курс для страницы курсов
+function kurs_for_index($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM kurses WHERE `id` = ?");
+	$stmt->execute([$id]);
+	$kurs = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $kurs;
 }
 
 //Вытаскиваем весь рейтинг
@@ -396,9 +421,33 @@ function delete_history_date($dbo, $date) {
 	$stmt->execute([$date]);
 }
 
+// получаем регалии руководителя
 function head_reg($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
 	$stmt->execute([$user_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+// получаем регалии руководителя
+function lection_for_site($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM lection_for_site WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+
+// получаем все новости
+function getNews($dbo) {
+	$stmt = $dbo->query("SELECT * FROM news")->fetchAll(PDO::FETCH_ASSOC);
+	return $stmt;
+}
+
+// получаем одну новость по id
+function getNewsItem($dbo, $id) {
+	$stmt = $dbo->prepare("SELECT * FROM news WHERE `id` = ?");
+	$stmt->execute([$id]);
 	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;
 }

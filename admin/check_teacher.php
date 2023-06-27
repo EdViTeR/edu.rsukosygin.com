@@ -148,6 +148,7 @@
                         <a href="check_teacher_info.php"  class="btn btn-outline-secondary mb-3" type="button">Проверка</a>
                         <a href="check_reviews.php"  class="btn btn-outline-secondary mb-3" type="button">Отзывы</a>
                         <a href="unloading.php"  class="btn btn-outline-secondary mb-3" type="button">Выгрузка</a>
+                        <a href="add_kurs_index.php"  class="btn btn-outline-secondary mb-3" type="button">Создать новый курс</a>
                     </div>
                 </div>
             </div>
