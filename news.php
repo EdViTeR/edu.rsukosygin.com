@@ -2,7 +2,7 @@
 require_once 'database/connect_db.php';
 require_once 'database/databaseInfo.php';
 
-$news = getNews($dbo);
+$news = array_reverse(getNews($dbo));
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -27,7 +27,7 @@ $news = getNews($dbo);
 				<a class="header__link active" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="">Личный кабинет</a>
+				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
 				<div class="for__nav__link__edu">
 					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 				</div>
@@ -61,7 +61,7 @@ $news = getNews($dbo);
 			$k++;
 			echo '<a class="kurs__href" href="item.php?id=' . $id . '"><div class="about__item">
 					<div class="about__img">
-						<img src="images/index_img/kurs1.png">
+						<img src="images/news/news_card/news_card' . $id . '.svg">
 					</div>
 				<div class="about__text">' . $news_name . '</div>
 			</div></a>';

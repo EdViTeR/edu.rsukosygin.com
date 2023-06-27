@@ -13,6 +13,17 @@ function save_user_images($dbo, $way, $id) {
 	$stmt->execute($data);
 }
 
+//сохраняем фото курса
+function save_kurs_images($dbo, $way, $id) {
+	$data = [
+	    'way' => $way,
+	    'id' => $id,
+	];
+	$sql = "UPDATE kurses SET img=:way WHERE id=:id";
+	$stmt= $dbo->prepare($sql);
+	$stmt->execute($data);
+}
+
 //сохраняем презентацию курса
 function save_presentation($dbo, $way, $kurs_id) {
 	$data = [

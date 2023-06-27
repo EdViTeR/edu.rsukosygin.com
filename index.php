@@ -21,7 +21,7 @@
 				<a class="header__link" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="index_old.php">Личный кабинет</a>
+				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
 				<div class="for__nav__link__edu">
 					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 				</div>
@@ -80,13 +80,6 @@
 <section class="head_all">
 	<div class="news">
 		<div class="head__video__text">НОВОСТИ</div>
-<!-- 		<div class="news__card">
-			<div class="news__logo"></div>
-			<div class="news__text">Центр развития электронных образовательнгых ресурсов</div>
-			<div class="news__date">10 апреля 2023</div>
-			<div class="news__img"></div>
-			<div class="news__info"></div>
-		</div> -->
 	</div>
 <div id="carouselExampleIndicators" class="carousel slide carousel__all">
   <div class="carousel-indicators">
@@ -94,53 +87,65 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <a href="item.php?id=8"><div class="carousel-item active">
     	<div class="carousel__item__head">
     		<div class="carousel__item__logo"></div>
     		<div class="carousel__item__head__all">
 	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">10 апреля 2023</div>
+	    		<div class="carousel__item__date">27 июня 2023</div>
     		</div>
     	</div>
     	<div class="card__photo"></div>
     	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
-    </div>
-    <div class="carousel-item">
+    </div></a>
+    <a href="item.php?id=7"><div class="carousel-item">
     	<div class="carousel__item__head">
     		<div class="carousel__item__logo"></div>
     		<div class="carousel__item__head__all">
 	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">10 апреля 2023</div>
+	    		<div class="carousel__item__date">10 февраля 2023</div>
     		</div>
     	</div>
-    	<div class="card__photo"></div>
-    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
-    </div>
-    <div class="carousel-item">
+    	<div class="card__photo1"></div>
+    	<div class="under__news">Регистрация на онлайн-курсы</div>
+    </div></a>
+    <a href="item.php?id=6"><div class="carousel-item">
     	<div class="carousel__item__head">
     		<div class="carousel__item__logo"></div>
     		<div class="carousel__item__head__all">
 	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">10 апреля 2023</div>
+	    		<div class="carousel__item__date">16 мая 2022</div>
     		</div>
     	</div>
-    	<div class="card__photo"></div>
-    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
-    </div>
-    <div class="carousel-item">
+    	<div class="card__photo3"></div>
+    	<div class="under__news">Регистрация на онлайн-курсы завершилась</div>
+    </div></a>
+    <a href="item.php?id=5"><div class="carousel-item">
     	<div class="carousel__item__head">
     		<div class="carousel__item__logo"></div>
     		<div class="carousel__item__head__all">
 	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">10 апреля 2023</div>
+	    		<div class="carousel__item__date">14 апреля 2022</div>
     		</div>
     	</div>
-    	<div class="card__photo"></div>
-    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
+    	<div class="card__photo2"></div>
+    	<div class="under__news">Запись на онлайн-курсы</div>
+    </div></a>
+    <a href="item.php?id=1"><div class="carousel-item">
+    	<div class="carousel__item__head">
+    		<div class="carousel__item__logo"></div>
+    		<div class="carousel__item__head__all">
+	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
+	    		<div class="carousel__item__date">14 апреля 2022</div>
+    		</div>
+    	</div>
+    	<div class="cardik__photo"></div>
+    	<div class="under__news">Платформа онлайн-курсов</div>
     </div>
-  </div>
+  </div></a>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -153,31 +158,33 @@
 </section>
 <section class="contacts">
 	<div class="contacts__head">ОБРАТНАЯ СВЯЗЬ</div>
-  <div class="row g-3 contacts__form">
+  	<form method="POST" action="feedback.php" class="row g-3 contacts__form">
+  <!-- <div class="row g-3 contacts__form"> -->
   	<div class="col-sm-1"></div>
   	<div class="col-sm-1"></div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control text__for__contacts__input input__contacts" id="first_name" name="first_name" placeholder="Имя" value="" required>
-    </div>
-    <div class="col-sm-2">
-      <input type="text" class="form-control text__for__contacts__input input__contacts" id="name" name="name" placeholder="Почта" value="" required>
-    </div>
-    <div class="col-sm-4 contacts__text">Центр развития электронных образовательных ресурсов <p>РГУ им. А.Н. Косыгина</div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1"></div>
-   	<div class="col-5">
-      <textarea type="text" class="form-control text__for__contacts__input textarea__contacts" id="email" name="email" placeholder="Сообщение" rows="3" required></textarea>
-   	</div>
-   	<div class="col-sm-2 contacts__number">8 800 80 00 доб. 1619<br>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="first_name" name="name" placeholder="Имя" value="" required>
+	    </div>
+	    <div class="col-sm-2">
+	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="name" name="mail" placeholder="Почта" value="" required>
+	    </div>
+	    <div class="col-sm-4 contacts__text">Центр развития электронных образовательных ресурсов <p>РГУ им. А.Н. Косыгина</div>
+	    <div class="col-sm-1"></div>
+	    <div class="col-sm-1"></div>
+	    <div class="col-sm-1"></div>
+	   	<div class="col-5">
+	      <textarea type="text" class="form-control text__for__contacts__input textarea__contacts" id="email" name="feedback" placeholder="Сообщение" rows="3" required></textarea>
+	   	</div>
+   	<div class="col-sm-3 contacts__number">8 800 80 00 доб. 1619<br>
    		<div class="contacts__address">
-   			ул. Малая Калужская д.1 каб. 1448
+   			ул. Малая Калужская д.1 <p>каб. 1448
    		</div>
    	</div>
 		<div class="back__button__contacts">
-			<a class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
+			<button type="submit" class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
 		</div>
-  </div>
+  </form>
+  <!-- </div> -->
 	<div class="map">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.2213113075927!2d37.59818307740528!3d55.71990599452383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b728c701631%3A0x9640f31546b08960!2z0JzQsNC70LDRjyDQmtCw0LvRg9C20YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTE5MDcx!5e0!3m2!1sru!2sru!4v1683516642741!5m2!1sru!2sru" width="1200" height="512" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>

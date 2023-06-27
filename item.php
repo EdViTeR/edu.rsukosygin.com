@@ -68,7 +68,7 @@ $date = $day . ' ' . $month . ' ' . $year;
 				<a class="header__link active" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="">Личный кабинет</a>
+				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
 				<div class="for__nav__link__edu">
 					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 				</div>
@@ -88,7 +88,25 @@ $date = $day . ' ' . $month . ' ' . $year;
 
 <section class="course_all">
 	<div class="news__item">
-		<div class="news__photo"></div>
+		<?php 
+			switch ($news_item['id']) {
+				case '1':
+					echo '<img src="images/news/news_photo/news__photo' . $news_item['id'] . '.svg" class="news__photo"></img>';
+					break;
+				case '5':
+					echo '<img src="images/news/news_photo/news__photo' . $news_item['id'] . '.svg" class="news__photo"></img>';
+					break;
+				case '6':
+					echo '<img src="images/news/news_photo/news__photo' . $news_item['id'] . '.svg" class="news__photo"></img>';
+					break;
+				case '7':
+					echo '<img src="images/news/news_photo/news__photo' . $news_item['id'] . '.svg" class="news__photo"></img>';
+					break;
+				case '8':
+					echo '<img src="images/news/news_photo/news__photo' . $news_item['id'] . '.svg" class="news__photo"></img>';
+					break;
+			}
+		?>
 		<div class="news__header"><?php echo $news_item['name']; ?></div>
 		<div class="news__date"><?php echo $date; ?></div>
 		<div class="news__title"><?php echo $news_item['title']; ?></div>

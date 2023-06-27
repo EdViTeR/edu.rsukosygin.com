@@ -29,7 +29,7 @@ $kurses = kurses_for_index($dbo);
 				<a class="header__link" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="index_old.php">Личный кабинет</a>
+				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
 				<div class="for__nav__link__edu">
 					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 				</div>
@@ -60,6 +60,7 @@ $kurses = kurses_for_index($dbo);
 		$k = 0;
 		foreach ($kurses as $key => $value) {
 			$id = $value['id'];
+			$img = $value['img'];
 			$kurs_name = $value['name'];
 			if ($k == 0 || $k == 3) {
 				echo '<div class="about">';
@@ -67,7 +68,7 @@ $kurses = kurses_for_index($dbo);
 			$k++;
 			echo '<a class="kurs__href" href="course.php?id=' . $id . '"><div class="about__item">
 					<div class="about__img">
-						<img src="images/index_img/kurs1.png">
+						<img src=" ' . $img . ' ">
 					</div>
 				<div class="about__text">' . $kurs_name . '</div>
 			</div></a>';

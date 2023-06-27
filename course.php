@@ -38,7 +38,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<a class="header__link" href="news.php">Новости</a>
 			</div>
 			<nav class="nav__link">
-				<a class="nav__link__lk" href="">Личный кабинет</a>
+				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
 				<div class="for__nav__link__edu">
 					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
 				</div>
@@ -63,12 +63,12 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		</div>
 		<div class="kurs__info">
 			<div class="photo__inline">
-				<img class="kurs__author__photo" src="photo.png"></img>
+				<img class="kurs__author__photo" src="<?php echo $kurs['author_photo_first']; ?>"></img>
 			</div>
 			<div class="info__inline">
-				<div class="kurs__author__name"><?php echo $head_name; ?></div>
+				<div class="kurs__author__name"><?php echo $kurs["author"]; ?></div>
 				<div class="lector">ЛЕКТОР КУРСА</div>
-				<div class="author_reg"><?php echo $head['about']; ?></div>
+				<div class="author_reg"><?php echo $kurs["author_info"]; ?></div>
 				<div class="laboriousness">Общая трудоемкость курса: 72 часа</div>
 				<div class="kurs_button">
 					<a class="kurs_button_link" href="#">Записаться</a>
@@ -81,7 +81,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 	</div>
 	<div class="for__kurs__video">
 		<div class="video__kurs">
-			<iframe width="760" height="428" src="https://www.youtube.com/embed/lDJBBQ7bD6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			<?php echo $kurs['video']; ?>
 		</div>
 	</div>
 	<div class="for__whom__all">
@@ -128,10 +128,10 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 	</div> -->
 	<div class="author__title">АВТОРЫ КУРСА</div>
 	<div class="author__info">
-		<div class="author__photo"></div>
-		<div class="author__name"><?php echo $head_name;?></div>
+		<img class="author__photo" src="<?php echo $kurs['author_photo_second']; ?>"></img>
+		<div class="author__name"><?php echo $kurs["author"];?></div>
 		<hr class="for__author__hr">
-		<div class="author__reg"><?php echo $head_reg["about"];?></div>
+		<div class="author__reg"><?php echo $kurs["author_info"];?></div>
 	</div>
 
 	<div class="registration__all">
