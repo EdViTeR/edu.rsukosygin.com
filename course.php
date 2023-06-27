@@ -6,7 +6,6 @@ $id = $_GET['id'];
 $kurs = kurs_for_index($dbo, $id);
 $head = head_reg($dbo, $kurs["head_id"]);
 $user = teacher($dbo, $kurs["head_id"]);
-$head_name = $user['first_name'] . ' ' . $user['name'] . ' ' . $user['last_name'];
 $for_whom_all = $kurs['for_whom'];
 $for_whom = explode(';', $for_whom_all);
 $why_all = $kurs['why'];
