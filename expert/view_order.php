@@ -13,6 +13,8 @@ if (!isset($_SESSION['presentation']) && empty($_SESSION['presentation'])) {
     $presentation = view_presentation($dbo, $kurs_id);
 }
 $themes = themes($dbo, $kurs_id);
+$head_user_info = user_info_one_lazy($dbo, $head_user_id);
+var_dump($head_user_info); die;
 ?>
 <!doctype html>
 <html lang="ru">
@@ -52,34 +54,27 @@ $themes = themes($dbo, $kurs_id);
                         <hr class="text-secondary">
 
                         <p><strong>Руководитель:</strong><br>
-                        <?php echo $head_name;?></p>
+                        <?php echo $head_name;?><br>
+                        <?php echo $head_user_info['academic_degree'];?>&nbsp
+                        <?php echo $head_user_info['academic_title'];?></p>
 
-                        <!-- <p><strong>Регалии руководителя:</strong><br> -->
+                        <p><strong>Регалии руководителя:</strong><br>
                         <!-- <?php echo $kurs['head_reg'];?></p> -->
 
                         <p><strong>Описание:</strong><br>
                         <?php echo $kurs["description"];?></p>
 
-                        <p><strong>Область / сфера:</strong><br>
-                        <?php echo $kurs["sphere"];?></p>
+                        <p><strong>Для кого:</strong><br>
+                        <?php echo $kurs["for_whom"];?></p>
 
-                        <p><strong>Дисциплины, которые заменяются онлайн-курсом:</strong><br>
-                        <?php echo $kurs["replacement"];?></p>
+                        <p><strong>Полезность прохождения онлайн-курса:</strong><br>
+                        <?php echo $kurs["why"];?></p>
 
-                        <p><strong>Направление(я) подготовки специальность(ти):</strong><br>
-                        <?php echo $kurs["route"];?></p>
+                        <p><strong>Что будет содержать онлайн-курс:</strong><br>
+                        <?php echo $kurs["lection"];?></p>
 
-                        <p><strong>Необходимый уровень образования слушателей:</strong><br>
-                        <?php echo $kurs["user_level"];?></p>
-
-                        <p><strong>Объем курса (в часах):</strong><br>
-                        <?php echo $kurs["work_time"];?></p>
-
-                        <p><strong>Количество лекций:</strong><br>
-                        <?php echo $kurs["amount_lecture"];?></p>
-
-                        <p><strong>Количество видеолекций:</strong><br>
-                        <?php echo $kurs["amount_video_lecture"];?></p>
+                        <p><strong>Что должен выполнить студент для получения сертификата:</strong><br>
+                        <?php echo $kurs["task"];?></p>
 
 
                         <p><strong>Соавторы:</strong><br>

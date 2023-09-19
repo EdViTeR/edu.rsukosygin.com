@@ -15,7 +15,7 @@
     }
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $get_kurs = get_kurs_info($dbo);
+    $get_kurs = get_kurs_info_2023($dbo);
 ?>
 <!doctype html>
 <html lang="ru">

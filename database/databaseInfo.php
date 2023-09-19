@@ -195,9 +195,16 @@ function get_kurs_info($dbo) {
 	return $data;
 }
 
+
+// Все курсы по заявкам
+function get_kurs_info_2023($dbo) {
+	$data = $dbo->query('SELECT * FROM order_kurs_2023')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 // Все курсы по заявкам
 function get_one_kurs_info($dbo, $kurs_id) {
-	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt = $dbo->prepare("SELECT * FROM order_kurs_2023 WHERE `id` = ?");
 	$stmt->execute([$kurs_id]);
 	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;
@@ -248,6 +255,14 @@ function user_info_one($dbo, $user_id) {
 	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
 	$stmt->execute([$user_id]);
 	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $user_data;
+}
+
+//Вытаскиваем инфу о преподе по id
+function user_info_one_lazy($dbo, $user_id) {
+	$stmt = $dbo->prepare("SELECT * FROM user_info WHERE `user_id` = ?");
+	$stmt->execute([$user_id]);
+	$user_data = $stmt->fetch(PDO::FETCH_LAZY);
 	return $user_data;
 }
 
