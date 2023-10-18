@@ -2,9 +2,15 @@
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
-$kurs = get_one_kurs_info($dbo, $kurs_id);
+$kurs = get_one_kurs_info_2023($dbo, $kurs_id);
 $head_user_id = $kurs['user_id'];
 $head_user = user_data($dbo, $head_user_id);
+$head_info = user_info_one($dbo, $head_user_id);
+$head_reg = $head_info["academic_degree"] . '., ' . $head_info["academic_title"] . '.';
+$head_reg_job = $head_info['department'];
+$head_reg_job_title = $head_info['job_title'];
+$head_reg_about = $head_info['about'];
+// var_dump($head_reg); die;
 $expert_name = $_SESSION["user"]["first_name"] . ' ' . $_SESSION["user"]["name"] .  ' ' . $_SESSION["user"]["last_name"];
 $head_name = $head_user['first_name'] . ' ' . $head_user['name'] . ' ' . $head_user['last_name'];
 $authors = authors($dbo, $kurs_id);
@@ -54,33 +60,28 @@ $themes = themes($dbo, $kurs_id);
                         <p><strong>Руководитель:</strong><br>
                         <?php echo $head_name;?></p>
 
-                        <!-- <p><strong>Регалии руководителя:</strong><br> -->
-                        <!-- <?php echo $kurs['head_reg'];?></p> -->
+                        <p><strong>Регалии руководителя:</strong> <?php echo $head_reg;?></p>
+                        <p>Отдел / кафедра: <?php echo $head_reg_job;?></p>
+                        <p>Должность: <?php echo $head_reg_job_title;?></p>
+                        <p>Дополнительная информация: <?php echo $head_reg_about;?></p>
 
-                        <p><strong>Описание:</strong><br>
+                        <p><strong>Описание курса:</strong><br>
                         <?php echo $kurs["description"];?></p>
 
-                        <p><strong>Область / сфера:</strong><br>
-                        <?php echo $kurs["sphere"];?></p>
-
-                        <p><strong>Дисциплины, которые заменяются онлайн-курсом:</strong><br>
-                        <?php echo $kurs["replacement"];?></p>
-
-                        <p><strong>Направление(я) подготовки специальность(ти):</strong><br>
-                        <?php echo $kurs["route"];?></p>
-
-                        <p><strong>Необходимый уровень образования слушателей:</strong><br>
-                        <?php echo $kurs["user_level"];?></p>
-
-                        <p><strong>Объем курса (в часах):</strong><br>
-                        <?php echo $kurs["work_time"];?></p>
-
                         <p><strong>Количество лекций:</strong><br>
-                        <?php echo $kurs["amount_lecture"];?></p>
+                        <?php echo $kurs["lection"];?></p>
 
-                        <p><strong>Количество видеолекций:</strong><br>
-                        <?php echo $kurs["amount_video_lecture"];?></p>
+                        <p><strong>Задания для слушателей:</strong><br>
+                        <?php echo $kurs["task"];?></p>
 
+                        <p><strong>Условия для получения сертификата слушателем:</strong><br>
+                        <?php echo $kurs["sertificate"];?></p>
+
+                        <p><strong>Целевая аудитория онлайн-курса:</strong><br>
+                        <?php echo $kurs["for_whom"];?></p>
+
+                        <p><strong>Зачем (что получит слушатель при прохождении онлайн-курса):</strong><br>
+                        <?php echo $kurs["why"];?></p>
 
                         <p><strong>Соавторы:</strong><br>
                             <ol>
@@ -100,7 +101,7 @@ $themes = themes($dbo, $kurs_id);
                         </p>
                         <?php 
                             if (isset($presentation) && !empty($presentation)) {
-                                echo "<p><strong>Презентация:</strong><br><br>
+                                echo "<p><strong>Презентация курса:</strong><br><br>
                                     <a class='btn btn-outline-primary mb-3 me-3' href='" . $presentation . "'>Посмотреть</a><br/>
                                 </p>";
                             } else {
@@ -171,20 +172,26 @@ $themes = themes($dbo, $kurs_id);
                         <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
                         <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
                             <label for="structure" type="text"  class="form-label"><b>Актуальность онлайн-курса.</b> Является ли курс востребованным в настоящее время?</label>
-                            <input name="structure" min='0' max='30' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 30" value="" required="true">
+                            <input name="structure" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
                             </br>
-                            <label for="podhod" class="form-label">Структура онлайн-курса проработана, обоснована и логично изложена.</label>
-                            <input name="podhod"  min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
+                            <label for="podhod" class="form-label"><b>Структура онлайн-курса</b> проработана, обоснована и логично изложена.</label>
+                            <input name="podhod"  min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="purpose" class="form-label"><b>Содержание материалов соответствует целям и задачам курса.</b> Участники курса по итогам прохождения обучения получают теоретические и практические навыки, актуальные в современном обществе в соответствии с заявленной тематикой.
+                            <label for="purpose" class="form-label"><b>Применение разных способов обучения в онлайн-курсе. </b>В курсе присутствуют разные способы донесения информации и проверки полученных знаний слушателя.
                             </label>
-                            <input name="purpose" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
+                            <input name="purpose" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="technology" class="form-label"><b>Универсальность онлайн-курса.</b> Курс создан, в том числе, и для слушателей разных специальностей.</label>
-                            <input name="technology" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            <label for="technology" class="form-label"><b>Адаптивность онлайн-курса.</b> Курс создан, в том числе, и для слушателей разных специальностей.</label>
+                            <input name="technology" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
                             </br>
-                            <label for="health" class="form-label"><b>Готовность материалов заявки к созданию онлайн-курса и его качества.</b> Материал проработан и понятно изложен, тема курса полностью раскрыта.</label>
+                            <label for="health" class="form-label"><b>Практическая значимость и полезность онлайн-курса.</b> Критерий, показывающий реальную пользу от прохождения онлайн-курса в практической или профессиональной деятельности.</label>
                             <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br>
+                            <label for="health" class="form-label"><b>Возможности коммерциализации</b> онлайн-курса.</label>
+                            <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            </br>
+                            <label for="health" class="form-label"><b>Уникальность образовательного курса.</b> Приводятся ли реальные кейсы, наличие в курсе авторской новизны образовательного контента.</label>
+                            <input name="health" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
                             </br></br>
                             <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
                         </form>
