@@ -47,7 +47,8 @@ if (isset($_SESSION['user'])) {
             </div>
             <button class="w-100 btn btn-primary btn-lg mt-2 me-3" type="submit">Войти</button>
         </form>
-            <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a></br></br>    
+            <!-- <a href="sign_up.php" class="w-100 btn btn-outline-secondary btn-lg mt-2" type="submit">Регистрация</a> -->
+        </br></br>    
             <a href='files/instruction.pdf' target="_blank" class="btn btn-outline-danger mb-3 me-3" type="button">Инструкция по подаче заявки</a>
             </br></br>
             <?php 

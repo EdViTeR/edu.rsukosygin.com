@@ -195,9 +195,24 @@ function get_kurs_info($dbo) {
 	return $data;
 }
 
+
+// Все курсы по заявкам 2023
+function get_kurs_info_2023($dbo) {
+	$data = $dbo->query('SELECT * FROM order_kurs_2023')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 // Все курсы по заявкам
 function get_one_kurs_info($dbo, $kurs_id) {
 	$stmt = $dbo->prepare("SELECT * FROM kurs_info WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+// Все курсы по заявкам
+function get_one_kurs_info_2023($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM order_kurs_2023 WHERE `id` = ?");
 	$stmt->execute([$kurs_id]);
 	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;

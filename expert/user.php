@@ -15,7 +15,7 @@
     }
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
     $photo = view_photo($dbo, $_SESSION['user']['id']);
-    $get_kurs = get_kurs_info($dbo);
+    $get_kurs = get_kurs_info_2023($dbo);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -60,7 +60,6 @@
                             	$user_id = $value['user_id'];
                             	$user_data = user_data($dbo, $user_id);
                             	$username = $user_data["first_name"] . ' ' .  $user_data['name'] . ' ' . $user_data['last_name'];
-	                            $kurs_id = $value['id'];
 	                            $kurs_name = $value['kurs_name'];
 	                            echo '<div class="d-flex text-muted pt-3">
 	                                    <a href="view_order.php?kurs_id=' . $kurs_id . '" ><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
