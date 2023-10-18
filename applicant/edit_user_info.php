@@ -7,11 +7,12 @@
     $photo = view_photo($dbo, $_SESSION['user']['id']);
     $user_id = $_SESSION['user']['id'];
     $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
-    if ($_SESSION['user_info']['academic_degree_title'] == 'б/с') {
-        unset($_SESSION['user_info']['academic_degree_title']);
+    $reg = head_reg($dbo, $user_id);
+    if ($reg['academic_degree'] == 'б/с') {
+        unset($reg['academic_degree']);
     }
-    if ($_SESSION['user_info']['academic_degree'] == 'б/с') {
-        unset($_SESSION['user_info']['academic_degree']);
+    if ($reg['academic_title'] == 'б/с') {
+        unset($reg['academic_title']);
     }
 ?>
 <!doctype html>
@@ -65,15 +66,15 @@
                             </div>
                             <div class="col-12">
                                 <label for="phone" class="form-label">Телефон<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="+79009997788" value="<?php echo $_SESSION['user_info']['phone']; ?>" required>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="+79009997788" value="<?php echo $reg['phone']; ?>" required>
                             </div>
                             <div class="col-7">
                                 <label for="academic_degree_title" class="form-label">Ученая степень<span class="text-muted"></span></label>
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree_title">
                                     <?php 
-                                        if (isset($_SESSION['user_info']['academic_degree_title']) && !empty($_SESSION['user_info']['academic_degree_title'])) {
-                                            echo "<option value='" . $_SESSION['user_info']['academic_degree_title'] . "'?>" . $_SESSION['user_info']['academic_degree_title'] . "</option>
+                                        if (isset($reg['academic_title']) && !empty($reg['academic_title'])) {
+                                            echo "<option value='" . $reg['academic_title'] . "'?>" . $reg['academic_degree_title'] . "</option>
                                             <option value='б/с'>Без степени</option>
                                             <option value='к.'>Кандидат</option>
                                             <option value='д.'>Доктор</option>";
@@ -86,8 +87,8 @@
                                 </select>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-5 select_background" name="academic_degree">
                                     <?php 
-                                        if (isset($_SESSION['user_info']['academic_degree']) && !empty($_SESSION['user_info']['academic_degree'])) {
-                                            echo "<option value='" . $_SESSION['user_info']['academic_degree'] . "'?>" . $_SESSION['user_info']['academic_degree'] . "</option>
+                                        if (isset($reg['academic_degree']) && !empty($reg['academic_degree'])) {
+                                            echo "<option value='" . $reg['academic_degree'] . "'?>" . $reg['academic_degree'] . "</option>
                                                 <option value='б/с'>Без степени</option>
                                                 <option value='арх.н.'>архитектурных наук</option>
                                                 <option value='б.н.'>биологических наук</option>
@@ -144,8 +145,8 @@
                                 <br>
                                 <select class="btn btn-outline-secondary dropdown-toggle col-10 select_background" name="academic_title">
                                     <?php 
-                                        if (isset($_SESSION['user_info']['academic_title']) && !empty($_SESSION['user_info']['academic_title'])) {
-                                            echo "<option value='" . $_SESSION['user_info']['academic_title'] . "'?>" . $_SESSION['user_info']['academic_title'] . "</option>
+                                        if (isset($reg['academic_title']) && !empty($reg['academic_title'])) {
+                                            echo "<option value='" . $reg['academic_title'] . "'?>" . $reg['academic_title'] . "</option>
                                                 <option value='б/з'>Без звания</option>
                                                 <option value='доц.'>доцент</option>
                                                 <option value='проф.'>профессор</option>
@@ -190,15 +191,15 @@
                             </div>
                             <div class="col-12">
                                 <label for="department" class="form-label">Отдел / кафедра<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="department" name="department" placeholder="" value="<?php echo $_SESSION['user_info']['department']; ?>" required>
+                                <input type="text" class="form-control" id="department" name="department" placeholder="" value="<?php echo $reg['department']; ?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="job_title" class="form-label">Должность<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="" value="<?php echo $_SESSION['user_info']['job_title']; ?>" required>
+                                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="" value="<?php echo $reg['job_title']; ?>" required>
                             </div>
                             <div class="col-12">
                                 <label for="about" class="form-label">О себе<span class="text-muted"></span></label>
-                                <textarea type="text" name="about" id="about"  cols="100" class="form-control" rows="4" placeholder="Расскажите о себе" value="" required><?php echo $_SESSION['user_info']['about']; ?></textarea>
+                                <textarea type="text" name="about" id="about"  cols="100" class="form-control" rows="4" placeholder="Расскажите о себе" value="" required><?php echo $reg['about']; ?></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
