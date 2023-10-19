@@ -130,7 +130,6 @@ $themes = themes($dbo, $kurs_id);
                                                 <div class="d-flex justify-content-between">
                                                     <nobr><b>Лекция №' . $k . '</b>: ' . $themes_name .'</nobr>
                                                 </div>
-                                                <span class="d-block d-block-themes">' . $themes_name . '</span>
                                             <div class="collapse" id="collapseExample'.$k.'">
                                             </br>
                                                 <div class="card card-body">
