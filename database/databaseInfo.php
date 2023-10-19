@@ -113,6 +113,12 @@ function rating($dbo) {
 	return $data;
 }
 
+//Вытаскиваем оценки
+function marks_2023($dbo) {
+	$data = $dbo->query('SELECT * FROM marks_2023')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
 function expert_rating($dbo, $expert_id)
 {
 	$stmt = $dbo->prepare("SELECT * FROM rating WHERE `expert_id` = ?");
@@ -123,6 +129,13 @@ function expert_rating($dbo, $expert_id)
 		$kurs_info[] = array_merge(kurs_data($dbo, $kurs_id), $value);
 	}
 	return $kurs_info;
+}
+
+function expert_test($dbo, $expert_id) {
+	$stmt = $dbo->prepare("SELECT * FROM marks_2023 WHERE `expert_id` = ?");
+	$stmt->execute([$expert_id]);
+	$rating = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $rating;
 }
 
 

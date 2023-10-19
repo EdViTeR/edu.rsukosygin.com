@@ -1,12 +1,11 @@
 <?php
-
 session_start();
 include ("../database/databaseInfo.php");
 $user_id = $_SESSION['user']['id'];
 $name = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['name'] . ' ' . $_SESSION['user']['last_name'];
 $teachers = teacher_role($dbo, 4);
-$expert_rating = expert_rating($dbo, $user_id);
-$rating = rating($dbo);
+$expert_rating = expert_test($dbo, $user_id);
+$rating = marks_2023($dbo);
 $photo = view_photo($dbo, $_SESSION['user']['id']);
 ?>
 <!doctype html>
@@ -39,37 +38,40 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                     <div class="mb-4 p-5 bg-body rounded shadow-sm for_table">
                         <p class="h3 mb-3">Оценки</p>
                         <hr class="text-secondary">
-
 						  	<?
 						  		$k = 1;
 						  		foreach ($expert_rating as $key => $value) {
+                                    $kurs = kurs_data_2023($dbo, $value['kurs_id']);
+                                    $kurs_name = $kurs['kurs_name'];
+                                    echo '<b>' . $kurs_name .'</b></br></br>';
 						  			echo '<table class="table table-striped">
 						    					<tр align="center">
-						    					  <td rowspan="2" class="col_min">' . $value["kurs_name"] . '</th>
-						    					  <th scope="col" class="col">Проработанность</th>
-						    					  <th scope="col" class="col">Подход</th>
-						    					  <th scope="col" class="col">Обоснованность</th>
-						    					  <th scope="col" class="col">Технологии</th>
-						    					  <th scope="col" class="col">Адаптация</th>
-						    					  <th scope="col" class="col">Общая</th>
+						    					  <th scope="col" class="col">Актуальность</th>
+						    					  <th scope="col" class="col">Структура</th>
+						    					  <th scope="col" class="col">Способы</th>
+						    					  <th scope="col" class="col">Адаптивность</th>
+						    					  <th scope="col" class="col">Значимость</th>
+						    					  <th scope="col" class="col">Коммерциализация</th>
+                                                  <th scope="col" class="col">Уникальность</th>
 						    					</tr>
 						  				';
-						  			$a = $value["structure"] + $value["podhod"] + $value["purpose"] + $value["technology"] + $value["health"];
-						  			echo '
-									    <tr align="center">
-									      <td class="col_10">'. $value["structure"] .'</td>
-									      <td class="col_10">'. $value["podhod"] .'</td>
-									      <td class="col_10">'. $value["purpose"] .'</td>
-									      <td class="col_10">'. $value["technology"] .'</td>
-									      <td class="col_10">'. $value["health"] .'</td>
-									      <td class="col_10">'. $a .'</td>
-									    </tr>
-								</table>';
+						  			$a = $value["actual"] + $value["structure"] + $value["sposob"] + $value["adaptive"] + $value["health"] + $value["moneyy"] + $value["unique"];
+						  			echo '<tr align="center">
+    									      <td class="col_10">'. $value["actual"] .'</td>
+    									      <td class="col_10">'. $value["structure"] .'</td>
+    									      <td class="col_10">'. $value["sposob"] .'</td>
+    									      <td class="col_10">'. $value["adaptive"] .'</td>
+    									      <td class="col_10">'. $value["health"] .'</td>
+                                              <td class="col_10">'. $value["moneyy"] .'</td>
+                                              <td class="col_10">'. $value["unique"] .'</td>
+    									    </tr>
+								        </table>';
+                                    echo 'Итоговый балл: ' . $a . '<br><hr>';
 						  		}
 						  	?>
 						  
                         <small class="d-block text-end mt-3">
-                            <a href="user.php">Назад</a>
+                            <a href="user.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Назад</a>
                         </small>
                     </div>
                 </div>
@@ -89,6 +91,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                         <p class="h5 mt-4 mb-4"><?php echo $name?></p>
                         <p>Вы авторизировались как <strong>«Эксперт»</strong>.</p>
                         <a href="marks.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Мои оценки</a>
+                        <a href="user.php" class="btn btn-outline-secondary mb-3 me-3" type="button">Назад</a>
                     </div>
                 </div>
             </div>

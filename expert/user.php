@@ -7,7 +7,7 @@
         header("Location: /");
     }
     $user_id = $_SESSION['user']['id'];
-    $rating = expert_rating($dbo, $user_id);
+    $rating = expert_test($dbo, $user_id);
     if (isset($rating) && !empty($rating)) {
         foreach ($rating as $key => $value) {
             $kurs_id_all[] = $value['kurs_id'];
