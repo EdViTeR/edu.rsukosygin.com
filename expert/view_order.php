@@ -10,7 +10,6 @@ $head_reg = $head_info["academic_degree"] . '., ' . $head_info["academic_title"]
 $head_reg_job = $head_info['department'];
 $head_reg_job_title = $head_info['job_title'];
 $head_reg_about = $head_info['about'];
-// var_dump($head_reg); die;
 $expert_name = $_SESSION["user"]["first_name"] . ' ' . $_SESSION["user"]["name"] .  ' ' . $_SESSION["user"]["last_name"];
 $head_name = $head_user['first_name'] . ' ' . $head_user['name'] . ' ' . $head_user['last_name'];
 $authors = authors($dbo, $kurs_id);
@@ -25,7 +24,10 @@ $themes = themes($dbo, $kurs_id);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <title>Авторизация в личный кабинет</title>
         <link rel="stylesheet" href="../style.css">
     </head>
@@ -112,34 +114,6 @@ $themes = themes($dbo, $kurs_id);
                         ?>
                         
                     </div>
-<!--                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
-                        <h6 class="border-bottom pb-2 mb-0">Информация о разработчиках курса</h6>
-                        <?  
-                        $k = 0;
-                        if (isset($themes) && !empty($themes)) {
-                            foreach ($themes as $key => $value) {                               
-                                $k++;
-                                $themes_id = $value['id'];
-                                $themes_name = $value['name'];
-                                echo '<div class="d-flex text-muted pt-3">
-                                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                                <div class="d-flex justify-content-between">
-                                                    <strong class="text-gray-dark">Лекция ' . $k . '</strong>
-                                                </div>
-                                                <span class="d-block d-block-themes">' . $themes_name . '</span>
-                                            </div>
-                                        </div>
-                                        
-                                ';
-                            }
-                        } else {
-                            echo "</br>Добавленных лекций нет.";
-                        }?>
-                        <small class="d-block text-end mt-3">
-                            <a href="user.php">Назад</a>
-                        </small>
-                    </div> -->
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Программа курса</h6>
                         <?  
@@ -149,17 +123,24 @@ $themes = themes($dbo, $kurs_id);
                                 $k++;
                                 $themes_id = $value['id'];
                                 $themes_name = $value['name'];
+                                $themes_info = $value['info'];
                                 echo '<div class="d-flex text-muted pt-3">
-                                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $theme_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                                                 <div class="d-flex justify-content-between">
-                                                    <strong class="text-gray-dark">Лекция ' . $k . '</strong>
+                                                    <nobr><b>Лекция №' . $k . '</b>: ' . $themes_name .'</nobr>
                                                 </div>
-                                                <span class="d-block d-block-themes">' . $themes_name . '</span>
+                                                <span class="d-block d-block-themes">' . $theme_name . '</span>
+                                            <div class="collapse" id="collapseExample'.$k.'">
+                                            </br>
+                                                <div class="card card-body">
+                                                    <b>Краткая информация</b>
+                                                    <hr>
+                                                    ' . $value['info'] . '
+                                                </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        
-                                ';
+                                        </div>';
                             }
                         } else {
                             echo "</br>Добавленных лекций нет.";
@@ -171,27 +152,27 @@ $themes = themes($dbo, $kurs_id);
                     <div class="mb-4 p-5 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Оценивание курса</h6><br>
                         <form method="POST" action="check_order.php?kurs_id=<? echo $kurs_id; ?>">
-                            <label for="structure" type="text"  class="form-label"><b>Актуальность онлайн-курса.</b> Является ли курс востребованным в настоящее время?</label>
-                            <input name="structure" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
+                            <label for="actual" type="text"  class="form-label"><b>Актуальность онлайн-курса.</b> Является ли курс востребованным в настоящее время?</label>
+                            <input name="actual" min='0' max='20' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 20" value="" required="true">
                             </br>
-                            <label for="podhod" class="form-label"><b>Структура онлайн-курса</b> проработана, обоснована и логично изложена.</label>
-                            <input name="podhod"  min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            <label for="structure" class="form-label"><b>Структура онлайн-курса</b> проработана, обоснована и логично изложена.</label>
+                            <input name="structure"  min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="purpose" class="form-label"><b>Применение разных способов обучения в онлайн-курсе. </b>В курсе присутствуют разные способы донесения информации и проверки полученных знаний слушателя.
+                            <label for="sposob" class="form-label"><b>Применение разных способов обучения в онлайн-курсе. </b>В курсе присутствуют разные способы донесения информации и проверки полученных знаний слушателя.
                             </label>
-                            <input name="purpose" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            <input name="sposob" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="technology" class="form-label"><b>Адаптивность онлайн-курса.</b> Курс создан, в том числе, и для слушателей разных специальностей.</label>
-                            <input name="technology" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
+                            <label for="adaptive" class="form-label"><b>Адаптивность онлайн-курса.</b> Курс создан, в том числе, и для слушателей разных специальностей.</label>
+                            <input name="adaptive" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
                             </br>
                             <label for="health" class="form-label"><b>Практическая значимость и полезность онлайн-курса.</b> Критерий, показывающий реальную пользу от прохождения онлайн-курса в практической или профессиональной деятельности.</label>
                             <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="health" class="form-label"><b>Возможности коммерциализации</b> онлайн-курса.</label>
-                            <input name="health" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
+                            <label for="moneyy" class="form-label"><b>Возможности коммерциализации</b> онлайн-курса.</label>
+                            <input name="moneyy" min='0' max='15' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 15" value="" required="true">
                             </br>
-                            <label for="health" class="form-label"><b>Уникальность образовательного курса.</b> Приводятся ли реальные кейсы, наличие в курсе авторской новизны образовательного контента.</label>
-                            <input name="health" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
+                            <label for="unique" class="form-label"><b>Уникальность образовательного курса.</b> Приводятся ли реальные кейсы, наличие в курсе авторской новизны образовательного контента.</label>
+                            <input name="unique" min='0' max='10' type="number" class="form-control" id="firstName" placeholder="Введите количество баллов от 0 до 10" value="" required="true">
                             </br></br>
                             <button class="w-100 btn btn-outline-primary btn-lg">Отправить</button>
                         </form>
