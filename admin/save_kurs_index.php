@@ -23,7 +23,7 @@ $params = [
 	'why' 					=> $why,
 	'author' 				=> $author,
 	'author_info' 			=> $author_info,
-	'author_photo_first' 	=> $author_info,
+	'author_photo_first' 	=> $author_photo_first,
 	'author_photo_second' 	=> $author_photo_second,
 	'video' 				=> $video,
 ];
