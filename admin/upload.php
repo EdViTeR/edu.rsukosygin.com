@@ -32,8 +32,9 @@ if (isset($_FILES['image'])) {
     // Выведем название ошибки
     die($outputMessage);
   } else {
-      $folder="/OpenServer/domains/edu.rsukosygin.com/files/images/img_kurs/";
+      $folder="/OpenServer/domains/edu.rsukosygin.com/images/img_kurs/";
       $way = "/images/img_kurs/" . $fileName;
+      // var_dump($folder.$fileName); die;
       move_uploaded_file($fileTmpName, $folder.$fileName);
       save_kurs_images($dbo, $way, 9);
       header('Location: add_kurs_index.php');
