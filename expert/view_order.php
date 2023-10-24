@@ -125,12 +125,11 @@ $themes = themes($dbo, $kurs_id);
                                 $themes_name = $value['name'];
                                 $themes_info = $value['info'];
                                 echo '<div class="d-flex text-muted pt-3">
-                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&theme_id=' . $theme_id . '&user_id=' . $user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
+                                                <a data-bs-toggle="collapse" href="#collapseExample'.$k.'" role="button" aria-expanded="false" aria-controls="collapseExample'.$k.' href="view_themes.php?kurs_id=' . $kurs_id . '&themes_id=' . $themes_id . '&user_id=' . $head_user_id . '"><svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg></a>
                                                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                                <div class="d-flex justify-content-between">
-                                                    <nobr><b>Лекция №' . $k . '</b>: ' . $themes_name .'</nobr>
+                                                <div class="d-flex justify-content-between nobr">
+                                                    <b>Лекция №'. $k . ':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $themes_name .'</b>
                                                 </div>
-                                                <span class="d-block d-block-themes">' . $theme_name . '</span>
                                             <div class="collapse" id="collapseExample'.$k.'">
                                             </br>
                                                 <div class="card card-body">
