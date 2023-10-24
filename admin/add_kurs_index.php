@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    switch ($_SESSION['add_status']) {
-        case '1':
-            $message = 'У нас новенький';
-            break;
-        case '2':
-            $message = 'Что-то не вышло';
-            break;
-    }
+    // switch ($_SESSION['add_status']) {
+    //     case '1':
+    //         $message = 'У нас новенький';
+    //         break;
+    //     case '2':
+    //         $message = 'Что-то не вышло';
+    //         break;
+    // }
 ?>
 <!doctype html>
 <html lang="ru">
