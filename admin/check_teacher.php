@@ -149,6 +149,7 @@
                         <a href="check_reviews.php"  class="btn btn-outline-secondary mb-3" type="button">Отзывы</a>
                         <a href="unloading.php"  class="btn btn-outline-secondary mb-3" type="button">Выгрузка</a>
                         <a href="add_kurs_index.php"  class="btn btn-outline-secondary mb-3" type="button">Создать новый курс</a>
+                        <a href="add_lection_index.php"  class="btn btn-outline-secondary mb-3" type="button">Добавить лекцию</a>
                     </div>
                 </div>
             </div>
@@ -157,7 +158,7 @@
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
     </body>
