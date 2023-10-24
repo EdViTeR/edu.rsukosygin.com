@@ -49,7 +49,7 @@
 
                             <div class="col-12">
                                 <label for="data" class="form-label">Описание лекции</label>
-                                <textarea type="text" class="form-control" id="data" name="data" placeholder="" value="" required></textarea>
+                                <textarea type="text" class="form-control" id="data" name="data" placeholder="" value=""></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
