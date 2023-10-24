@@ -35,31 +35,31 @@
                 <div class="col-lg-8">
                     <!-- Преподаватели -->
                     <h4 class="mb-3">Новый курс на главную страницу</h4>
-                    <!-- <form method="POST" action="save_user.php" enctype="multipart/form-data"> -->
+                    <form method="POST" action="save_kurs_index.php" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4">
-                                <label for="first_name" class="form-label">id руководителя</label>
+                                <label for="head_id" class="form-label">id руководителя</label>
                                 <input type="text" class="form-control" id="head_id" name="head_id" placeholder="" value="" required>
                             </div>
 
-                            <div class="col-sm-4">
-                                <label for="name" class="form-label">Имя</label>
+                            <div class="col-sm-8">
+                                <label for="name" class="form-label">Название курса</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
                             </div>
 
                             <div class="col-12">
-                                <label for="last_name" class="form-label">Краткая информация</label>
-                                <textarea type="text" class="form-control" id="last_name" name="data" placeholder="" value="" required></textarea>
+                                <label for="data" class="form-label">Краткая информация</label>
+                                <textarea type="text" class="form-control" id="data" name="data" placeholder="" value="" required></textarea>
                             </div>
 
                             <div class="col-12">
                                 <label for="for_whom" class="form-label">Для кого<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="for_whom" name="for_whom" placeholder="" required>
+                                <input type="text" class="form-control" id="for_whom" name="for_whom" placeholder="Перечислять через ;" required>
                             </div>
                             
                             <div class="col-sm-12">
                                 <label for="why" class="form-label">Зачем<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="why" name="repeat_password" placeholder="Перечислять через ;" required>
+                                <input type="text" class="form-control" id="why" name="why" placeholder="Перечислять через ;" required>
                             </div>
                             
                             <div class="col-sm-12">
@@ -68,20 +68,36 @@
                             </div>
                             
                             <div class="col-sm-12">
-                                <label for="author_reg" class="form-label">Регалии автора<span class="text-muted"></span></label>
-                                <input type="text" class="form-control" id="author_reg" name="author_reg" placeholder="" required>
+                                <label for="author_info" class="form-label">Регалии автора<span class="text-muted"></span></label>
+                                <input type="text" class="form-control" id="author_info" name="author_info" placeholder="" required>
                             </div>
+                            
+                            <div class="col-sm-12">
+                                <label for="author_photo_first" class="form-label">Первое фото<span class="text-muted"></span></label>
+                                <input type="text" class="form-control" id="author_photo_first" name="author_photo_first" placeholder="" required>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <label for="author_photo_second" class="form-label">Второе фото<span class="text-muted"></span></label>
+                                <input type="text" class="form-control" id="author_photo_second" name="author_photo_second" placeholder="" required>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <label for="video" class="form-label">Видео<span class="text-muted"></span></label>
+                                <input type="text" class="form-control" id="video" name="video" placeholder="" required>
+                            </div>
+
                             <div class="col-sm-6">
-                            	<form action="upload.php" method="post" enctype="multipart/form-data">
+<!--                             	<form action="upload.php" method="post" enctype="multipart/form-data">
                             		<label for="author_reg" class="form-label">Маленькое фото<span class="text-muted"></span></label><p>
                                 	<input type="file" name="image"><br><br>
                                 	<button type="submit" class="btn btn-outline-secondary mb-3 me-3">Загрузить</button>
-                            	</form>
+                            	</form> -->
                         	</div>
                         </div>
                         <button class="btn btn-primary btn-lg mt-4 me-3" type="submit">Сохранить</button>
                         <a class="btn btn-outline-secondary btn-lg mt-4" href="check_teacher.php">Назад</a>
-                    <!-- </form> -->
+                    </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="p-5 bg-light border rounded-3">

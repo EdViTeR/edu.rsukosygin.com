@@ -70,7 +70,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<div class="author_reg"><?php echo $kurs["author_info"]; ?></div>
 				<div class="laboriousness">Общая трудоемкость курса: 72 часа</div>
 				<div class="kurs_button">
-					<a class="kurs_button_link" href="#">Записаться</a>
+					<a class="kurs_button_link" href="#registration">Записаться</a>
 				</div>
 			</div>
 			<div class="text__title">О КУРСЕ</div>
@@ -131,15 +131,36 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		<div class="author__name"><?php echo $kurs["author"];?></div>
 		<hr class="for__author__hr">
 		<div class="author__reg"><?php echo $kurs["author_info"];?></div>
-	</div>
-
+	</div><br><br><hr>
+<section class="registration" name="registration" id="registration">
+	<div class="contacts__head">Зарегистрироваться на курс</div>
+  	<form method="POST" action="registration.php?kurs_id=<?php echo $id;?>" class="row g-3 contacts__form">
+  <!-- <div class="row g-3 contacts__form"> -->
+  	<div class="col-sm-1"></div>
+  	<div class="col-sm-1"></div>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="first_name" name="name" placeholder="Имя" value="" required>
+	    </div>
+	    <div class="col-sm-2">
+	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="name" name="email" placeholder="Почта" value="" required>
+	    </div>
+	    <div class="col-sm-4 contacts__text">Регистрация возможна при использовании ТОЛЬКО корпоративной почты!</div>
+	    <div class="col-sm-1"></div>
+	    <div class="col-sm-1"></div>
+	    <div class="col-sm-1"></div>
+		<div class="back__button__contacts">
+			<button type="submit" class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
+		</div>
+  </form>
+<!-- </section>
 	<div class="registration__all">
 		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
 	</div>
 	<div class="back__button">
 		<a class="back__button__link" href="courses.php">Вернуться</a>
 	</div>
-</section>
+</section> -->
+</br></br></br>
 
 <?php 
 	include('footer.php');

@@ -472,10 +472,19 @@ function getNews($dbo) {
 	return $stmt;
 }
 
+
 // получаем одну новость по id
 function getNewsItem($dbo, $id) {
 	$stmt = $dbo->prepare("SELECT * FROM news WHERE `id` = ?");
 	$stmt->execute([$id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+// получаем зарегистрированный email
+function getEmail($dbo, $email) {
+	$stmt = $dbo->prepare("SELECT * FROM registration WHERE `email` = ?");
+	$stmt->execute([$email]);
 	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;
 }
