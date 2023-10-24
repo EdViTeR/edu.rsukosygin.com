@@ -11,7 +11,7 @@ $author         		= $_POST['author'];
 $author_info    		= $_POST['author_info'];
 $author_photo_first   	= '/images/img_author/' . $_POST['author_photo_first'];
 $author_photo_second   	= '/images/img_author/' . $_POST['author_photo_second'];
-$video   				= '<iframe width="760" height="428" src="' . $_POST['video'] . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+$video   				= $_POST['video'];
 
 $query = ("INSERT INTO `kurses` SET `head_id` = :head_id, `name` = :name, `data` = :data, `time` = :time, `for_whom` = :for_whom, `why` = :why, `author` = :author, `author_info` = :author_info, `author_photo_first` = :author_photo_first, `author_photo_second` = :author_photo_second, `video` = :video");
 $params = [
