@@ -108,7 +108,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		</div>
 	</div>
 	<div class="program__title">ПРОГРАММА КУРСА</div>
-	<div class="program__subtitle">*Курс состоит из лекционных иметодических материалов, тестовых и практических заданий</div>
+	<div class="program__subtitle">*Курс состоит из лекционных и методических материалов, тестовых и практических заданий</div>
 	<div class="all__lections">
 		<?php 
 		$k = 0;
