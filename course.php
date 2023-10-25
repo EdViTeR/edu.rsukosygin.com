@@ -132,10 +132,9 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		<hr class="for__author__hr">
 		<div class="author__reg"><?php echo $kurs["author_info"];?></div>
 	</div><br><br><hr>
-<section class="registration" name="registration" id="registration">
+<!-- <section class="registration" name="registration" id="registration">
 	<div class="contacts__head">Зарегистрироваться на курс</div>
   	<form method="POST" action="registration.php?kurs_id=<?php echo $id;?>" class="row g-3 contacts__form">
-  <!-- <div class="row g-3 contacts__form"> -->
   	<div class="col-sm-1"></div>
   	<div class="col-sm-1"></div>
 	    <div class="col-sm-3">
@@ -152,14 +151,14 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 			<button type="submit" class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
 		</div>
   </form>
-<!-- </section>
+</section> -->
 	<div class="registration__all">
 		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
 	</div>
 	<div class="back__button">
 		<a class="back__button__link" href="courses.php">Вернуться</a>
 	</div>
-</section> -->
+</section>
 </br></br></br>
 
 <?php 
