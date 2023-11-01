@@ -70,7 +70,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<div class="author_reg"><?php echo $kurs["author_info"]; ?></div>
 				<div class="laboriousness">Общая трудоемкость курса: 72 часа</div>
 				<div class="kurs_button">
-					<a class="kurs_button_link" href="#registration">Записаться</a>
+					<a class="kurs_button_link" href="https://edu.rguk.ru/lk/free_modules.php">Записаться</a>
 				</div>
 			</div>
 			<div class="text__title">О КУРСЕ</div>
@@ -131,7 +131,10 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		<div class="author__name"><?php echo $kurs["author"];?></div>
 		<hr class="for__author__hr">
 		<div class="author__reg"><?php echo $kurs["author_info"];?></div>
-	</div><br><br><hr>
+	</div>
+	<div class="back__button">
+		<a class="back__button__link" href="https://edu.rguk.ru/lk/free_modules.php">Зарегистрироваться</a>
+	</div>
 <!-- <section class="registration" name="registration" id="registration">
 	<div class="contacts__head">Зарегистрироваться на курс</div>
   	<form method="POST" action="registration.php?kurs_id=<?php echo $id;?>" class="row g-3 contacts__form">
@@ -152,12 +155,12 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		</div>
   </form>
 </section> -->
-	<div class="registration__all">
+<!-- 	<div class="registration__all">
 		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
 	</div>
 	<div class="back__button">
 		<a class="back__button__link" href="courses.php">Вернуться</a>
-	</div>
+	</div> -->
 </section>
 </br></br></br>
 
