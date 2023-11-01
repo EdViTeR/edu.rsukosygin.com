@@ -70,7 +70,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<div class="author_reg"><?php echo $kurs["author_info"]; ?></div>
 				<div class="laboriousness">Общая трудоемкость курса: 72 часа</div>
 				<div class="kurs_button">
-					<a class="kurs_button_link" href="https://edu.rguk.ru/lk/free_modules.php">Записаться</a>
+					<!-- <a class="kurs_button_link" href="https://edu.rguk.ru/lk/free_modules.php">Записаться</a> -->
 				</div>
 			</div>
 			<div class="text__title">О КУРСЕ</div>
@@ -155,7 +155,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 		</div>
   </form>
 </section> -->
-	<div class="registration__all">
+	<div class="registration__all" id="#end_reg">
 		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
 	</div>
 	<div class="back__button">
