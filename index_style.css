@@ -28,10 +28,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 600px) {
 	.container {
 		background: black !important;
+		width: 100% !important;
+		max-width: 600px !important;
+		margin: 0 auto !important;
 	}
+}
+.head__info__title {
+	margin-top: 53px;
+	text-align: center;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 140%;
+	width: 100%;
+	color: #2B3674;
 }
 
 
