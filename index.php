@@ -47,27 +47,25 @@
 			<h2>Онлайн-образование</h2>
 			<h3>Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате</h3>
 			<div class="banner">
-				<a class="banner__item img-course" href="courses.php">
-					<div class="banner__avatar">
-						<img src="" alt="">
-					</div>
+				<a class="banner__item" href="courses.php">
+					<img class="banner__avatar" src="" alt="">
 					<div class="banner__head">
 						<h4>Онлайн-курсы</h4>
-						<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина</p>
+						<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина</p>
 					</div>
+					<img class="banner__back" src="img\book.jpg" alt="">
 				</a>
-				<a class="banner__item img-news" href="news.php">
-					<div class="banner__avatar">
-						<img src="" alt="">
-					</div>
+				<a class="banner__item" href="news.php">
+					<img class="banner__avatar" src="" alt="">
 					<div class="banner__head">
 						<h4>Новости</h4>
 						<p>Самые актуальные новости об онлайн-образовании нашего университета</p>
 					</div>
+					<img class="banner__back" src="img\news.jpg" alt="">
 				</a>
 			</div>
 		</div>
-		<div class="box-other">
+		<div class="box">
 			<img class="index__photo" src="images/index_img/index__photo__last.svg" alt="">
 		</div>
 		<div class="box">
@@ -184,14 +182,24 @@
 			</div>
 		</div>
 	</main>
-	<footer>
-	Тут будет нормальный футор
-	
+	<footer class="content f-bottom">
+		<div class="f-box">
+			<div class="f-box__item">
+				<img  src="svg\logotype-invers.svg" alt="">
+			</div>
+			
+			<div class="f-box__item">
+				<p>119071, Москва<br>ул. Малая Калужская, 1</p>
+				<p>&#169 2023 ФГБОУ ВО РГУ им. А.Н. Косыгина (Технологии. Дизайн. Искусство)</p>
+				<p>Почта:<br>reor@rguk.ru</p>
+			</div>
+		</div>
 	</footer>
 
+	<!-- 
 	<?php
 	include('footer.php');
-	?>
+	?> -->
 
 </body>
 

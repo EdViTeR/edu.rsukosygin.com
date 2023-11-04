@@ -81,7 +81,6 @@ body {
 @media screen and (max-width: 60rem) {
 	.header {
 		top: 0;
-		/* padding: 0 .5rem; */
 		border-radius: 0 0 1.125rem 1.125rem;
 	}
 }
@@ -164,7 +163,7 @@ body {
 	text-align: center;
 	width: 100%;
 	max-width: 60rem;
-	padding: 3.5rem 1rem;
+	padding: 3.5rem 1rem 0rem 1rem;
 	gap: .5rem;
 }
 .box button {
@@ -180,9 +179,11 @@ body {
 	width: 100%;
 	padding-top: 1rem;
 	gap: 1rem;
+	
 }
 .banner__item {
 	display: flex;
+	position: relative;
 	flex: auto;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -192,18 +193,15 @@ body {
 	width: 24rem;
 	border-radius: 1.75rem;
 	text-decoration: none;
-}
-.img-course {
-	background: url("../images/index_img/img__course__all.svg") center no-repeat;
-}
-.img-news {
-	background:	url("images/index_img/card__news.svg") center no-repeat;
+	overflow: hidden;
+	z-index: 2;
 }
 .banner__avatar {
 	min-width: 8rem;
 	height: 8rem;
 	background: #efefef25;
 	border-radius: 4rem;
+	z-index: 3;
 }
 .banner__head {
 	display: flex;
@@ -213,10 +211,22 @@ body {
 	text-align: start;
 	padding-left: 1.25rem;
 	padding-top: .5rem;
+	z-index: 3;
 }
 .banner__head p {
-	color: #f4f7fe;
+	color: var(--back-color);
 }
+.banner__back {
+	position: absolute;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	filter: brightness(25%);
+}
+
 .index__photo {
 	width: 100%;
 	max-width: 70rem;
@@ -229,7 +239,7 @@ body {
 	flex-direction: column;
 	justify-content: start;
 	width: 100%;
-	background: white;
+	background: var(--white);
 	border-radius: 1.75rem;
 	box-shadow: 0 .125rem .125rem .0625rem #00000015;
 	overflow: hidden;
@@ -301,12 +311,46 @@ body {
 	width: 100%;
 	min-width: 35rem;
 }
+.map {
+	max-width: 80rem;
+	margin-top: 1rem;
+	padding: 0;
+}
+.f-bottom {
+	background: var(--main-color);
+	padding: 3rem 1rem;
+}
+.f-box {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: start;
+	align-content: center;
+	width: 100%;
+	max-width: 60rem;
+	padding: 0 2rem;
+	column-gap: 5rem;
+	row-gap: 2rem;
+}
+.f-box__item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: 25rem;
+	color: var(--back-color);
+	font-size: .875rem;
+}
+.f-box__item img {
+	display: flex;
+	max-width: 16rem;
 
+}
 
-
-
-
-
+.f-box__item p {
+	color: var(--back-color);
+}
 
 
 
@@ -1170,10 +1214,7 @@ body {
 	line-height: 17px;
 }
 
-.map {
-	margin-top: 5%;
-	margin-bottom: 5%;
-}
+
 
 .carousel__all {
 	border-radius: 15px;
