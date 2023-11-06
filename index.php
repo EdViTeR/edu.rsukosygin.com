@@ -15,6 +15,7 @@
 	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
 	<link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
+
 <body>
 	<header class="header">
 		<ul class="nav navbar justify-content-center">
@@ -164,11 +165,13 @@
 					<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="mail@rguk.ru">
 					<small id="emailHelpId" class="form-text text-muted">Ваша электронная почта</small>
 				</div>
-				<div class="mb-3">
+				<div class="mb-3 feedback__item">
 					<label for="" class="form-label">Введите Ваше сообщение:</label>
 					<textarea class="form-control" name="message" id="message" rows="3"></textarea>
 				</div>
+				
 				<button type="submit" class="btn my-btn my-btn-primary" href="index.php">Отправить</button>
+				
 			</form>
 		</div>
 		<div class="box">
@@ -184,9 +187,9 @@
 	<footer class="content f-bottom">
 		<div class="f-box">
 			<div class="f-box__item">
-				<img  src="svg\logotype-invers.svg" alt="">
+				<img src="svg\logotype-invers.svg" alt="">
 			</div>
-			
+
 			<div class="f-box__item">
 				<p>119071, Москва<br>ул. Малая Калужская, 1</p>
 				<p>&#169 2023 ФГБОУ ВО РГУ им. А.Н. Косыгина (Технологии. Дизайн. Искусство)</p>

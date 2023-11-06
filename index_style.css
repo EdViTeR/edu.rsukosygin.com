@@ -157,6 +157,7 @@ body {
 }
 .box {
 	display: flex;
+	overflow: hidden;
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
@@ -208,8 +209,8 @@ body {
 .banner__avatar {
 	min-width: 8rem;
 	height: 8rem;
-/*	background: #efefef25;*/
-/*	border-radius: 3rem;*/
+	background: #efefef25;
+	border-radius: 50%;
 	z-index: 3;
 }
 .banner__head {
@@ -315,16 +316,20 @@ body {
 	border-radius: .75rem;
 	min-height: 2.75rem;
 }
-.feedback textarea {
-	max-width: 42.5rem;
+.feedback__item {
 	width: 100%;
-	min-width: 35rem;
+}
+/* Карта */
+iframe {
+	margin-top: 1rem;
+	width: 100%;
+	border-radius: 1rem 1rem 0 0;
+	box-shadow: ;
 }
 .map {
-	max-width: 80rem;
-	margin-top: 1rem;
-	padding: 0;
+	width: 100%;
 }
+/* Подвал */
 .f-bottom {
 	background: var(--main-color);
 	padding: 3rem 1rem;
@@ -354,7 +359,6 @@ body {
 .f-box__item img {
 	display: flex;
 	max-width: 16rem;
-
 }
 
 .f-box__item p {
