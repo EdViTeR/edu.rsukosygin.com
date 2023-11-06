@@ -196,11 +196,20 @@ body {
 	overflow: hidden;
 	z-index: 2;
 }
+
+.banner :hover .banner__head {
+	opacity: 0.8;
+}
+
+.banner :hover .banner__avatar {
+	opacity: 0.8;
+}
+
 .banner__avatar {
 	min-width: 8rem;
 	height: 8rem;
-	background: #efefef25;
-	border-radius: 4rem;
+/*	background: #efefef25;*/
+/*	border-radius: 3rem;*/
 	z-index: 3;
 }
 .banner__head {

@@ -8,15 +8,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Онлайн-курсы</title>
+	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="index_style.css">
 	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
 	<link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
-
 <body>
-
 	<header class="header">
 		<ul class="nav navbar justify-content-center">
 			<li class="nav-item">
@@ -48,7 +47,7 @@
 			<h3>Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате</h3>
 			<div class="banner">
 				<a class="banner__item" href="courses.php">
-					<img class="banner__avatar" src="" alt="">
+					<img class="banner__avatar" src="images/index_img/course__card__icon.svg" alt="">
 					<div class="banner__head">
 						<h4>Онлайн-курсы</h4>
 						<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина</p>
@@ -56,7 +55,7 @@
 					<img class="banner__back" src="img\book.jpg" alt="">
 				</a>
 				<a class="banner__item" href="news.php">
-					<img class="banner__avatar" src="" alt="">
+					<img class="banner__avatar" src="images/index_img/card__news.png" alt="">
 					<div class="banner__head">
 						<h4>Новости</h4>
 						<p>Самые актуальные новости об онлайн-образовании нашего университета</p>
