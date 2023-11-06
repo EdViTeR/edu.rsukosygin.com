@@ -886,10 +886,6 @@ iframe {
 	text-decoration: none;
 }
 
-.kurs__href:hover {
-	transform: translate3d(-10px, -10px, 0px);
-}
-
 .news__item {
 	border-radius: 15px;
 	margin: 0 auto;
