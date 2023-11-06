@@ -27,7 +27,7 @@ $kurses = kurses_for_index($dbo);
 				<a class="nav-link my-btn" href="index.php" aria-current="page">Главная</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="courses.php">Курсы</a>
+				<a class="nav-link my-btn my-btn_activ" href="courses.php">Курсы</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link my-btn" href="#">Новости</a>
@@ -64,7 +64,7 @@ $kurses = kurses_for_index($dbo);
 						<div class="edu-card__header">
 							<div class="edu-card__date">
 								<img src="svg/icon-calendar.svg" alt="">
-								<span>1.12.2023 - 25.01.2024</span>
+								<span>01.12.2023 - 25.01.2024</span>
 							</div>
 							<h4 class="edu-card__title">' . $kurs_name . '</h4>
 							<p class="edu-card__description">' . $data . '</p>
