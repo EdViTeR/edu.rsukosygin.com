@@ -13,7 +13,7 @@
 	--blue: #0050ae;
 	--blue-deep: #2b3674;
 	--shadow: 0 .125rem .125rem .0625rem #00000015;
-	--color-hover: 0 0 1.5rem .25rem #0074fb50;
+	--color-hover: 0 0 0 .25rem #0074fb40;
 }
 html {
 	font-size: 14px;
@@ -429,11 +429,11 @@ iframe {
 	border-radius: 1.5rem;
 	box-shadow: var(--shadow);
 	overflow: hidden;
-	transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+	transition: .5s cubic-bezier(0.215, 0.610, 0.355, 1);
 	text-decoration: none;
 }
 .edu-card:hover {
-	box-shadow: var(--color-hover)
+	transform: scale(1.025);
 }
 /* Модификатор карточки курса НОВЫЙ КУРС */
 .edu-card_new {
