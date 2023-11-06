@@ -20,10 +20,10 @@
 	<header class="header">
 		<ul class="nav navbar justify-content-center">
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="#" aria-current="page">Главная</a>
+				<a class="nav-link my-btn" href="index.php" aria-current="page">Главная</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="#">Курсы</a>
+				<a class="nav-link my-btn" href="courses.php">Курсы</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link my-btn" href="#">Новости</a>
@@ -48,7 +48,9 @@
 			<h3>Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате</h3>
 			<div class="banner">
 				<a class="banner__item" href="courses.php">
-					<img class="banner__avatar" src="images/index_img/course__card__icon.svg" alt="">
+					<div class="banner__avatar">
+						<img src="images/index_img/course__card__icon.svg" alt="Онлайн курсы">
+					</div>
 					<div class="banner__head">
 						<h4>Онлайн-курсы</h4>
 						<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина</p>
@@ -56,7 +58,9 @@
 					<img class="banner__back" src="img\book.jpg" alt="">
 				</a>
 				<a class="banner__item" href="news.php">
-					<img class="banner__avatar" src="images/index_img/card__news.png" alt="">
+					<div class="banner__avatar">
+						<img src="images/index_img/card__news.png" alt="">
+					</div>
 					<div class="banner__head">
 						<h4>Новости</h4>
 						<p>Самые актуальные новости об онлайн-образовании нашего университета</p>
@@ -65,7 +69,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="box">
+		<div class="box box--size_m">
 			<img class="index__photo" src="images/index_img/index__photo__last.svg" alt="">
 		</div>
 		<div class="box">
@@ -158,53 +162,37 @@
 			<h3>Если у Вас есть вопросы, используйте эту форму для отправки нам сообщения. Мы ответим в ближайшее время</h3>
 			<form class="feedback" method="POST" action="feedback.php">
 				<div class="mb-3">
+					<label for="name" class="form-label">Имя:</label>
 					<input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Константин">
-					<small id="helpId" class="form-text text-muted">Ваше Имя</small>
 				</div>
 				<div class="mb-3">
+					<label for="email" class="form-label">Почта:</label>
 					<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="mail@rguk.ru">
-					<small id="emailHelpId" class="form-text text-muted">Ваша электронная почта</small>
 				</div>
 				<div class="mb-3 feedback__item">
-					<label for="" class="form-label">Введите Ваше сообщение:</label>
+					<label for="message" class="form-label">Введите Ваше сообщение:</label>
 					<textarea class="form-control" name="message" id="message" rows="3"></textarea>
 				</div>
-				
 				<button type="submit" class="btn my-btn my-btn-primary" href="index.php">Отправить</button>
-				
 			</form>
 		</div>
 		<div class="box">
 			<h2>Контакты</h2>
-			<p>Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</p>
-			<span>8 800 80 00 доб. 1619</span>
-			<span>Москва, Малая Калужская ул., д. 1, каб. 1448 </span>
+			<h3>Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</h3>
+			<div class="contacts">
+				<a class="contacts__item" href="tel:+74958810101w1533" rel="nofollow">+7 (495) 881-01-01 доб. 1533</a>
+				<a class="contacts__item" href="mailto:reor@rguk.ru">reor@rguk.ru</a>
+			</div>
+			<span>Москва, Малая Калужская ул., д. 1, каб. 1448</span>
 			<div class="map">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.2213113075927!2d37.59818307740528!3d55.71990599452383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b728c701631%3A0x9640f31546b08960!2z0JzQsNC70LDRjyDQmtCw0LvRg9C20YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTE5MDcx!5e0!3m2!1sru!2sru!4v1683516642741!5m2!1sru!2sru" width="1200" height="512" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
 		</div>
 	</main>
-	<footer class="content f-bottom">
-		<div class="f-box">
-			<div class="f-box__item">
-				<img src="svg\logotype-invers.svg" alt="">
-			</div>
-
-			<div class="f-box__item">
-				<p>119071, Москва<br>ул. Малая Калужская, 1</p>
-				<p>&#169 2023 ФГБОУ ВО РГУ им. А.Н. Косыгина (Технологии. Дизайн. Искусство)</p>
-				<p>Почта:<br>reor@rguk.ru</p>
-			</div>
-		</div>
-	</footer>
-
-	<!-- 
 	<?php
 	include('footer.php');
-	?> -->
-
+	?>
 </body>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </html>

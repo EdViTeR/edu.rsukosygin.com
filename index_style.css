@@ -12,6 +12,8 @@
 	--back-color: #f4f7fe;
 	--blue: #0050ae;
 	--blue-deep: #2b3674;
+	--shadow: 0 .125rem .125rem .0625rem #00000015;
+	--color-hover: 0 0 1.5rem .25rem #0074fb50;
 }
 html {
 	font-size: 14px;
@@ -75,7 +77,7 @@ body {
 	align-items: center;
 	border-radius: 1.125rem;
 	padding: .125rem .625rem;
-	box-shadow: 0 .125rem .125rem .0625rem #00000015;
+	box-shadow: var(--shadow);
 	background: var(--back-color);
 }
 @media screen and (max-width: 60rem) {
@@ -167,6 +169,23 @@ body {
 	padding: 3.5rem 1rem 0rem 1rem;
 	gap: .5rem;
 }
+
+.box--size_xs {
+	max-width: 50rem;
+}
+
+.box--size_s {
+	max-width: 60rem;
+}
+.box--size_m {
+	max-width: 70rem;
+}
+.box--size_l {
+	max-width: 80rem;
+}
+.box--size_xl {
+	max-width: 90rem;
+}
 .box button {
 	margin-top: 1rem;
 }
@@ -197,21 +216,23 @@ body {
 	overflow: hidden;
 	z-index: 2;
 }
-
-.banner :hover .banner__head {
-	opacity: 0.8;
-}
-
-.banner :hover .banner__avatar {
-	opacity: 0.8;
-}
-
 .banner__avatar {
+	position: relative;
 	min-width: 8rem;
 	height: 8rem;
+	padding: 1rem;
 	background: #efefef25;
 	border-radius: 50%;
 	z-index: 3;
+}
+.banner__avatar img {
+	display: block;
+	position: absolute;
+	width: 75%;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
 }
 .banner__head {
 	display: flex;
@@ -222,6 +243,10 @@ body {
 	padding-left: 1.25rem;
 	padding-top: .5rem;
 	z-index: 3;
+}
+.banner__item:hover .banner__head,
+.banner__item:hover .banner__avatar {
+	opacity: 0.8;
 }
 .banner__head p {
 	color: var(--back-color);
@@ -239,7 +264,6 @@ body {
 
 .index__photo {
 	width: 100%;
-	max-width: 70rem;
 	padding: 0 .5rem;
 	border-radius: 3rem;
 }
@@ -311,6 +335,7 @@ body {
 .feedback .form-text,
 .feedback .form-label {
 	padding-left: .75rem;
+	margin-bottom: .25rem;
 }
 .feedback .form-control {
 	border-radius: .75rem;
@@ -318,6 +343,34 @@ body {
 }
 .feedback__item {
 	width: 100%;
+}
+.contacts {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	padding-bottom: 1rem;
+}
+.contacts__item {
+	background: var(--white);
+	height: 4rem;
+	border-radius: .75rem;
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	font-size: 1.125rem;
+	font-weight: 700;
+	color: var(--main-color);
+	align-items: center;
+	padding: 1rem 2rem;
+	box-shadow: var(--shadow);
+	text-decoration: none;
+	transition: .75s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.contacts__item:hover {
+	background-color: var(--main-color);
+	color: var(--white);
 }
 /* Карта */
 iframe {
@@ -335,11 +388,10 @@ iframe {
 }
 .f-box {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: center;
-	align-items: start;
-	align-content: center;
+	align-items: center;
+	text-align: center;
 	width: 100%;
 	max-width: 60rem;
 	padding: 0 2rem;
@@ -352,22 +404,153 @@ iframe {
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
-	max-width: 25rem;
+	max-width: 20rem;
 	color: var(--back-color);
 	font-size: .875rem;
 }
-.f-box__item img {
-	display: flex;
-	max-width: 16rem;
-}
-.f-box__item p {
+.f-box p {
+	margin-top: 1.5rem;
 	color: var(--back-color);
 }
+/* Каталог курсов. Карточки и прочее */
+.box__cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	gap: 1.5rem;
+	padding: 1rem 0;
+}
+.edu-card {
+	background: var(--white);
+	width: 100%;
+	max-width: 20rem;
+	height: 25rem;
+	border-radius: 1.5rem;
+	box-shadow: var(--shadow);
+	overflow: hidden;
+	transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+	text-decoration: none;
+}
+.edu-card:hover {
+	box-shadow: var(--color-hover)
+}
+/* Модификатор карточки курса НОВЫЙ КУРС */
+.edu-card_new {
+	position: relative;
+	outline: .25rem solid #ffb800;
+}
+.edu-card_new::before {
+	content: "НОВЫЙ";
+	display: block;
+	position: absolute;
+	background-color: #ffb800;
+	border-radius: 0 0 1rem 1rem;
+	font-weight: 800;
+	font-size: 1rem;
+	color: var(--white);
+	top: 0;
+	left: 50%;
+	padding: .25rem 2rem .5rem 2rem;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+/* Модификатор карточки курса ТОП КУРС */
+.edu-card_top {
+	position: relative;
+	outline: .25rem solid #f77183;
+}
+.edu-card_top::before {
+	content: "ТОП";
+	display: block;
+	position: absolute;
+	background-color: #f77183;
+	border-radius: 0 0 1rem 1rem;
+	font-weight: 800;
+	font-size: 1rem;
+	color: var(--white);
+	top: 0;
+	left: 50%;
+	padding: .25rem 2rem .5rem 2rem;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+.edu-card__img {
+	display: flex;
+	position: relative;
+	background-color: var(--main-color);
+	height: 50%;
+	width: 100%;
+}
+..edu-card__img img {
+	position: absolute;
+	left: 0;
+	transform: translateX(-50%);
+	height: 100%;
+}
+.edu-card__header {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	width: 100%;
+	height: 50%;
+	padding: 1rem 1.25rem;
+	text-align: start;
+	
+}
+.edu-card__title {
+	width: 100%;
+	color: var(--blue-deep);
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: 1.25rem;
+	font-weight: 600;
+	padding-left: .5rem;
+	
+}
+.edu-card__description {
+	width: 100%;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin-bottom: 0;
+	padding-left: .5rem;
+}
+.edu-card__date {
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	padding: 0 1rem;
+	margin-top: -2.25rem;
+	margin-left: -.75rem;
+	margin-right: -.75rem;
+	margin-bottom: .75rem;
+	min-height: 2.5rem;
+	width: auto;
+	background-color: var(--main-color);
+	border-radius: 1.5rem;
+	gap: .5rem;
+	color: var(--back-color);
+	font-size: 1rem;
+	font-weight: 800;
+}
+.edu-card__date img {
+	height: 1.5rem;
+}
 
 
 
 
-/* НИЖЕ КОД КОТОРЫЙ НАДО ПРАВИТЬ */
+
+/* НИЖЕ КОД КОТОРЫЙ НАДО ПРАВИТЬ ИЛИ УДАЛЯТЬ!!!!*/
+
+
+
 
 
 
@@ -579,12 +762,12 @@ iframe {
 	border-radius: 15px;
 }
 
-.contacts {
+/* .contacts {
 	margin: 0 auto;
 	width: 100%;
 	max-width: 1200px;
-}
-
+} */
+/* 
 .footer {
 	margin: 0 auto;
 	width: 100%;
@@ -603,7 +786,7 @@ iframe {
 	padding-left: 0px !important;
 	background: url("images/index_img/footer__logo.png") center no-repeat;
 	height: 4em;
-}
+} */
 
 .col {
 	padding-top: 1%;
