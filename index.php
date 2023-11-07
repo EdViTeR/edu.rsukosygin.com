@@ -20,13 +20,13 @@
 	<header class="header">
 		<ul class="nav navbar justify-content-center">
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="index.php" aria-current="page">Главная</a>
+				<a class="nav-link my-btn my-btn_activ" href="index.php" aria-current="page">Главная</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link my-btn" href="courses.php">Курсы</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="#">Новости</a>
+				<a class="nav-link my-btn" href="news.php">Новости</a>
 			</li>
 		</ul>
 		<div class="user">
@@ -77,7 +77,7 @@
 			<h3></h3>
 			<div class="slider-news">
 				<div class="slider-news__header">
-					<p>Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</p>
+					<p>Центр развития электронных образовательных ресурсов РГУ им. А. Н. Косыгина</p>
 				</div>
 				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 					<!-- Indicators/dots -->
@@ -97,7 +97,7 @@
 									<span>27 июня 2023<span>
 								</div>
 								<div class="slider-news__title">
-									<h5>Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина<h5>
+									<h5>Новая платформа онлайн-курсов РГУ им. А. Н. Косыгина<h5>
 								</div>
 							</div>
 						</a>
@@ -178,7 +178,7 @@
 		</div>
 		<div class="box">
 			<h2>Контакты</h2>
-			<h3>Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</h3>
+			<h3>Центр развития электронных образовательных ресурсов РГУ им. А. Н. Косыгина</h3>
 			<div class="contacts">
 				<a class="contacts__item" href="tel:+74958810101w1533" rel="nofollow">+7 (495) 881-01-01 доб. 1533</a>
 				<a class="contacts__item" href="mailto:reor@rguk.ru">reor@rguk.ru</a>

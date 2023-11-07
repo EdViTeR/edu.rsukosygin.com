@@ -30,7 +30,7 @@ $kurses = kurses_for_index($dbo);
 				<a class="nav-link my-btn my-btn_activ" href="courses.php">Курсы</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link my-btn" href="#">Новости</a>
+				<a class="nav-link my-btn" href="news.php">Новости</a>
 			</li>
 		</ul>
 		<div class="user">
