@@ -51,12 +51,49 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 
 	<main class="content">
 		<!-- Блок с отступом -->
-		<div class="box"></div>
-		<div class="box box--size_s">
-			<h1 class="course__title"><?php echo $kurs['name']; ?></h1>
+		<div class="course-header">
+			<div class="course-header__wrap">
+				<div class="course-header__info">
+					<div>
+						<div class="tag">Курс</div>
+						<div class="tag tag_type">Физика</div>
+					</div>
+					<div>
+						<div class="tag tag_date">
+							<img class="tag__icon" src="svg/icon-calendar_red.svg" alt="">
+							<span>Время</span>
+						</div>
+					</div>
+				</div>
+				<h1 class="course-header__title"><?php echo $kurs['name']; ?></h1>
+			</div>
+
+			<!-- Здесь надо заменить картинку в шапке курса, лучше из базы! -->
+			<img class="course-header__img" src="img/background.jpg" alt="">
+
 		</div>
-		<div class="box box--size_m course-video">
-			<?php echo $kurs['video']; ?>
+		<div class="course-description">
+			<div class="course-description__item">
+				<img class="course-description__img" src="svg/Clock.svg" alt="">
+				<div class="course-description__wrap">
+					<p>Объём практики:</p>
+					<b>72 часа</b>
+				</div>
+			</div>
+			<div class="course-description__item">
+				<img class="course-description__img" src="svg/Profile.svg" alt="">
+				<div class="course-description__wrap">
+					<p>Требования:</p>
+					<b>1 курс</b>
+				</div>
+			</div>
+			<div class="course-description__item">
+				<img class="course-description__img" src="svg/Award.svg" alt="">
+				<div class="course-description__wrap">
+					<p>Результат</p>
+					<b>Сертификат</b>
+				</div>
+			</div>
 		</div>
 		<div class="course">
 			<div class="course__item ">
@@ -74,47 +111,75 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				</div>
 			</div>
 		</div>
-		<h3 class="laboriousness">Общая трудоемкость курса: 72 часа</h3>
-		<h2>Для кого этот курс:</h2>
-		<div>
-			<?php
-			foreach ($for_whom as $key => $value) {
-				echo '<p>' . $value . '</p>';
-			}
-			?>
-		</div>
-		<h2>Что вы получите:</h2>
-		<ul>
-			<?php
-			foreach ($why as $key => $value) {
-				echo '<li>' . $value . '</li>';
-			}
-			?>
-		</ul>
-		</div>
-		<h2>Авторы курса</h2>
-
-		<div class="course__author-card">
-			<div class="author-card__photo">
-				<img src="<?php echo $kurs['author_photo_second']; ?>"></img>
+		<div class="course-video">
+			<div class="course-video__container">
+				<?php echo $kurs['video']; ?>
 			</div>
-			<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
-			<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
 		</div>
-		<h3>Программа курса</h3>
-		<p>*Курс состоит из лекционных и методических материалов, тестовых и практических заданий</p>
-		<div>
-			<?php
-			$k = 0;
-			foreach ($lections as $key => $value) {
-				$k++;
-				echo '<div class="lection__item">
-					<div class="lection__item__text">ЛЕКЦИЯ ' . $k . '. ' . $value["name"] . '</div>
+		<div class="course">
+			<div class="course__item ">
+				<h2 class="course__subtitle">для кого</h2>
+				<div class="course__text">
+					<?php
+					foreach ($for_whom as $key => $value) {
+						echo '<p>' . $value . '</p>';
+					}
+					?>
+				</div>
+			</div>
+			<div class="course__item">
+				<h2 class="course__subtitle">что получите</h2>
+				<ul class="course__text">
+					<?php
+					foreach ($why as $key => $value) {
+						echo '<li>' . $value . '</li>';
+					}
+					?>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div class="box">
+			<h2>Авторы курса</h2>
+			<div class="course__wrapper">
+				<div class="course__author-card author-card_box">
+					<div class="author-card__photo">
+						<img src="<?php echo $kurs['author_photo_second']; ?>"></img>
 					</div>
-			';
-			}
-
-			?>
+					<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
+					<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
+				</div>
+				<div class="course__author-card author-card_box">
+					<div class="author-card__photo">
+						<img src="<?php echo $kurs['author_photo_second']; ?>"></img>
+					</div>
+					<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
+					<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
+				</div>
+				<div class="course__author-card author-card_box">
+					<div class="author-card__photo">
+						<img src="<?php echo $kurs['author_photo_second']; ?>"></img>
+					</div>
+					<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
+					<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
+				</div>
+			</div>
+		</div>
+		<div class="box">
+			<h2>Программа курса</h2>
+			<p>*Курс состоит из лекционных и методических материалов, тестовых и практических заданий</p>
+			<div class="course__program">
+				<?php
+				$k = 0;
+				foreach ($lections as $key => $value) {
+					$k++;
+					echo '<div class="course__program-item">
+					<div class="program-item__number">Лекция № ' . $k . '</div>
+					<div class="program-item__name"> ' . $value["name"] . '</div>
+					</div>';
+				}
+				?>
+			</div>
 		</div>
 		<!-- Блок с отступом -->
 		<div class="box"></div>
@@ -151,7 +216,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
   </form>
 </section> -->
 
-<!-- 
+	<!-- 
 	<div class="registration__all" id="#end_reg">
 		<div class="registration__text"><span class="red__text">Внимание!</span> Регистрация на онлайн-курсы временно закрыта. Следите за новостями сообщества! По всем вопросам: <a href="mailto:reor@rguk.ru">reor@rguk.ru</a></div>
 	</div>
