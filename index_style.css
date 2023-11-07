@@ -89,15 +89,15 @@ body {
 }
 
 .link {
-	font-size: small;
+	font-size: 1rem;
+	color: var(--back-color);
 	text-decoration: none;
-	padding: 0.75rem 2rem;
-	color: var(--grey-color);
-	transition: var(--my-transition);
+	padding: 1rem 0;
+	transition: .5s var(--my-transition);
 }
 
 .link:hover {
-	text-decoration: underline overline var(--grey-color);
+	text-decoration: underline overline var(--back-color);
 }
 
 .header {
