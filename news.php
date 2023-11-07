@@ -6,7 +6,6 @@ $news = array_reverse(getNews($dbo));
 ?>
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,6 @@ $news = array_reverse(getNews($dbo));
 	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
 	<link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
-
 <body>
 	<header class="header">
 		<ul class="nav navbar justify-content-center">
@@ -38,54 +36,40 @@ $news = array_reverse(getNews($dbo));
 		</div>
 	</header>
 	<main class="content">
-		<div style="display:none">
-			<h1>Онлайн курсы РГУ им. А.Н.Косыгина</h1>
-		</div>
 		<div class="logotype">
 			<img class="logotype__icon" src="images/index_img/Logo_icon.svg">
 			<img class="logotype__text" src="images/index_img/Logo_text.svg">
 		</div>
 		<div class="box box--size_xl">
-			<h2>Новости онлайн-образования</h2>
-
+			<h1>Новости онлайн-образования</h1>
 		</div>
-		
-		<div class="box"></div>
-	</main>
-
-	<section class="course_all">
-		<div class="head__all__info">
-			<div class="head__info">
-				<h1 class="head__info__title">НОВОСТИ УНИВЕРСИТЕТА</h1>
+		<div class="box box--size_xl">
+			<div class="box__cards">
+				<?php
+				foreach ($news as $key => $value) {
+					$id = $value['id'];
+					$news_name = $value['name'];
+					$text = $value['text'];
+					$date = $value['date'];
+					echo '<a class="edu-card" href="item.php?id=' . $id . '">
+						<div class="edu-card__img">
+							<img src="images/news/news_card/news_card' . $id . '.svg" alt="">
+						</div>
+						<div class="edu-card__header">
+							<div class="edu-card__date edu-card__news">
+								<img src="svg/icon-calendar.svg" alt="">
+								<span>' . $date . '</span>
+							</div>
+							<h4 class="edu-card__title">' . $news_name . '</h4>
+							<p class="edu-card__description">' . $text . '</p>
+						</div>
+					</a>';
+				}
+				?>
 			</div>
 		</div>
-		<?php
-		$k = 0;
-		foreach ($news as $key => $value) {
-			$id = $value['id'];
-			$news_name = $value['name'];
-			if ($k == 0 || $k == 3) {
-				echo '<div class="about">';
-			}
-			$k++;
-			echo '<a class="kurs__href" href="item.php?id=' . $id . '"><div class="about__item">
-					<div class="about__img">
-						<img src="images/news/news_card/news_card' . $id . '.svg">
-					</div>
-				<div class="about__text">' . $news_name . '</div>
-			</div></a>';
-			if ($k == 3) {
-				echo '</div>';
-				$k = 0;
-			}
-		}
-
-		?>
-		</div>
-		<div class="back__button">
-			<a class="back__button__link" href="index.php">Вернуться</a>
-		</div>
-	</section>
+		<div class="box"></div>
+	</main>
 	<?php
 	include('footer.php');
 	?>
