@@ -51,7 +51,7 @@ $news = array_reverse(getNews($dbo));
 					$news_name = $value['name'];
 					$text = $value['text'];
 					$date = $value['date'];
-					echo '<div class="edu-card" href="item.php?id=' . $id . '">
+					echo '<a class="edu-card" href="item.php?id=' . $id . '">
 						<div class="edu-card__img">
 							<img src="images/news/news_card/news_card' . $id . '.svg" alt="">
 						</div>
@@ -63,7 +63,7 @@ $news = array_reverse(getNews($dbo));
 							<h4 class="edu-card__title">' . $news_name . '</h4>
 							<p class="edu-card__description">' . $text . '</p>
 						</div>
-					</div>';
+					</a>';
 				}
 				?>
 			</div>
