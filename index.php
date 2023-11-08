@@ -155,7 +155,7 @@
 					</button>
 				</div>
 			</div>
-			<button class="btn my-btn my-btn-primary">Читать все новости</button>
+			<a class="btn my-btn my-btn-primary" href="news.php">Читать все новости</a>
 		</div>
 		<div class="box">
 			<h2>Обратная связь</h2>
