@@ -38,6 +38,14 @@ html {
 	}
 }
 
+@media (max-width: 520px) {
+	.nav.navbar {
+		display: none;
+	}
+	.header {
+		justify-content: flex-end !important;
+	}
+}
 h1 {
 	font-size: 3rem;
 	font-weight: 900;
