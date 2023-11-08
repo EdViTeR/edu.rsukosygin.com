@@ -705,6 +705,7 @@ iframe {
 	font-weight: 800;
 	font-stretch: expanded;
 	box-shadow: var(--shadow);
+	text-decoration: none;
 }
 
 .tag__icon {

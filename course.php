@@ -56,12 +56,12 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<div class="course-header__info">
 					<div>
 						<div class="tag">Курс</div>
-						<div class="tag tag_type">Физика</div>
+						<a class="tag tag_type" href="https://edu.rguk.ru/lk/free_modules.php">Записаться</a>
 					</div>
 					<div>
 						<div class="tag tag_date">
 							<img class="tag__icon" src="svg/icon-calendar_red.svg" alt="">
-							<span>Время</span>
+							<span><?php echo $kurs['time']; ?></span>
 						</div>
 					</div>
 				</div>
@@ -111,11 +111,11 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				</div>
 			</div>
 		</div>
-		<div class="course-video">
-			<div class="course-video__container">
-				<?php echo $kurs['video']; ?>
-			</div>
-		</div>
+		<?php 
+			if (isset($kurs['video']) && !empty($kurs['video'])) {
+				echo '<div class="course-video"><div class="course-video__container">' . $kurs['video'] . '</div></div>';
+			}
+		?>
 		<div class="course">
 			<div class="course__item ">
 				<h2 class="course__subtitle">для кого</h2>
@@ -149,7 +149,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 					<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
 					<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
 				</div>
-				<div class="course__author-card author-card_box">
+<!-- 				<div class="course__author-card author-card_box">
 					<div class="author-card__photo">
 						<img src="<?php echo $kurs['author_photo_second']; ?>"></img>
 					</div>
@@ -162,7 +162,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 					</div>
 					<div class="author-card__name"><?php echo $kurs["author"]; ?></div>
 					<div class="author-card__bio"><?php echo $kurs["author_info"]; ?></div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="box">
@@ -180,6 +180,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				}
 				?>
 			</div>
+				<a class="btn my-btn my-btn-primary" href="https://edu.rguk.ru/lk/free_modules.php">Записаться на курс</a>
 		</div>
 		<!-- Блок с отступом -->
 		<div class="box"></div>
