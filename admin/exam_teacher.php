@@ -14,7 +14,7 @@ $user_status = 'Разработчик';
 foreach ($authors_all as $key => $value) {
     if ($user_id === $value['user_id']) {
         $kurs_id = $value['kurs_id'];
-        $data = get_kurs_author($dbo, $kurs_id);
+        // $data = get_kurs_author($dbo, $kurs_id);
         $user_status = 'Соавтор';
     }
 }
