@@ -1,10 +1,6 @@
-<footer class="footer">
-  <div class="for__row__top">
-    <div class="row">
-      <div class="col footer__logo"></div>
-      <div class="col">119071, г. Москва <p> ул. Малая Калужская, д.1</div>
-      <div class="col">© 2023 ФГБОУ ВО <p> РГУ им. А.Н. Косыгина</div>
-      <div class="col"><a href="mailto:reor@rguk.ru">Почта: <p> reor@rguk.ru</a></div>
-    </div>
-  </div>
+<footer class="content f-bottom">
+	<div class="f-box">
+		<a href="https://rguk.ru/" target="_blank"><img class="f-box__item" src="svg\logotype-invers.svg" alt=""></a>
+		<p>&#169 2023 ФГБОУ ВО РГУ им. А. Н. Косыгина<br>(Технологии. <a class="link" href="https://t.me/sergoalexeev" target="_blank">Дизайн.</a> Искусство)</p>
+	</div>
 </footer>

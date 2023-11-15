@@ -3,198 +3,196 @@
 ?>
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="index_style.css">
 	<title>Онлайн-курсы</title>
-    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
-    <link type="Image/x-icon" href="images/favicon.ico" rel="icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="index_style.css">
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+	<link type="Image/x-icon" href="images/favicon.ico" rel="icon">
 </head>
+
 <body>
+	<header class="header">
+		<ul class="nav navbar justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link my-btn my-btn_activ" href="index.php" aria-current="page">Главная</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link my-btn" href="courses.php">Курсы</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link my-btn" href="news.php">Новости</a>
+			</li>
+		</ul>
+		<div class="user">
+			<a class="my-btn my-btn-outline" href="sign_in.php">Личный кабинет</a>
+			<a class="my-btn my-btn-primary" href="https://edu.rguk.ru/login/index.php">EDU</a>
+		</div>
+	</header>
 
-<header class="header">
-	<div class="container">
-		<div class="header__inner">
-			<div class="header__logo">
-				<a class="header__link active" href="index.php">Главная</a>
-				<a class="header__link" href="courses.php">Курсы</a>
-				<a class="header__link" href="news.php">Новости</a>
+	<main class="content">
+		<div style="display:none">
+			<h1>Онлайн курсы РГУ им. А.Н.Косыгина</h1>
+		</div>
+		<div class="logotype">
+			<img class="logotype__icon" src="images/index_img/Logo_icon.svg">
+			<img class="logotype__text" src="images/index_img/Logo_text.svg">
+		</div>
+		<div class="box">
+			<h2>Онлайн-образование</h2>
+			<h3>Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате</h3>
+			<div class="banner">
+				<a class="banner__item" href="courses.php">
+					<div class="banner__avatar">
+						<img src="images/index_img/course__card__icon.svg" alt="Онлайн курсы">
+					</div>
+					<div class="banner__head">
+						<h4>Онлайн-курсы</h4>
+						<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина</p>
+					</div>
+					<img class="banner__back" src="img\book.jpg" alt="">
+				</a>
+				<a class="banner__item" href="news.php">
+					<div class="banner__avatar">
+						<img src="images/index_img/card__news.png" alt="">
+					</div>
+					<div class="banner__head">
+						<h4>Новости</h4>
+						<p>Самые актуальные новости об онлайн-образовании нашего университета</p>
+					</div>
+					<img class="banner__back" src="img\news.jpg" alt="">
+				</a>
 			</div>
-			<nav class="nav__link">
-				<a class="nav__link__lk" href="sign_in.php">Личный кабинет</a>
-				<div class="for__nav__link__edu">
-					<a class="nav__link__edu" href="https://edu.rguk.ru/login/index.php">EDU</a>
-				</div>
-			</nav>
 		</div>
-	</div>
-</header>
-
-<div class="intro">
-	<div class="container">
-		<div class="intro__logo">
-			<img class="logo__img" src="images/index_img/Logo_icon.svg">
-    		<img class="logo__img__text" src="images/index_img/Logo_text.svg">
+		<div class="box box--size_m">
+			<img class="index__photo" src="images/index_img/index__photo__last.svg" alt="">
 		</div>
-	</div>
-</div>
-
-<section class="head_all">
-	<div class="head__all__info">
-		<div class="head__info">
-			<h1 class="head__info__title">ОНЛАЙН-ОБРАЗОВАНИЕ</h1>
-		</div>
-		<div class="head__info__title__text">
-			<h2 class="head__info__text">Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате!</h2>
-		</div>
-		<div class="head__card">
-			<a class="a__head_card" href="courses.php">
-			<div class="head__card__course">
-				<div class="course__head">
-					<h2>Онлайн-курсы</h2>
+		<div class="box">
+			<h2>Новости</h2>
+			<h3></h3>
+			<div class="slider-news">
+				<div class="slider-news__header">
+					<p>Центр развития электронных образовательных ресурсов РГУ им. А. Н. Косыгина</p>
 				</div>
-				<div class="course__text">
-					<p>Новые онлайн-курсы, разработанные преподавателями РГУ им. А.Н. Косыгина </p>
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<!-- Indicators/dots -->
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+					</div>
+					<!-- The slideshow/carousel -->
+					<div class="carousel-inner">
+						<a href="item.php?id=8" class="carousel-item active">
+							<img src="images\news\news_photo\news__photo1.svg" alt="Los Angeles" class="d-block" style="width: 100%">
+							<div class="slider-news__footer">
+								<div class="slider-news__date">
+									<span>27 июня 2023<span>
+								</div>
+								<div class="slider-news__title">
+									<h5>Новая платформа онлайн-курсов РГУ им. А. Н. Косыгина<h5>
+								</div>
+							</div>
+						</a>
+						<a href="item.php?id=7" class="carousel-item">
+							<img src="images\news\news_photo\news__photo5.svg" alt="Chicago" class="d-block" style="width: 100%">
+							<div class="slider-news__footer">
+								<div class="slider-news__date">
+									<span>10 февраля 2023<span>
+								</div>
+								<div class="slider-news__title">
+									<h5>Регистрация на онлайн-курсы<h5>
+								</div>
+							</div>
+						</a>
+						<a href="item.php?id=5" class="carousel-item">
+							<img src="images\news\news_photo\news__photo5.svg" alt="New York" class="d-block" style="width: 100%">
+							<div class="slider-news__footer">
+								<div class="slider-news__date">
+									<span>14 апреля 2022<span>
+								</div>
+								<div class="slider-news__title">
+									<h5>Запись на онлайн-курсы<h5>
+								</div>
+							</div>
+						</a>
+						<a href="item.php?id=6" class="carousel-item">
+							<img src="images\news\news_photo\news__photo5.svg" alt="Chicago" class="d-block" style="width: 100%">
+							<div class="slider-news__footer">
+								<div class="slider-news__date">
+									<span>16 мая 2022<span>
+								</div>
+								<div class="slider-news__title">
+									<h5>Регистрация на онлайн-курсы завершилась<h5>
+								</div>
+							</div>
+						</a>
+						<a href="item.php?id=1" class="carousel-item">
+							<img src="images\news\news_photo\news__photo5.svg" alt="Chicago" class="d-block" style="width: 100%">
+							<div class="slider-news__footer">
+								<div class="slider-news__date">
+									<span>14 апреля 2022<span>
+								</div>
+								<div class="slider-news__title">
+									<h5>Платформа онлайн-курсов<h5>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- Left and right controls/icons -->
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
 				</div>
-			</div></a>
-			<a class="a__head_card" href="news.php">
-			<div class="head__card__news">
-				<div class="course__head">
-					<h2>Новости</h2>
-				</div>
-				<div class="course__text">
-					<p>Самые актуальные новости об <br>онлайн-образовании нашего университета </p>
-				</div>
-			</div></a>
-		</div><br>
-
-<!-- 		<div class="head__video__info">
-			<div class="head__video__text">ОБ ОНЛАЙН-КУРСАХ</div>
-			<div class="head__video">
-				<video controls  poster="images/index_img/video_fon.png" width="766px" height="416px"><source src="images/index_img/index_video.mp4" type='video/ogg; codecs="theora, vorbis"'></video>
 			</div>
-		</div> -->
-	</div>
-</section>
-<div class="index__photo"></div>
-<section class="head_all">
-	<div class="news">
-		<div class="head__video__text">НОВОСТИ</div>
-	</div>
-<div id="carouselExampleIndicators" class="carousel slide carousel__all">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-  </div>
-  <div class="carousel-inner">
-    <a href="item.php?id=8"><div class="carousel-item active">
-    	<div class="carousel__item__head">
-    		<div class="carousel__item__logo"></div>
-    		<div class="carousel__item__head__all">
-	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">27 июня 2023</div>
-    		</div>
-    	</div>
-    	<div class="card__photo"></div>
-    	<div class="under__news">Новая платформа онлайн-курсов РГУ им. А.Н. Косыгина</div>
-    </div></a>
-    <a href="item.php?id=7"><div class="carousel-item">
-    	<div class="carousel__item__head">
-    		<div class="carousel__item__logo"></div>
-    		<div class="carousel__item__head__all">
-	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">10 февраля 2023</div>
-    		</div>
-    	</div>
-    	<div class="card__photo1"></div>
-    	<div class="under__news">Регистрация на онлайн-курсы</div>
-    </div></a>
-    <a href="item.php?id=6"><div class="carousel-item">
-    	<div class="carousel__item__head">
-    		<div class="carousel__item__logo"></div>
-    		<div class="carousel__item__head__all">
-	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">16 мая 2022</div>
-    		</div>
-    	</div>
-    	<div class="card__photo3"></div>
-    	<div class="under__news">Регистрация на онлайн-курсы завершилась</div>
-    </div></a>
-    <a href="item.php?id=5"><div class="carousel-item">
-    	<div class="carousel__item__head">
-    		<div class="carousel__item__logo"></div>
-    		<div class="carousel__item__head__all">
-	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">14 апреля 2022</div>
-    		</div>
-    	</div>
-    	<div class="card__photo2"></div>
-    	<div class="under__news">Запись на онлайн-курсы</div>
-    </div></a>
-    <a href="item.php?id=1"><div class="carousel-item">
-    	<div class="carousel__item__head">
-    		<div class="carousel__item__logo"></div>
-    		<div class="carousel__item__head__all">
-	    		<div class="carousel__item__company">Центр развития электронных образовательных ресурсов РГУ им. А.Н. Косыгина</div>
-	    		<div class="carousel__item__date">14 апреля 2022</div>
-    		</div>
-    	</div>
-    	<div class="cardik__photo"></div>
-    	<div class="under__news">Платформа онлайн-курсов</div>
-    </div>
-  </div></a>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</section>
-<section class="contacts">
-	<div class="contacts__head">ОБРАТНАЯ СВЯЗЬ</div>
-  	<form method="POST" action="feedback.php" class="row g-3 contacts__form">
-  <!-- <div class="row g-3 contacts__form"> -->
-  	<div class="col-sm-1"></div>
-  	<div class="col-sm-1"></div>
-	    <div class="col-sm-3">
-	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="first_name" name="name" placeholder="Имя" value="" required>
-	    </div>
-	    <div class="col-sm-2">
-	      <input type="text" class="form-control text__for__contacts__input input__contacts" id="name" name="mail" placeholder="Почта" value="" required>
-	    </div>
-	    <div class="col-sm-4 contacts__text">Центр развития электронных образовательных ресурсов <p>РГУ им. А.Н. Косыгина</div>
-	    <div class="col-sm-1"></div>
-	    <div class="col-sm-1"></div>
-	    <div class="col-sm-1"></div>
-	   	<div class="col-5">
-	      <textarea type="text" class="form-control text__for__contacts__input textarea__contacts" id="email" name="feedback" placeholder="Сообщение" rows="3" required></textarea>
-	   	</div>
-   	<div class="col-sm-3 contacts__number">8 800 80 00 доб. 1619<br>
-   		<div class="contacts__address">
-   			ул. Малая Калужская д.1 <p>каб. 1448
-   		</div>
-   	</div>
-		<div class="back__button__contacts">
-			<button type="submit" class="back__button__contacts__link" href="index.php">ОТПРАВИТЬ</a>
+			<a class="btn my-btn my-btn-primary" href="news.php">Читать все новости</a>
 		</div>
-  </form>
-  <!-- </div> -->
-	<div class="map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.2213113075927!2d37.59818307740528!3d55.71990599452383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b728c701631%3A0x9640f31546b08960!2z0JzQsNC70LDRjyDQmtCw0LvRg9C20YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTE5MDcx!5e0!3m2!1sru!2sru!4v1683516642741!5m2!1sru!2sru" width="1200" height="512" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-	</div>
-</section>
-
-<?php 
+		<div class="box">
+			<h2>Обратная связь</h2>
+			<h3>Если у Вас есть вопросы, используйте эту форму для отправки нам сообщения. Мы ответим в ближайшее время</h3>
+			<form class="feedback" method="POST" action="feedback.php">
+				<div class="mb-3">
+					<label for="name" class="form-label">Имя:</label>
+					<input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Константин">
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label">Почта:</label>
+					<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="mail@rguk.ru">
+				</div>
+				<div class="mb-3 feedback__item">
+					<label for="message" class="form-label">Введите Ваше сообщение:</label>
+					<textarea class="form-control" name="message" id="message" rows="3"></textarea>
+				</div>
+				<button type="submit" class="btn my-btn my-btn-primary" href="index.php">Отправить</button>
+			</form>
+		</div>
+		<div class="box">
+			<h2>Контакты</h2>
+			<h3>Центр развития электронных образовательных ресурсов РГУ им. А. Н. Косыгина</h3>
+			<div class="contacts">
+				<a class="contacts__item" href="tel:+74958810101w1533" rel="nofollow">+7 (495) 881-01-01 доб. 1533</a>
+				<a class="contacts__item" href="mailto:reor@rguk.ru">reor@rguk.ru</a>
+			</div>
+			<span>Москва, Малая Калужская ул., д. 1, каб. 1448</span>
+			<div class="map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.2213113075927!2d37.59818307740528!3d55.71990599452383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b728c701631%3A0x9640f31546b08960!2z0JzQsNC70LDRjyDQmtCw0LvRg9C20YHQutCw0Y8g0YPQuy4sIDEsINCc0L7RgdC60LLQsCwgMTE5MDcx!5e0!3m2!1sru!2sru!4v1683516642741!5m2!1sru!2sru" width="1200" height="512" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+	</main>
+	<?php
 	include('footer.php');
-?>
+	?>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </html>
