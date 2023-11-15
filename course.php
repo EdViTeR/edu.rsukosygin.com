@@ -84,7 +84,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 				<img class="course-description__img" src="svg/Profile.svg" alt="">
 				<div class="course-description__wrap">
 					<p>Требования:</p>
-					<b>1 курс</b>
+					<b>2 - 4 курс</b>
 				</div>
 			</div>
 			<div class="course-description__item">

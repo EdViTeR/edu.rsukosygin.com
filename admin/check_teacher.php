@@ -151,6 +151,7 @@
                         <a href="add_kurs_index.php"  class="btn btn-outline-secondary mb-3" type="button">Создать новый курс</a>
                         <a href="add_lection_index.php"  class="btn btn-outline-secondary mb-3" type="button">Добавить лекцию</a>
                         <a href="add_img_index.php"  class="btn btn-outline-secondary mb-3" type="button">Добавить фото</a>
+                        <a href="check_rating.php"  class="btn btn-outline-secondary mb-3" type="button">Результаты</a>
                     </div>
                 </div>
             </div>

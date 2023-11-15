@@ -44,7 +44,7 @@
 			<img class="logotype__text" src="images/index_img/Logo_text.svg">
 		</div>
 		<div class="box">
-			<h2>Онлайн-образование</h2>
+			<h2>Онлайн образование</h2>
 			<h3>Избранные события, мероприятия и образовательные проекты университета в одном месте и в удобном формате</h3>
 			<div class="banner">
 				<a class="banner__item" href="courses.php">
