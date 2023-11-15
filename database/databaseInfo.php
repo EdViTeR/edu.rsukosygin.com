@@ -119,6 +119,15 @@ function marks_2023($dbo) {
 	return $data;
 }
 
+
+//Вытаскиваем оценки
+function mark_2023($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM marks_2023 WHERE `kurs_id` = ?");
+	$stmt->execute([$kurs_id]);
+	$rating = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $rating;
+}
+
 function expert_rating($dbo, $expert_id)
 {
 	$stmt = $dbo->prepare("SELECT * FROM rating WHERE `expert_id` = ?");
@@ -212,6 +221,15 @@ function get_kurs_info($dbo) {
 // Все курсы по заявкам 2023
 function get_kurs_info_2023($dbo) {
 	$data = $dbo->query('SELECT * FROM order_kurs_2023')->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+
+// Все курсы по заявкам 2023
+function get_kurs_one_2023($dbo, $kurs_id) {
+	$stmt = $dbo->prepare("SELECT * FROM order_kurs_2023 WHERE `id` = ?");
+	$stmt->execute([$kurs_id]);
+	$data = $stmt->fetch(PDO::FETCH_ASSOC);
 	return $data;
 }
 
