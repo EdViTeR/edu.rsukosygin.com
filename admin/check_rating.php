@@ -4,11 +4,6 @@
         header("Location: /");
     }
     include ("../database/databaseInfo.php");
-    // foreach ($marks as $key => $value) {
-    // 	$kurses = get_kurs_one_2023($dbo, $value['kurs_id']);
-    // 	$data = $kurses['kurs_name'] . ' | ' . $value['expert_id'];
-    // }
-
 ?>
 <!doctype html>
 <html lang="ru">
@@ -46,11 +41,25 @@
 							 	$marks = mark_2023($dbo, $value['id']);
 							 	foreach ($marks as $key => $mark) {
 							    	$rating[] = $mark["actual"] + $mark["structure"] + $mark["sposob"] + $mark["adaptive"] + $mark["health"] + $mark["moneyy"] + $mark["unique"];
+                                    $actual[]       = $mark["actual"];
+                                    $structure[]    = $mark["structure"];
+                                    $sposob[]       = $mark["sposob"];
+                                    $adaptive[]     = $mark["adaptive"];
+                                    $health[]       = $mark["health"];
+                                    $moneyy[]       = $mark["moneyy"];
+                                    $unique[]       = $mark["unique"];
 							    	$k = count($rating);
 							    }
-								$itog = array_sum($rating) / $k;
-								unset($rating);
-								echo $value['kurs_name'] . ' | ' . $itog . '</br>';
+								$itog       = round(array_sum($rating) / $k);
+                                $actual     = round(array_sum($actual) / $k);
+                                $structure  = round(array_sum($structure) / $k);
+                                $sposob     = round(array_sum($sposob) / $k);
+                                $adaptive   = round(array_sum($adaptive) / $k);
+                                $health     = round(array_sum($health) / $k);
+                                $moneyy     = round(array_sum($moneyy) / $k);
+                                $unique     = round(array_sum($unique) / $k);
+								echo $value['kurs_name'] . ' | ' . $itog . '</br>' . $actual . ' | ' . $structure . ' | ' . $sposob . ' | ' . $adaptive . ' | ' . $health . ' | ' . $moneyy . ' | ' . $unique . '</br>';
+								unset($rating, $itog, $actual, $structure, $sposob, $adaptive, $health, $moneyy, $unique);
     						}
                         ?>
                     </div>
