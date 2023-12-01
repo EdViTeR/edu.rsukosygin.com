@@ -55,7 +55,7 @@ $head_reg = user_info_one($dbo, $kurs["head_id"]);
 			<div class="course-header__wrap">
 				<div class="course-header__info">
 					<div>
-						<div class="tag">Курс</div>
+						<!-- <div class="tag">Курс</div> -->
 						<a class="tag tag_type" href="https://edu.rguk.ru/lk/free_modules.php">Записаться</a>
 					</div>
 					<div>
