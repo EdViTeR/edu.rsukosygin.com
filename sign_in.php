@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ERROR);
 session_start();
 require_once 'vendor/autoload.php';
 if (isset($_SESSION['user'])) {
