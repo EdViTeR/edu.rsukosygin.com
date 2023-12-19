@@ -119,7 +119,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
         <!-- Подвал -->
         <div class="container">
             <footer class="py-3 my-4">
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 
