@@ -66,7 +66,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                                     <strong class="text-gray-dark">' . $kurs_name . '</strong>';
                                     $kurs = kurs_data_all($dbo, $kurs_id);
                                     if (isset($kurs) && !empty($kurs)) {
-                                        echo 'Информация добавлена';
+                                        echo '<a href="edit_kurs_info.php?status=' . $kurs_id . '" type="button">Редактировать курс</a>';
                                     } else {
                                         echo '<a href="add_kurs.php?kurs_id=' . $kurs_id . '">Добавить информацию</a>';
                                     }

@@ -84,7 +84,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                         <?  
                         $k = 0;
                         if (!$themes) {
-                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
+                            echo "</br>Добавленных лекций нет.</br></br><a href='add_theme_new.php?kurs_id=" . $kurs_id . "&user_id=" . $user_id . "'>Добавить лекцию</a>";
                         } else {     
                             foreach ($themes as $key => $value) {
                                 $theme_name = $value['name'];
@@ -108,11 +108,6 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                                                     <b>Краткая информация</b>
                                                     <hr>
                                                     ' . $value['info'] . '
-                                                </div></br>
-                                                <div class="card card-body">
-                                                    <b>Текст лекции</b>
-                                                    <hr>
-                                                    ' . $text_less . '
                                                 </div></br>
                                                 <div class="card card-body">
                                                     <b>Презентация</b>
@@ -159,10 +154,9 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
 
                         <p>Вы авторизировались как <strong>«<?php echo $_SESSION['user']['user_status'];?>»</strong>.</p> 
                         <p>Вам доступны следующие дествия:</p>
-
                         <!-- <a href="add_kurs.php" class="btn btn-primary mb-3 me-3" type="button">Добавить информацию о курсе</a> -->
-                        <a href="edit_kurs_info.php?status=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a>
-                        <a href="add_theme_new.php?kurs_id=<?php echo $kurs_id ?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить тему</a>
+                        <!-- <a href="edit_kurs_info.php?status=<?php echo $kurs_id;?>" class="btn btn-primary mb-3 me-3" type="button">Редактировать курс</a> -->
+                        <a href="add_theme_new.php?kurs_id=<?php echo $kurs_id ?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить лекцию</a>
                         <!-- <a href="add_autor.php?kurs_id=<?php echo $kurs_id ?>&user_id=<?php echo $user_id;?>"  class="btn btn-outline-secondary mb-3" type="button">Добавить автора</a> -->
                     </div>
                 </div>

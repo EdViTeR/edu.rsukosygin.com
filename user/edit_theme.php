@@ -57,9 +57,6 @@
                             <p><h5>Краткая аннотация по теме лекции</h5></p>
                             <textarea type="text" name="theme_info" class="form-control"  cols="100" rows="3" placeholder="В этом поле укажите краткую аннотацию по теме лекции объемом не более 1000 печатных знаков" maxlength=1000 required><?php echo $info;?></textarea>
                             </br>
-                            <p><h5>Текст лекции</h5></p>
-                            <textarea type="text" name="text_less" class="form-control"  cols="100" rows="7" placeholder="В этом поле укажите текст выступления спикера, полную речь по теме лекции (от 6 до 10 минут)" required><?php echo $text_less;?></textarea>
-                            </br>
                             <?php echo '<a href="view_kurs.php?kurs_id=' . $kurs_id . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
                             <input type="submit" name="submit_image" value="Изменить" class="btn btn-outline-primary me-2">
                             <?php echo '<a href="delete_theme.php?theme_id=' . $theme_id . '&kurs_id=' . $kurs_id . '" class="btn btn-outline-danger me-2">Удалить лекцию</a>'?>
@@ -99,7 +96,7 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
                 </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 

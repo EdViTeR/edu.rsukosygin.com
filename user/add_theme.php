@@ -2,7 +2,7 @@
     include ("../database/databaseInfo.php");
 	$user_id = $_GET['user_id'];
 	$kurs_id = $_GET['kurs_id'];
-	$data = kurs($link, $kurs_id);
+	$data = kurs($dbo, $kurs_id);
 	foreach ($data as $key => $value) {
 		$name = $value[1];
 	}
@@ -334,7 +334,7 @@
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
                 </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 

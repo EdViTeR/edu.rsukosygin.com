@@ -51,9 +51,9 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                             <p><h5>Краткая аннотация лекции</h5></p>
                             <textarea type="text" name="theme_info" class="form-control"  cols="100" rows="3" placeholder="В этом поле укажите краткую аннотацию по теме лекции объемом не более 1000 печатных знаков" maxlength=1000 required></textarea>
                             </br>
-                            <p><h5>Текст лекции</h5></p>
+<!--                             <p><h5>Текст лекции</h5></p>
                             <textarea type="text" name="text_less" class="form-control"  cols="100" rows="7" placeholder="В этом поле укажите текст выступления спикера, полную речь по теме лекции (от 6 до 10 минут)" required></textarea>
-                            </br>
+                            </br> -->
                             <?php echo '<a href="view_kurs.php?kurs_id=' . $kurs_id . '" class="btn btn-outline-primary me-2">Вернуться</a>'?>
                             <input type="submit" name="submit_image" value="Добавить тему" class="btn btn-outline-primary me-2">
                         </form>
@@ -92,7 +92,7 @@ $photo = view_photo($dbo, $_SESSION['user']['id']);
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
                 </ul> -->
-                <p class="text-center text-muted border-top pt-3 ">&copy; 2022 РГУ им. А.Н. Косыгина</p>
+                <p class="text-center text-muted border-top pt-3 ">&copy; 2023 РГУ им. А.Н. Косыгина</p>
             </footer>
         </div>
 
