@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ERROR);
 session_start();
 include ("../database/databaseInfo.php");
 $kurs_id = $_GET['kurs_id'];
